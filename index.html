@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Japan Trip with the Boys 2027</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -741,6 +742,22 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .stat .num{ font-family:'JetBrains Mono',monospace; font-weight:700; font-size:22px; color:var(--indigo); }
   .stat .lbl{ font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:#5a6b74; margin-top:2px; }
 
+  /* ---------- countdowns ---------- */
+  .countdowns{ display:grid; grid-template-columns: 1fr 1fr; gap:14px; margin:22px 0 0; }
+  @media (max-width:700px){ .countdowns{ grid-template-columns:1fr; } }
+  .cd-card{ background:var(--paper-card); border:1px solid var(--line); border-left:4px solid var(--vermillion); border-radius:var(--radius); box-shadow:var(--shadow); padding:14px 18px 14px; }
+  .cd-card.trip{ border-left-color:var(--indigo); }
+  .cd-eyebrow{ font-family:'JetBrains Mono',monospace; font-size:10.5px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--vermillion); margin-bottom:8px; }
+  .cd-card.trip .cd-eyebrow{ color:var(--indigo); }
+  .cd-body{ display:flex; align-items:center; gap:16px; }
+  .cd-num{ font-family:'JetBrains Mono',monospace; font-weight:700; font-size:44px; line-height:1; color:var(--vermillion); min-width:84px; text-align:center; }
+  .cd-card.trip .cd-num{ color:var(--indigo); }
+  .cd-num small{ display:block; font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#5a6b74; margin-top:6px; }
+  .cd-title{ font-weight:700; font-size:15px; line-height:1.35; }
+  .cd-sub{ font-size:12.5px; color:#5a6b74; margin-top:3px; line-height:1.4; }
+  .cd-bar{ height:5px; background:var(--paper-dim); border-radius:4px; margin-top:12px; overflow:hidden; }
+  .cd-fill{ height:100%; background:var(--indigo); border-radius:4px; width:0; transition:width .6s ease; }
+
   /* ---------- route diagram (signature element) ---------- */
   .route-card{
     background:var(--paper-card);
@@ -817,7 +834,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   }
   .squad-name input:focus{ background:var(--indigo-pale); outline:none; }
   .squad-cell{ display:flex; justify-content:center; padding:10px; }
-  .squad-note{ margin:-8px 0 16px; padding:10px 14px; border-left:3px solid var(--gold); background:#f3e9cf; color:#6b5214; font-size:13.5px; border-radius:2px; }
+  .squad-note{ margin:-8px 0 16px; padding:12px 16px; background:#ffffff; color:var(--ink); border:1px solid var(--line); border-left:5px solid var(--vermillion); font-size:13.5px; line-height:1.5; border-radius:3px; box-shadow:var(--shadow); }
   body.readonly .ro-check{ display:inline-block; font-weight:900; color:var(--moss); font-size:16px; line-height:20px; min-width:20px; text-align:center; }
   body.readonly .ro-check.off{ color:var(--line); font-weight:400; }
   .squad-toolbar{ display:flex; gap:10px; margin-top:12px; flex-wrap:wrap; }
@@ -862,13 +879,37 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .edit-field:focus{ background:var(--indigo-pale); outline:none; }
   .day-title-field{ font-weight:700; font-size:16px; font-family:'Zen Kaku Gothic New'; }
   .day-loc-field{ font-family:'JetBrains Mono',monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--vermillion); background:var(--vermillion-dim); border-radius:20px; padding:3px 10px; width:auto; min-width:70px; }
+  .day-area{ display:flex; flex-wrap:wrap; align-items:center; gap:6px 10px; margin:2px 0 8px; padding:7px 10px; background:var(--indigo-pale); border-radius:3px; font-size:13px; }
+  .day-area-label{ font-family:'JetBrains Mono',monospace; font-size:9.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--indigo); }
+  .day-area-text{ font-weight:700; color:var(--ink); }
+  .day-area-links{ display:flex; gap:12px; margin-left:auto; flex-wrap:wrap; }
+  .day-area-links a, .stop-map, .drive-row a{ font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700; color:var(--vermillion); text-decoration:none; white-space:nowrap; }
+  .day-area-links a:hover, .stop-map:hover, .drive-row a:hover{ text-decoration:underline; }
+  .drive-row{ display:grid; grid-template-columns: 92px 1fr auto; gap:10px; align-items:center; padding:9px 2px; border-bottom:1px solid var(--line); font-size:13.5px; }
+  .drive-row:last-child{ border-bottom:none; }
+  .drive-row .dt{ font-family:'JetBrains Mono',monospace; font-size:11.5px; font-weight:700; color:var(--indigo); }
+  @media (max-width:640px){ .drive-row{ grid-template-columns: 70px 1fr; } .drive-row a{ grid-column:2; } }
   .day-meta{ display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:8px; }
   .meta-block .lbl{ font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:#5a6b74; margin-bottom:2px; }
   .meta-block textarea{ font-size:13px; min-height:38px; }
 
   /* ---------- budget tab ---------- */
   .budget-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:20px; margin-bottom:26px; }
-  @media (max-width: 760px){ .budget-grid{ grid-template-columns:1fr; } }
+  @media (max-width: 1000px){ .budget-grid{ grid-template-columns:1fr; } }
+  table.exp-ro td{ padding:9px 6px; vertical-align:top; }
+  table.exp-ro tr.exp-sec td{ background:var(--vermillion); color:#fff; padding:10px 10px; border-bottom:none; font-family:'Shippori Mincho',serif; font-weight:800; font-size:16px; }
+  table.exp-ro tr.exp-sec.indiv td{ background:var(--ink); }
+  table.exp-ro tr.exp-sec td small{ display:block; font-family:'Zen Kaku Gothic New',sans-serif; font-weight:400; font-size:11.5px; opacity:.85; margin-top:1px; }
+  table.exp-ro tr.exp-sec td.right{ font-family:'JetBrains Mono',monospace; font-size:16px; vertical-align:middle; }
+  table.exp-ro tr.exp-sec + tr.exp-cat td{ border-top:none; }
+  table.exp-ro tr.exp-cat td{ background:var(--indigo); color:var(--paper); font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:7px 8px; border-bottom:none; }
+  table.exp-ro tr.exp-cat td.right{ font-size:12px; letter-spacing:.02em; }
+  table.exp-ro tr.exp-cat + tr td{ border-top:none; }
+  .exp-jump{ color:#ffd2c2; text-transform:none; letter-spacing:0; font-weight:400; margin-left:6px; font-size:11px; }
+  table.exp-ro .exp-item{ font-weight:700; font-size:14px; color:var(--ink); }
+  table.exp-ro .exp-note{ font-size:12px; color:#5a6b74; line-height:1.45; margin-top:2px; }
+  table.exp-ro .exp-amt{ font-family:'JetBrains Mono',monospace; font-weight:700; font-size:14px; color:var(--indigo); white-space:nowrap; width:1%; padding-left:14px; }
+  body.readonly table.tbl .ro{ overflow-wrap:normal; word-break:normal; }
   .card-pad{ padding:18px 18px 20px; }
   .card h3{ font-family:'Shippori Mincho',serif; font-size:17px; margin:0 0 12px; display:flex; justify-content:space-between; align-items:center;}
   table.tbl{ width:100%; border-collapse:collapse; font-size:13.5px; }
@@ -882,6 +923,27 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .right{ text-align:right; }
   .center{ text-align:center; }
   .total-line{ display:flex; justify-content:space-between; padding-top:10px; margin-top:6px; border-top:2px solid var(--ink); font-weight:700; }
+  .budget-callout b{ color:var(--vermillion); }
+  .fx-box{ display:flex; flex-wrap:wrap; align-items:center; gap:8px 16px; margin:-6px 0 20px; padding:12px 16px; background:#ffffff; border:1px solid var(--line); border-left:5px solid var(--indigo); border-radius:3px; box-shadow:var(--shadow); max-width:760px; }
+  .fx-rate{ font-family:'JetBrains Mono',monospace; font-weight:700; font-size:18px; color:var(--indigo); white-space:nowrap; }
+  .fx-label{ font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#5a6b74; display:block; margin-bottom:2px; }
+  .fx-text{ flex:1 1 320px; font-size:13px; color:#3b4a54; line-height:1.5; }
+  .to-lodging{ display:inline-block; margin:0 0 10px; font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700; color:var(--vermillion); text-decoration:none; }
+  .to-lodging:hover{ text-decoration:underline; }
+  a.stay-link{ color:var(--indigo); font-weight:600; text-decoration:underline; text-decoration-color:rgba(36,71,107,.3); text-underline-offset:3px; }
+  a.stay-link span{ font-size:11px; color:var(--vermillion); }
+  a.stay-link:hover{ text-decoration-color:var(--indigo); }
+  .accom-range{ margin-top:8px; font-size:12.5px; color:#5a6b74; line-height:1.5; }
+  .pg-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:16px 26px; }
+  .pg-title{ font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--vermillion); padding-bottom:6px; border-bottom:2px solid var(--ink); margin-bottom:2px; }
+  .pg-row{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding:7px 0; border-bottom:1px solid var(--line); }
+  .pg-row:last-child{ border-bottom:none; }
+  .pg-item{ font-size:13.5px; line-height:1.35; }
+  .pg-note{ display:block; font-size:11.5px; color:#5a6b74; }
+  .pg-price{ text-align:right; white-space:nowrap; }
+  .pg-yen{ display:block; font-family:'JetBrains Mono',monospace; font-weight:700; font-size:13px; color:var(--ink); }
+  .pg-usd{ display:block; font-family:'JetBrains Mono',monospace; font-size:11px; color:#5a6b74; }
+  .pg-foot{ grid-column:1 / -1; font-size:12.5px; color:#5a6b74; line-height:1.5; border-top:1px dashed var(--line); padding-top:10px; }
   .budget-note{ margin-top:12px; padding-top:10px; border-top:1px dashed var(--line); font-size:13px; color:#5a6b74; line-height:1.55; white-space:pre-line; }
   .total-line .num{ font-family:'JetBrains Mono',monospace; color:var(--vermillion); }
   .headcount-input{
@@ -913,6 +975,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .wish-add input.where{ flex: 0 0 70px; font-size:11px; }
 
   /* ---------- misc ---------- */
+  .to-top{ position:fixed; right:18px; bottom:22px; z-index:90; background:var(--ink); color:var(--paper); border:none; border-radius:30px; padding:11px 16px; font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; letter-spacing:.04em; box-shadow:0 6px 18px rgba(0,0,0,.25); cursor:pointer; opacity:0; transform:translateY(10px); pointer-events:none; transition:opacity .2s ease, transform .2s ease; }
+  .to-top.show{ opacity:.92; transform:none; pointer-events:auto; }
+  .to-top:hover{ opacity:1; background:var(--vermillion); }
   .save-banner{
     position:fixed; bottom:16px; left:50%; transform:translateX(-50%);
     background:var(--ink); color:var(--paper); font-family:'JetBrains Mono',monospace;
@@ -930,9 +995,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
     font-family:'JetBrains Mono',monospace; margin: 6px 0 26px; padding:9px 12px;
     border:1px dashed var(--line); border-radius:var(--radius); background:rgba(255,255,255,.4);
   }
-  .estimate-note{ margin:-16px 0 26px; padding:10px 14px; border-left:3px solid var(--gold); background:#f3e9cf; color:#6b5214; font-size:13px; line-height:1.5; border-radius:2px; }
-  .estimate-note b{ font-weight:900; }
-  .budget-callout{ margin:8px 0 20px; padding:10px 14px; border-left:3px solid var(--gold); background:#f3e9cf; color:#6b5214; font-size:13.5px; line-height:1.5; border-radius:2px; max-width:760px; }
+  .estimate-note{ margin:-16px 0 26px; padding:12px 16px; background:var(--ink); color:#f5f0e4; border-left:5px solid var(--vermillion); font-size:13.5px; line-height:1.5; border-radius:3px; box-shadow:var(--shadow); }
+  .estimate-note b{ font-weight:900; color:#ffb59a; letter-spacing:.02em; }
+  .budget-callout{ margin:8px 0 20px; padding:12px 16px; background:#ffffff; color:var(--ink); border:1px solid var(--line); border-left:5px solid var(--vermillion); font-size:13.5px; line-height:1.5; border-radius:3px; max-width:760px; box-shadow:var(--shadow); }
   .live-note .pip{ width:6px; height:6px; border-radius:50%; background:var(--moss); flex:none; }
 
   .gate-screen{
@@ -990,7 +1055,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .map-hint{ display:flex; align-items:center; gap:8px; font-size:11.5px; color:#5a6b74; font-family:'JetBrains Mono',monospace; margin:10px 0 18px; }
   .map-hint .pip{ width:6px; height:6px; border-radius:50%; background:var(--indigo); flex:none; }
 
-  .stop-row{ display:grid; grid-template-columns: 30px 1fr 1fr 30px; gap:8px; align-items:center; padding:8px 2px; border-bottom:1px solid var(--line); }
+  .stop-row{ display:grid; grid-template-columns: 30px 1fr 1fr auto 30px; gap:8px; align-items:center; padding:8px 2px; border-bottom:1px solid var(--line); }
   .stop-row:last-child{ border-bottom:none; }
   .stop-order{ display:flex; flex-direction:column; align-items:center; gap:1px; }
   .stop-order button{ background:none; border:none; color:var(--indigo); cursor:pointer; font-size:10px; line-height:1; padding:2px; opacity:.55; }
@@ -1070,6 +1135,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .night.double{ outline:2px solid var(--vermillion); outline-offset:-2px; }
   .night.split{ outline:2px dashed var(--gold); outline-offset:-2px; }
   .legend{ display:flex; flex-wrap:wrap; gap:12px; margin-top:12px; font-family:'JetBrains Mono',monospace; font-size:10px; color:#5a6b74; }
+  .legend-defs{ margin-top:12px; padding-top:10px; border-top:1px dashed var(--line); font-size:12.5px; color:#3b4a54; line-height:1.5; display:flex; flex-direction:column; gap:6px; }
+  .legend-defs b{ color:var(--ink); }
   .legend span{ display:inline-flex; align-items:center; gap:5px; }
   .legend i{ width:11px; height:11px; border-radius:2px; display:inline-block; border:1px solid var(--line); }
 
@@ -1092,6 +1159,14 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .fld.wide{ grid-column: span 2; }
   .fld.full{ grid-column: 1 / -1; }
   .fld .calc{ font-family:'JetBrains Mono',monospace; font-size:13px; padding:5px 0; color:var(--indigo); }
+  .stay-more{ margin-top:8px; border-top:1px dashed var(--line); padding-top:8px; }
+  .stay-more summary{ cursor:pointer; font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--indigo); list-style:none; display:inline-flex; align-items:center; gap:6px; }
+  .stay-more summary::-webkit-details-marker{ display:none; }
+  .stay-more summary::before{ content:'▸'; transition:transform .15s ease; display:inline-block; }
+  .stay-more[open] summary::before{ transform:rotate(90deg); }
+  .stay-more .more-block{ margin-top:8px; }
+  .stay-more .lbl{ font-size:9.5px; text-transform:uppercase; letter-spacing:.08em; color:#5a6b74; font-family:'JetBrains Mono',monospace; }
+  .stay-more .more-text{ font-size:13px; line-height:1.55; white-space:pre-line; color:var(--ink); }
   .stay-foot{ display:flex; justify-content:space-between; align-items:center; margin-top:8px; gap:10px; flex-wrap:wrap; }
   .stay-foot a{ font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--indigo); }
   .badge{ font-family:'JetBrains Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.06em; padding:3px 8px; border-radius:20px; background:var(--paper-dim); color:var(--ink); }
@@ -1135,9 +1210,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
   body.readonly .tl-row .ro.tl-when{ font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; color:var(--indigo); }
   body.readonly .stop-row .ro{ font-size:13.5px; padding:4px 5px; }
   body.readonly .stop-row .ro.stop-note{ font-size:12px; color:#5a6b74; }
-  body.readonly .stop-row{ grid-template-columns: 30px 1fr 1fr; }
+  body.readonly .stop-row{ grid-template-columns: 30px 1fr 1fr auto; }
   body.readonly .squad-name .ro{ font-weight:700; padding:2px 4px; }
   body.readonly table.tbl .ro{ padding:3px 4px; }
+  body.readonly table.tbl td.right .ro, table.tbl td.right{ white-space:nowrap; overflow-wrap:normal; }
   body.readonly .headcount-input.ro{ display:inline-block; width:auto; border:none; background:none; padding:0; }
   body.readonly .wrap input[type=checkbox]:disabled{ opacity:1; cursor:default; }
   body.readonly .sleep-chip:disabled{ opacity:1; color:inherit; }
@@ -1160,7 +1236,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 <script type="application/json" id="trip-data-inline">{
  "meta": {
   "updated": "2026-11-06",
-  "note": "Lodging is still open: the stays listed are options, not bookings, and prices will change. Up next: locking in the itinerary, so send Son feedback."
+  "note": "Budget now splits shared vs. individual costs, plus a 'What things cost in Japan' price guide. Next up: locking in the rough itinerary by Nov 30."
  },
  "squadColumns": [
   {
@@ -1178,6 +1254,78 @@ svg.leaflet-image-layer.leaflet-interactive path {
  ],
  "rsvp": [
   {
+   "name": "Arnold",
+   "attrs": {
+    "driver": false,
+    "backup": false,
+    "moped": false
+   }
+  },
+  {
+   "name": "Dan",
+   "attrs": {
+    "driver": false,
+    "backup": false,
+    "moped": false
+   }
+  },
+  {
+   "name": "Don",
+   "attrs": {
+    "driver": true,
+    "backup": false,
+    "moped": false
+   }
+  },
+  {
+   "name": "Hing",
+   "attrs": {
+    "driver": false,
+    "backup": false,
+    "moped": false
+   }
+  },
+  {
+   "name": "Hoang",
+   "attrs": {
+    "driver": false,
+    "backup": false,
+    "moped": false
+   }
+  },
+  {
+   "name": "KD",
+   "attrs": {
+    "driver": false,
+    "backup": false,
+    "moped": false
+   }
+  },
+  {
+   "name": "Kevin",
+   "attrs": {
+    "driver": false,
+    "backup": false,
+    "moped": false
+   }
+  },
+  {
+   "name": "KT",
+   "attrs": {
+    "driver": false,
+    "backup": false,
+    "moped": false
+   }
+  },
+  {
+   "name": "Nick",
+   "attrs": {
+    "driver": false,
+    "backup": false,
+    "moped": false
+   }
+  },
+  {
    "name": "Son",
    "attrs": {
     "driver": true,
@@ -1194,79 +1342,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
    }
   },
   {
-   "name": "KT",
-   "attrs": {
-    "driver": false,
-    "backup": false,
-    "moped": false
-   }
-  },
-  {
-   "name": "Hing",
-   "attrs": {
-    "driver": false,
-    "backup": false,
-    "moped": false
-   }
-  },
-  {
-   "name": "Arnold",
-   "attrs": {
-    "driver": false,
-    "backup": false,
-    "moped": false
-   }
-  },
-  {
    "name": "Victor",
-   "attrs": {
-    "driver": false,
-    "backup": false,
-    "moped": false
-   }
-  },
-  {
-   "name": "Hoang",
-   "attrs": {
-    "driver": false,
-    "backup": false,
-    "moped": false
-   }
-  },
-  {
-   "name": "Don",
-   "attrs": {
-    "driver": true,
-    "backup": false,
-    "moped": false
-   }
-  },
-  {
-   "name": "Nick",
-   "attrs": {
-    "driver": false,
-    "backup": false,
-    "moped": false
-   }
-  },
-  {
-   "name": "Dan",
-   "attrs": {
-    "driver": false,
-    "backup": false,
-    "moped": false
-   }
-  },
-  {
-   "name": "Kevin",
-   "attrs": {
-    "driver": false,
-    "backup": false,
-    "moped": false
-   }
-  },
-  {
-   "name": "KD",
    "attrs": {
     "driver": false,
     "backup": false,
@@ -1286,74 +1362,102 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "when": "Nov 2026",
    "what": "Lock in the rough itinerary",
    "tag": "decide",
-   "status": "Son is sharing this page with the group for feedback first. Send him thoughts on the day-by-day plan."
+   "status": "Son is sharing this page with the group for feedback first. Send him thoughts on the day-by-day plan.",
+   "due": "2026-11-30",
+   "dueLabel": "Due by"
   },
   {
    "when": "Jan 2027",
    "what": "Lock in the exact dates and final head count",
-   "tag": "decide"
+   "tag": "decide",
+   "due": "2027-01-31",
+   "dueLabel": "Due by"
   },
   {
    "when": "Jan–Mar 2027",
    "what": "Best window to buy plane tickets (7–9 months out)",
    "tag": "book",
-   "status": "Start right after the dates and head count are locked. Target ≤$1,000 on US airlines; buy when it hits."
+   "status": "Start right after the dates and head count are locked. Target ≤$1,000 on US airlines; buy when it hits.",
+   "due": "2027-01-01",
+   "dueLabel": "Opens"
   },
   {
    "when": "Mar 1 2027",
    "what": "Takayama machiya (alternative option) booking opens: 0:00 JST = Sun Feb 28, 10:00 AM ET",
-   "tag": "book"
+   "tag": "book",
+   "due": "2027-02-28",
+   "dueLabel": "Opens"
   },
   {
    "when": "Mar 2027",
    "what": "Lock in on the planned itinerary",
-   "tag": "decide"
+   "tag": "decide",
+   "due": "2027-03-31",
+   "dueLabel": "Due by"
   },
   {
    "when": "Mar 2027",
    "what": "Pick 2 backup drivers (still open). They need IDPs too, same as Son and Don",
-   "tag": "decide"
+   "tag": "decide",
+   "due": "2027-03-31",
+   "dueLabel": "Due by"
   },
   {
    "when": "Apr 2027",
    "what": "Book hotels and Airbnbs",
-   "tag": "book"
+   "tag": "book",
+   "due": "2027-04-01",
+   "dueLabel": "Opens"
   },
   {
    "when": "Apr 2027",
    "what": "Get International Driving Permits (AAA): Son and Don plus the 2 backup drivers, and everyone riding a moped on the Shimanami Kaido. A regular car IDP works for the 50cc scooters",
-   "tag": "todo"
+   "tag": "todo",
+   "due": "2027-04-30",
+   "dueLabel": "Due by"
   },
   {
    "when": "Apr–Jun 2027",
    "what": "Second chance at good fares (4–6 months out)",
    "tag": "book",
-   "status": "Buy by June at the latest if you are still waiting on a deal."
+   "status": "Buy by June at the latest if you are still waiting on a deal.",
+   "due": "2027-06-30",
+   "dueLabel": "Buy by"
   },
   {
    "when": "May 2027",
    "what": "Decide on restaurants and activities",
-   "tag": "decide"
+   "tag": "decide",
+   "due": "2027-05-31",
+   "dueLabel": "Due by"
   },
   {
    "when": "Jun 2027",
    "what": "Book the car rentals",
-   "tag": "book"
+   "tag": "book",
+   "due": "2027-06-30",
+   "dueLabel": "Due by"
   },
   {
    "when": "Aug 2027",
    "what": "Low chances of cheap tickets after this",
-   "tag": "warn"
+   "tag": "warn",
+   "due": "2027-08-01",
+   "dueLabel": "Starting"
   },
   {
    "when": "Aug 2027",
    "what": "Book restaurant reservations and activities",
-   "tag": "book"
+   "tag": "book",
+   "due": "2027-08-31",
+   "dueLabel": "Due by"
   },
   {
    "when": "Oct 2027",
    "what": "Trip: 17 days in October (suggested Oct 7–23)",
-   "tag": "trip"
+   "tag": "trip",
+   "due": "2027-10-01",
+   "dueLabel": "Starts"
   }
  ],
  "itinerary": [
@@ -1364,7 +1468,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "notes": "Arrive at the airport 5 AM. Flight to ATL leaves 7:10 AM, arrives 8:35 AM. Depart ATL 1:30 PM, arrive HND 2:05 PM (+1 day).",
    "food": "",
    "links": "",
-   "noLodging": true
+   "noLodging": true,
+   "area": "In the air: Charlotte → Atlanta → Tokyo Haneda",
+   "mapQuery": "Haneda Airport, Tokyo"
   },
   {
    "date": "2027-10-08",
@@ -1373,7 +1479,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "notes": "",
    "food": "",
    "links": "",
-   "noLodging": false
+   "noLodging": false,
+   "area": "Tokyo",
+   "mapQuery": "Tokyo, Japan"
   },
   {
    "date": "2027-10-09",
@@ -1382,7 +1490,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "notes": "",
    "food": "",
    "links": "",
-   "noLodging": false
+   "noLodging": false,
+   "area": "Tokyo",
+   "mapQuery": "Tokyo, Japan"
   },
   {
    "date": "2027-10-10",
@@ -1391,7 +1501,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "notes": "",
    "food": "",
    "links": "",
-   "noLodging": false
+   "noLodging": false,
+   "area": "Tokyo (pick up the rental cars)",
+   "mapQuery": "Tokyo, Japan"
   },
   {
    "date": "2027-10-11",
@@ -1400,7 +1512,13 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "notes": "Check out and head to Hakone. Drop off bags and cars, explore Hakone. Check in and stay at the ryokan.",
    "food": "",
    "links": "",
-   "noLodging": false
+   "noLodging": false,
+   "area": "Tokyo → Hakone",
+   "mapQuery": "Hakone, Kanagawa, Japan",
+   "route": [
+    "Tokyo, Japan",
+    "Hakone, Kanagawa, Japan"
+   ]
   },
   {
    "date": "2027-10-12",
@@ -1409,7 +1527,14 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "notes": "Check out and head to Takayama. Go to Matsuyama Castle. Check in. Eat local at Aji Hei izakaya.",
    "food": "",
    "links": "",
-   "noLodging": false
+   "noLodging": false,
+   "area": "Hakone → Matsumoto → Takayama",
+   "mapQuery": "Takayama, Gifu, Japan",
+   "route": [
+    "Hakone, Kanagawa, Japan",
+    "Matsumoto Castle, Matsumoto, Nagano, Japan",
+    "Takayama, Gifu, Japan"
+   ]
   },
   {
    "date": "2027-10-13",
@@ -1418,7 +1543,14 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "notes": "Day trip to Shirakawa-go, come back for Ajikura.",
    "food": "Hida beef",
    "links": "",
-   "noLodging": false
+   "noLodging": false,
+   "area": "Takayama + Shirakawa-go day trip",
+   "mapQuery": "Shirakawa-go, Gifu, Japan",
+   "route": [
+    "Takayama, Gifu, Japan",
+    "Shirakawa-go, Gifu, Japan",
+    "Takayama, Gifu, Japan"
+   ]
   },
   {
    "date": "2027-10-14",
@@ -1427,7 +1559,14 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "notes": "Check out and head to the Sekigahara museum. Check into the hotel/Airbnb, maybe in between Osaka and Kyoto? Explore Osaka.",
    "food": "",
    "links": "",
-   "noLodging": false
+   "noLodging": false,
+   "area": "Takayama → Sekigahara → Osaka",
+   "mapQuery": "Osaka, Japan",
+   "route": [
+    "Takayama, Gifu, Japan",
+    "Sekigahara, Gifu, Japan",
+    "Osaka, Japan"
+   ]
   },
   {
    "date": "2027-10-15",
@@ -1436,7 +1575,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "notes": "Osaka Aquarium? Head to Kobe for dinner?",
    "food": "Osaka street food: kushikatsu, takoyaki, okonomiyaki",
    "links": "",
-   "noLodging": false
+   "noLodging": false,
+   "area": "Osaka (Kobe for dinner?)",
+   "mapQuery": "Osaka, Japan"
   },
   {
    "date": "2027-10-16",
@@ -1445,7 +1586,15 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "notes": "Head to Kobe for dinner?",
    "food": "Kobe beef",
    "links": "",
-   "noLodging": false
+   "noLodging": false,
+   "area": "Kyoto (Kobe for dinner?)",
+   "mapQuery": "Kyoto, Japan",
+   "route": [
+    "Osaka, Japan",
+    "Kyoto Racecourse, Kyoto, Japan",
+    "Kobe, Hyogo, Japan",
+    "Osaka, Japan"
+   ]
   },
   {
    "date": "2027-10-17",
@@ -1454,7 +1603,15 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "notes": "Check out early (8 AM?). Himeji Castle? Drive to Kurashiki old town, Kurashiki jeans? Check into Onomichi. Late dinner in Onomichi, Onomichi ramen?",
    "food": "Peaches and muscat grapes",
    "links": "Japanese Denim",
-   "noLodging": false
+   "noLodging": false,
+   "area": "Osaka → Himeji → Kurashiki → Onomichi",
+   "mapQuery": "Onomichi, Hiroshima, Japan",
+   "route": [
+    "Osaka, Japan",
+    "Himeji Castle, Himeji, Hyogo, Japan",
+    "Kurashiki Bikan Historical Quarter, Kurashiki, Okayama, Japan",
+    "Onomichi, Hiroshima, Japan"
+   ]
   },
   {
    "date": "2027-10-18",
@@ -1463,7 +1620,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "notes": "Ropeway up and walk down, the shopping arcade, the waterfront.",
    "food": "Onomichi ramen",
    "links": "",
-   "noLodging": false
+   "noLodging": false,
+   "area": "Onomichi",
+   "mapQuery": "Onomichi, Hiroshima, Japan"
   },
   {
    "date": "2027-10-19",
@@ -1473,7 +1632,14 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "food": "",
    "links": "島ライダーレンタルバイク https://www.shimarider.com/",
    "noLodging": false,
-   "splitNight": true
+   "splitNight": true,
+   "area": "Shimanami Kaido: Onomichi → Setoda (Ikuchijima)",
+   "mapQuery": "Setoda, Onomichi, Hiroshima, Japan",
+   "route": [
+    "Onomichi, Hiroshima, Japan",
+    "Setoda, Onomichi, Hiroshima, Japan"
+   ],
+   "routeMode": "bicycling"
   },
   {
    "date": "2027-10-20",
@@ -1482,7 +1648,14 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "notes": "Riders come back to Onomichi and everyone regroups. Stay the night? Or a late flight to Tokyo?",
    "food": "",
    "links": "",
-   "noLodging": false
+   "noLodging": false,
+   "area": "Setoda → back to Onomichi",
+   "mapQuery": "Onomichi, Hiroshima, Japan",
+   "route": [
+    "Setoda, Onomichi, Hiroshima, Japan",
+    "Onomichi, Hiroshima, Japan"
+   ],
+   "routeMode": "bicycling"
   },
   {
    "date": "2027-10-21",
@@ -1491,7 +1664,13 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "notes": "Check out, drop the cars at Hiroshima Airport, fly back to HND.",
    "food": "",
    "links": "",
-   "noLodging": false
+   "noLodging": false,
+   "area": "Onomichi → Hiroshima Airport, fly to Tokyo",
+   "mapQuery": "Hiroshima Airport, Japan",
+   "route": [
+    "Onomichi, Hiroshima, Japan",
+    "Hiroshima Airport, Mihara, Hiroshima, Japan"
+   ]
   },
   {
    "date": "2027-10-22",
@@ -1500,7 +1679,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "notes": "Shop and drink.",
    "food": "",
    "links": "",
-   "noLodging": false
+   "noLodging": false,
+   "area": "Tokyo",
+   "mapQuery": "Tokyo, Japan"
   },
   {
    "date": "2027-10-23",
@@ -1509,7 +1690,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "notes": "Check out of the hotel. Flight to MSP leaves 7:40 PM, arrives 6:20 PM. Flight to CLT leaves 7:40 PM, arrives 11:15 PM.",
    "food": "",
    "links": "",
-   "noLodging": false
+   "noLodging": false,
+   "area": "Tokyo → Haneda, fly home",
+   "mapQuery": "Haneda Airport, Tokyo"
   }
  ],
  "lodging": [
@@ -1680,67 +1863,93 @@ svg.leaflet-image-layer.leaflet-interactive path {
   {
    "item": "Airfare",
    "cost": 1000,
-   "note": "per person, target. Watch US airlines; JAL/ANA surcharges are high right now"
+   "note": "per person, target. Watch US airlines; JAL/ANA surcharges are high right now",
+   "cat": "Flights",
+   "split": "individual"
   },
   {
    "item": "Flight Hiroshima → Tokyo (Oct 21)",
    "cost": 100,
-   "note": "one-way on ANA/JAL, typically $83–102"
-  },
-  {
-   "item": "Omakase",
-   "cost": 200,
-   "note": "per person"
-  },
-  {
-   "item": "Kobe beef",
-   "cost": 150,
-   "note": "per person"
+   "note": "one-way on ANA/JAL, typically $83–102",
+   "cat": "Flights",
+   "split": "individual"
   },
   {
    "item": "Car rental x2",
    "cost": 220,
-   "note": "≈¥400k (~$2,600) total for 2 minivans, 11 days, with insurance and the one-way drop-off at Hiroshima Airport"
+   "note": "≈¥400k (~$2,600) total for 2 minivans, 11 days, with insurance and the one-way drop-off at Hiroshima Airport",
+   "cat": "Cars & driving",
+   "split": "shared"
   },
   {
    "item": "Gas (2 cars)",
    "cost": 40,
-   "note": "≈$330 total: ~2,900 km at 10 km/L, ¥175/L. Range $200–570"
+   "note": "≈$330 total: ~2,900 km at 10 km/L, ¥175/L. Range $200–570",
+   "cat": "Cars & driving",
+   "split": "shared"
   },
   {
    "item": "Expressway tolls (2 cars)",
    "cost": 30,
-   "note": "≈¥50,000 total (≈$325), est."
+   "note": "≈¥50,000 total (≈$325), est.",
+   "cat": "Cars & driving",
+   "split": "shared"
   },
   {
    "item": "Parking",
    "cost": 20,
-   "note": "≈¥35,000 total for both cars, est."
+   "note": "≈¥35,000 total for both cars, est.",
+   "cat": "Cars & driving",
+   "split": "shared"
   },
   {
    "item": "Tokyo trains + airport transfers",
    "cost": 60,
-   "note": "Haneda ⇄ Airbnb and subway rides on the Tokyo days"
+   "note": "Haneda ⇄ Airbnb and subway rides on the Tokyo days",
+   "cat": "Getting around Tokyo",
+   "split": "individual"
   },
   {
-   "item": "Admissions",
-   "cost": 60,
-   "note": "castles, Sekigahara museum, Onomichi ropeway, Shirakawa-go parking"
+   "item": "Omakase",
+   "cost": 200,
+   "note": "per person",
+   "cat": "Food",
+   "split": "individual"
   },
   {
-   "item": "Lodging taxes",
-   "cost": 15,
-   "note": "small nightly city taxes not in listing prices (Takayama, Kyoto/Osaka)"
-  },
-  {
-   "item": "Moped rental (riders only)",
-   "cost": 120,
-   "note": "Shimarider 50cc from ¥9,300/day incl. helmet + insurance, 2 days. E-bikes cost less"
+   "item": "Kobe beef",
+   "cost": 150,
+   "note": "per person",
+   "cat": "Food",
+   "split": "individual"
   },
   {
    "item": "Food @ $45/day",
    "cost": 720,
-   "note": "per person, ~16 days in Japan"
+   "note": "per person, ~16 days in Japan",
+   "cat": "Food",
+   "split": "individual"
+  },
+  {
+   "item": "Admissions",
+   "cost": 60,
+   "note": "castles, Sekigahara museum, Onomichi ropeway, Shirakawa-go parking",
+   "cat": "Activities",
+   "split": "individual"
+  },
+  {
+   "item": "Moped rental (riders only)",
+   "cost": 120,
+   "note": "Shimarider 50cc from ¥9,300/day incl. helmet + insurance, 2 days. E-bikes cost less",
+   "cat": "Activities",
+   "split": "individual"
+  },
+  {
+   "item": "Lodging taxes",
+   "cost": 15,
+   "note": "small nightly city taxes not in listing prices (Takayama, Kyoto/Osaka)",
+   "cat": "Lodging",
+   "split": "shared"
   }
  ],
  "headcount": 12,
@@ -1839,31 +2048,36 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "name": "Hakone",
    "lat": 35.2323,
    "lng": 139.1069,
-   "note": "Ryokan night"
+   "note": "Ryokan night",
+   "mapQuery": "Hakone, Kanagawa, Japan"
   },
   {
    "name": "Matsumoto",
    "lat": 36.238,
    "lng": 137.972,
-   "note": "Castle stop on the way?"
+   "note": "Castle stop on the way?",
+   "mapQuery": "Matsumoto Castle, Matsumoto, Nagano, Japan"
   },
   {
    "name": "Takayama",
    "lat": 36.1461,
    "lng": 137.2522,
-   "note": "2 nights · Hida beef"
+   "note": "2 nights · Hida beef",
+   "mapQuery": "Takayama, Gifu, Japan"
   },
   {
    "name": "Shirakawa-go",
    "lat": 36.2578,
    "lng": 136.9061,
-   "note": "Day trip"
+   "note": "Day trip",
+   "mapQuery": "Shirakawa-go, Gifu, Japan"
   },
   {
    "name": "Sekigahara",
    "lat": 35.365,
    "lng": 136.4672,
-   "note": "Battlefield museum"
+   "note": "Battlefield museum",
+   "mapQuery": "Gifu Sekigahara Battlefield Memorial Museum, Japan"
   },
   {
    "name": "Osaka",
@@ -1875,49 +2089,213 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "name": "Kyoto",
    "lat": 35.0116,
    "lng": 135.7681,
-   "note": "JRA horse races"
+   "note": "JRA horse races",
+   "mapQuery": "Kyoto Racecourse, Kyoto, Japan"
   },
   {
    "name": "Kobe",
    "lat": 34.6901,
    "lng": 135.1955,
-   "note": "Kobe beef dinner"
+   "note": "Kobe beef dinner",
+   "mapQuery": "Kobe, Hyogo, Japan"
   },
   {
    "name": "Himeji",
    "lat": 34.8154,
    "lng": 134.6853,
-   "note": "Castle"
+   "note": "Castle",
+   "mapQuery": "Himeji Castle, Himeji, Japan"
   },
   {
    "name": "Kurashiki",
    "lat": 34.5847,
    "lng": 133.7724,
-   "note": "Old town · denim"
+   "note": "Old town · denim",
+   "mapQuery": "Kurashiki Bikan Historical Quarter, Japan"
   },
   {
    "name": "Onomichi",
    "lat": 34.4098,
    "lng": 133.2049,
-   "note": "Ropeway, ramen"
+   "note": "Ropeway, ramen",
+   "mapQuery": "Onomichi, Hiroshima, Japan"
   },
   {
    "name": "Setoda",
    "lat": 34.3033,
    "lng": 133.0989,
-   "note": "Moped ride, overnight"
+   "note": "Moped ride, overnight",
+   "mapQuery": "Setoda, Onomichi, Hiroshima, Japan"
   },
   {
    "name": "Hiroshima Airport",
    "lat": 34.4361,
    "lng": 132.9195,
-   "note": "Drop cars, fly to Tokyo"
+   "note": "Drop cars, fly to Tokyo",
+   "mapQuery": "Hiroshima Airport, Mihara, Hiroshima, Japan"
   }
  ],
  "squadNote": "Main drivers: Son and Don. We still need 2 backup drivers. Tell Son if you're up for it (you'll need an International Driving Permit). Also tell Son if you're doing the Oct 19 moped ride to Setoda. You'll need an IDP too, and a regular car one is fine. Anyone skipping it stays in Onomichi with the vans.",
  "datesTentative": true,
  "budgetNote": "Not in the total (personal costs): travel insurance (~$100–200), an eSIM for data (~$20–30), and the AAA International Driving Permit (~$20 + photos) for drivers and moped riders.\nThe Setoda night ($512) is only for the moped riders, so they split it instead of all 12. Car rental tip: picking the cars up the morning of Oct 11 instead of Oct 10 saves a rental day and a night of Tokyo parking.\nStill not included: drinking, karaoke, souvenirs, clubbing. Budget separately for those.",
- "disclaimer": "Everything here is a plan in progress. Costs, dates and places to stay are estimates and options, not final numbers or bookings. Nothing is booked yet, and final prices will be confirmed as things are booked."
+ "disclaimer": "Everything here is a plan in progress. Costs, dates and places to stay are estimates and options, not final numbers or bookings. Nothing is booked yet, and final prices will be confirmed as things are booked.",
+ "tripMonth": "2027-10",
+ "planningStart": "2026-09-01",
+ "fx": {
+  "rate": 155,
+  "asOf": "2026-11-06",
+  "note": "Used to turn yen prices into dollars for car rental, gas, tolls, parking, trains, admissions, lodging taxes and the moped. The yen has mostly been around ¥155–163 per dollar this year, and ¥155 is the cautious end. If it's ¥165 when we pay, those yen costs come out about 6% cheaper in dollars; at ¥145, about 7% more. Airfare, lodging and food are already estimated in dollars. Rate as of Nov 6, 2026."
+ },
+ "budgetCategories": [
+  "Lodging",
+  "Cars & driving",
+  "Flights",
+  "Getting around Tokyo",
+  "Food",
+  "Activities"
+ ],
+ "priceGuide": [
+  {
+   "group": "Food & drink",
+   "items": [
+    {
+     "item": "Onigiri (rice ball) at a convenience store",
+     "low": 150,
+     "high": 250
+    },
+    {
+     "item": "Convenience store bento or meal",
+     "low": 500,
+     "high": 900
+    },
+    {
+     "item": "Beef bowl (Yoshinoya, Matsuya)",
+     "low": 450,
+     "high": 700
+    },
+    {
+     "item": "Bowl of ramen",
+     "low": 900,
+     "high": 1500,
+     "note": "add ¥500–1,000 for gyoza and a beer"
+    },
+    {
+     "item": "Conveyor-belt sushi, per plate",
+     "low": 120,
+     "high": 350
+    },
+    {
+     "item": "Izakaya dinner with drinks, per person",
+     "low": 3000,
+     "high": 5000
+    },
+    {
+     "item": "Draft beer at an izakaya or bar",
+     "low": 500,
+     "high": 800
+    },
+    {
+     "item": "All-you-can-drink (nomihodai), about 2 hours",
+     "low": 1500,
+     "high": 2500
+    },
+    {
+     "item": "Can of beer or chuhai at a convenience store",
+     "low": 200,
+     "high": 300
+    },
+    {
+     "item": "Vending machine drink",
+     "low": 130,
+     "high": 200
+    },
+    {
+     "item": "Coffee at a café",
+     "low": 400,
+     "high": 700
+    }
+   ]
+  },
+  {
+   "group": "Getting around",
+   "items": [
+    {
+     "item": "Tokyo subway or train ride",
+     "low": 180,
+     "high": 400
+    },
+    {
+     "item": "Taxi, starting fare in Tokyo",
+     "low": 500,
+     "high": 600,
+     "note": "meter climbs fast; split it 4 ways"
+    },
+    {
+     "item": "Coin locker for a day",
+     "low": 400,
+     "high": 800
+    }
+   ]
+  },
+  {
+   "group": "Fun",
+   "items": [
+    {
+     "item": "Karaoke, per person per hour",
+     "low": 500,
+     "high": 1500,
+     "note": "cheaper on weekdays; drink plans extra"
+    },
+    {
+     "item": "Public bath (sento) in Tokyo",
+     "low": 600,
+     "high": 600
+    },
+    {
+     "item": "Onsen day visit (e.g. Hakone)",
+     "low": 1000,
+     "high": 2500
+    },
+    {
+     "item": "Batting cage, one round",
+     "low": 300,
+     "high": 500
+    },
+    {
+     "item": "Arcade game or claw machine, per play",
+     "low": 100,
+     "high": 200
+    }
+   ]
+  },
+  {
+   "group": "Shopping",
+   "items": [
+    {
+     "item": "Box of souvenir snacks (KitKats, local sweets)",
+     "low": 800,
+     "high": 2000
+    },
+    {
+     "item": "Bottle of sake (720 ml)",
+     "low": 1500,
+     "high": 4000
+    },
+    {
+     "item": "Bottle of Japanese whisky",
+     "low": 3000,
+     "high": 10000,
+     "note": "popular brands are often limited"
+    },
+    {
+     "item": "Uniqlo T-shirt",
+     "low": 1500,
+     "high": 2500
+    }
+   ]
+  }
+ ],
+ "priceGuideNote": "Rough 2026 prices; expect a little higher by Oct 2027. Not in the trip total. The old sheet suggested bringing at least $2,000 of spending money on top of the budget, which still looks about right for 16 days of drinks, nights out and souvenirs."
 }</script>
 <div id="loading" class="loading-screen">
   <div class="spinner"></div>
@@ -1937,6 +2315,24 @@ svg.leaflet-image-layer.leaflet-interactive path {
       <div class="stat"><div class="num" id="stat-headcount">12</div><div class="lbl">On the roster</div></div>
       <div class="stat"><div class="num" id="stat-drivers">4</div><div class="lbl">Drivers</div></div>
       <div class="stat"><div class="num mono" id="stat-total">$3,345</div><div class="lbl">Estimated per person</div></div>
+    </div>
+
+    <div class="countdowns">
+      <div class="cd-card" id="cd-next">
+        <div class="cd-eyebrow">Next up</div>
+        <div class="cd-body">
+          <div class="cd-num"><span id="cd-next-num">—</span><small id="cd-next-unit">days</small></div>
+          <div class="cd-text"><div class="cd-title" id="cd-next-title"></div><div class="cd-sub" id="cd-next-sub"></div></div>
+        </div>
+      </div>
+      <div class="cd-card trip" id="cd-trip">
+        <div class="cd-eyebrow">Countdown to Japan</div>
+        <div class="cd-body">
+          <div class="cd-num"><span id="cd-trip-num">—</span><small id="cd-trip-unit">months</small></div>
+          <div class="cd-text"><div class="cd-title" id="cd-trip-title"></div><div class="cd-sub" id="cd-trip-sub"></div></div>
+        </div>
+        <div class="cd-bar"><div class="cd-fill" id="cd-trip-fill"></div></div>
+      </div>
     </div>
 
     <div class="route-card">
@@ -2003,12 +2399,13 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <!-- ===================== LODGING ===================== -->
     <section class="panel" id="panel-lodging">
       <h2 class="panel-title">Where We Sleep <span class="jp">宿</span></h2>
-      <div class="panel-sub">Where we might stay each night, and when booking opens for the ones we're waiting on. Costs here feed the Budget tab.</div>
+      <div class="panel-sub">Where we might stay each night, plus alarms for the stays that only open on a set date. Costs here feed the Budget tab.</div>
       <div class="budget-callout"><b>Nothing here is booked yet.</b> These are options we're considering, not final picks. We may end up somewhere else (Takayama already has two options). Prices come from listings we looked at and will change by the time we book.</div>
 
       <div class="lodge-top">
         <div class="card card-pad">
-          <h3>Booking windows <span class="mono" style="font-size:11px; font-weight:400; color:#5a6b74;">soonest first</span></h3>
+          <h3>🔔 Set an alarm <span class="mono" style="font-size:11px; font-weight:400; color:#5a6b74;">soonest first</span></h3>
+          <div style="font-size:12.5px; color:#5a6b74; margin:-6px 0 6px; line-height:1.45;">Most stays can be booked any time. These only open on a set date and go first come, first served, so we need to be ready the minute they open.</div>
           <div id="window-list"></div>
         </div>
         <div class="card card-pad">
@@ -2022,6 +2419,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
             <span><i style="background:var(--paper-dim);"></i>In transit</span>
             <span><i style="outline:2px dashed var(--gold); outline-offset:-2px;"></i>Group splits (planned)</span>
             <span><i style="outline:2px solid var(--vermillion); outline-offset:-2px;"></i>Double-booked</span>
+          </div>
+          <div class="legend-defs">
+            <div><b>Group splits (planned):</b> on purpose, the group stays in two places that night. On Oct 19 the moped riders sleep on Setoda while everyone else stays at the Onomichi Airbnb with the vans and bags. Both places are needed, so it isn't a mistake.</div>
+            <div><b>Double-booked:</b> two stays overlap on the same night when they shouldn't. That's a scheduling mistake to fix. None right now.</div>
+            <div><b>In transit:</b> no bed needed that night, like the overnight flight to Japan.</div>
           </div>
         </div>
       </div>
@@ -2037,6 +2439,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
       <h2 class="panel-title">The Money <span class="jp">予算</span></h2>
       <div class="budget-callout"><b>Everything on this tab is an estimate, not a quote.</b> Prices come from current listings and averages, and fares, rates, fuel and the exchange rate will move before we book. Final numbers will be set as things are booked. Drinking, karaoke, souvenirs and clubbing aren't included, so budget separately for those.</div>
 
+      <div class="fx-box" id="fx-box" style="display:none;"></div>
+
       <div class="budget-grid">
         <div class="card card-pad">
           <h3>Shared / per-person costs</h3>
@@ -2044,11 +2448,13 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <button class="btn small ghost" id="expense-add-btn" style="margin-top:10px;" data-editor>+ Add line</button>
         </div>
 
-        <div class="card card-pad">
+        <div class="card card-pad" id="accom-card">
           <h3>Accommodations <span class="mono" style="font-size:11px; font-weight:400; color:#5a6b74;">for <input type="number" class="headcount-input" id="headcount-input" min="1" value="10"> people</span></h3>
-          <div class="mono" style="font-size:10.5px; color:#5a6b74; margin:-4px 0 8px;">Pulled from the Lodging tab: current options, not bookings. Alternatives and cancelled stays aren't counted.</div>
+          <div class="mono" style="font-size:10.5px; color:#5a6b74; margin:-4px 0 8px;">Pulled from the Lodging tab: current options, not bookings. Alternatives and cancelled stays aren't counted. Tap a stay to see its details.</div>
+          <a href="#lodging" class="to-lodging" id="to-lodging">View all stays on the Lodging tab →</a>
           <table class="tbl" id="accom-table"></table>
-          <div class="total-line"><span>Total accommodation</span><span class="num" id="accom-total">$0</span></div>
+          <div class="total-line"><span>Total accommodation (est.)</span><span class="num" id="accom-total">$0</span></div>
+          <div class="accom-range" id="accom-range" style="display:none;"></div>
         </div>
       </div>
 
@@ -2059,6 +2465,12 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <span class="num" id="grand-total" style="font-size:20px;">$0</span>
         </div>
         <div class="budget-note" id="budget-note" style="display:none;"></div>
+      </div>
+
+      <div class="card card-pad" id="price-guide-card" style="margin-bottom:20px; display:none;">
+        <h3>What things cost in Japan <span class="mono" style="font-size:11px; font-weight:400; color:#5a6b74;">for reference, not in the total</span></h3>
+        <div class="panel-sub" style="margin:-4px 0 14px;">Typical prices for everyday stuff, so you can plan your own spending money. Dollar amounts use the exchange rate above.</div>
+        <div class="pg-grid" id="price-guide"></div>
       </div>
 
       <div class="card card-pad">
@@ -2096,12 +2508,12 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <!-- ===================== MAP ===================== -->
     <section class="panel" id="panel-map">
       <h2 class="panel-title">The Route, For Real <span class="jp">地図</span></h2>
-      <div class="panel-sub">The route on a real map, with stops numbered in order.</div>
+      <div class="panel-sub">The route on a real map, with stops numbered in order. Every stop and driving day links to Google Maps.</div>
 
       <div class="card" style="overflow:hidden;">
         <div id="leaflet-map" style="height:460px; width:100%;"></div>
       </div>
-      <div class="map-hint"><span class="pip"></span> Pins are numbered in route order. Tap a pin for its note.</div>
+      <div class="map-hint"><span class="pip"></span> Pins are numbered in route order. Tap a pin for its note and a Google Maps link.</div>
 
       <div class="card card-pad">
         <h3>Stops <span class="mono" style="font-size:11px; font-weight:400; color:#5a6b74;" id="stop-count"></span></h3>
@@ -2111,6 +2523,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <button class="btn small" id="add-stop-btn">+ Add</button>
         </div>
         <div class="stop-add-status" id="stop-add-status"></div>
+      </div>
+
+      <div class="card card-pad" style="margin-top:18px;">
+        <h3>Driving days <span class="mono" style="font-size:11px; font-weight:400; color:#5a6b74;">opens the route in Google Maps</span></h3>
+        <div id="drive-list"></div>
       </div>
     </section>
 
@@ -2123,6 +2540,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
 </div>
 
 <div class="modal-back" id="modal-back"><div class="modal" role="dialog" aria-modal="true"><div class="msg" id="modal-msg"></div><div class="btns" id="modal-btns"></div></div></div>
+
+<button class="to-top" id="to-top" aria-label="Back to top" title="Back to top">↑ Top</button>
 
 <div class="save-banner" id="save-banner"><span class="pip"></span><span id="save-text">Saved</span></div>
 
@@ -2410,7 +2829,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
       let text;
       if(el.tagName === 'SELECT') text = el.options[el.selectedIndex] ? el.options[el.selectedIndex].text : '';
       else if(el.type === 'date') text = fullDate(el.value);
-      else if(el.type === 'number' && /\.cost$/.test(path)) text = fmt(parseFloat(el.value) || 0);
+      else if(el.type === 'number' && /\.cost$/.test(path)){
+        const m = /^lodging\.(\d+)\.cost$/.exec(path);
+        const v = parseFloat(el.value) || 0;
+        text = (m && !isFirm(state.lodging[+m[1]])) ? (v ? fmtEst(v) + ' est.' : '—') : fmt(v);
+      }
       else text = el.value;
       span.textContent = text;
       if(el.tagName === 'TEXTAREA' && !text.trim()) span.classList.add('is-empty');
@@ -2530,6 +2953,16 @@ svg.leaflet-image-layer.leaflet-interactive path {
   function escapeXml(s){
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   }
+  /* Google Maps links (open outside the page) */
+  function gmapsSearch(q){ return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q); }
+  function gmapsDir(stops, mode){
+    if(!stops || stops.length < 2) return '';
+    const o = stops[0], d = stops[stops.length-1], w = stops.slice(1,-1);
+    return 'https://www.google.com/maps/dir/?api=1&travelmode=' + (mode || 'driving') + '&origin=' + encodeURIComponent(o) +
+      '&destination=' + encodeURIComponent(d) + (w.length ? '&waypoints=' + encodeURIComponent(w.join('|')) : '');
+  }
+  function stopQuery(s){ return s.mapQuery || (s.name + ', Japan'); }
+
   function esc(s){
     const d = document.createElement('div');
     d.textContent = s==null ? '' : s;
@@ -2899,6 +3332,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
             <input class="edit-field day-title-field" data-path="itinerary.${i}.title" value="${esc(day.title)}" placeholder="What's the plan?">
             <input class="edit-field day-loc-field" data-path="itinerary.${i}.loc" value="${esc(day.loc)}" placeholder="location">
           </div>
+          ${day.area ? `<div class="day-area"><span class="day-area-label">Area</span><span class="day-area-text">${esc(day.area)}</span><span class="day-area-links">${day.mapQuery ? `<a href="${esc(gmapsSearch(day.mapQuery))}" target="_blank" rel="noopener">📍 Map ↗</a>` : ''}${day.route ? (day.routeMode === 'bicycling' ? `<a href="${esc(gmapsDir(day.route, 'bicycling'))}" target="_blank" rel="noopener">🛵 Ride route ↗</a>` : `<a href="${esc(gmapsDir(day.route))}" target="_blank" rel="noopener">🚗 Driving route ↗</a>`) : ''}</span></div>` : ''}
           <textarea class="edit-field" data-path="itinerary.${i}.notes" rows="2" placeholder="Notes…">${esc(day.notes)}</textarea>
           <div class="day-meta">
             <div class="meta-block"><div class="lbl">Food</div><textarea class="edit-field" data-path="itinerary.${i}.food" rows="1" placeholder="—">${esc((day.food||'').trim())}</textarea></div>
@@ -2950,7 +3384,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
     items.forEach(l=>{ (byDate[l.opensOn] = byDate[l.opensOn] || []).push(l); });
     const dates = Object.keys(byDate).sort();
     if(!dates.length){
-      holder.innerHTML = `<div style="font-size:13px; color:#5a6b74; padding:6px 0;">No booking windows set. Add an "Opens on" date to any stay to count it down here.</div>`;
+      holder.innerHTML = `<div style="font-size:13px; color:#5a6b74; padding:6px 0;">Nothing to set an alarm for right now. Every stay listed can be booked any time.</div>`;
       return;
     }
     holder.innerHTML = dates.map(dte=>{
@@ -3042,15 +3476,16 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <div class="fld"><div class="lbl">Check-out</div><input type="date" value="${esc(l.checkOut)}" data-path="${p}.checkOut" data-rerender></div>
           <div class="fld"><div class="lbl">Nights</div>${datesSet ? `<div class="calc">${nights}</div>` : `<input type="number" min="0" value="${l.nights||0}" data-path="${p}.nights" data-money>`}</div>
           <div class="fld"><div class="lbl">Guests</div><input type="number" min="0" value="${l.guests||0}" data-path="${p}.guests" data-money></div>
-          <div class="fld"><div class="lbl">Total cost (USD)</div><input type="number" min="0" value="${l.cost||0}" data-path="${p}.cost" data-money></div>
-          <div class="fld"><div class="lbl">Per person / night</div><div class="calc" data-ppn>${ppn ? fmt(ppn) : '—'}</div></div>
-          <div class="fld"><div class="lbl">Booking opens</div><input type="date" value="${esc(l.opensOn)}" data-path="${p}.opensOn" data-rerender></div>
-          <div class="fld wide"><div class="lbl">Booking window note</div><input type="text" value="${esc(l.opensNote)}" data-path="${p}.opensNote" placeholder="e.g. 0:00 JST, official site first" data-windows></div>
+          <div class="fld"><div class="lbl">${isFirm(l) ? 'Total cost (USD)' : 'Est. total (USD)'}</div><input type="number" min="0" value="${l.cost||0}" data-path="${p}.cost" data-money></div>
+          <div class="fld"><div class="lbl">${isFirm(l) ? 'Per person / night' : 'Est. per person / night'}</div><div class="calc" data-ppn>${ppn ? (isFirm(l) ? fmt(ppn) : fmtEst(ppn)) : '—'}</div></div>
+          <div class="fld"><div class="lbl">Opens for booking on</div><input type="date" value="${esc(l.opensOn)}" data-path="${p}.opensOn" data-rerender></div>
+${readOnly ? '' : `          <div class="fld wide"><div class="lbl">When to book</div><input type="text" value="${esc(l.opensNote)}" data-path="${p}.opensNote" placeholder="e.g. 0:00 JST, official site first" data-windows></div>`}
           <div class="fld"><div class="lbl">Free cancel until</div><input type="date" value="${esc(l.cancelBy)}" data-path="${p}.cancelBy"></div>
           <div class="fld wide"><div class="lbl">Link</div><input type="text" value="${esc(l.link)}" data-path="${p}.link" placeholder="https://…" data-link></div>
           <div class="fld wide"><div class="lbl">Confirmation #</div><input type="text" value="${esc(l.confirmation)}" data-path="${p}.confirmation"></div>
-          <div class="fld full"><div class="lbl">Notes</div><textarea rows="${Math.min(8, Math.max(2, (l.notes||'').split('\n').length + 1))}" data-path="${p}.notes">${esc(l.notes)}</textarea></div>
+${readOnly ? '' : `<div class="fld full"><div class="lbl">Notes</div><textarea rows="${Math.min(8, Math.max(2, (l.notes||'').split('\n').length + 1))}" data-path="${p}.notes">${esc(l.notes)}</textarea></div>`}
         </div>
+        ${readOnly && (l.notes || l.opensNote) ? `<details class="stay-more"><summary>More details</summary>${l.opensNote ? `<div class="more-block"><div class="lbl">When to book</div><div class="more-text">${esc(l.opensNote)}</div></div>` : ''}${l.notes ? `<div class="more-block"><div class="lbl">Notes</div><div class="more-text">${esc(l.notes)}</div></div>` : ''}</details>` : ''}
         <div class="stay-foot">
           <span class="stay-dates">${datesSet ? `${niceDate(l.checkIn, true)} → ${niceDate(l.checkOut, true)} · ${nights} night${nights===1?'':'s'}` : 'Dates not set yet'}</span>
           <span data-linkout>${linkOut(l.link)}</span>
@@ -3103,12 +3538,48 @@ svg.leaflet-image-layer.leaflet-interactive path {
   /* ============================================================
      BUDGET TAB
      ============================================================ */
+  /* Unbooked lodging shows rounded "~$X est." amounts; booked/paid shows the exact figure. */
+  function isFirm(l){ return l && (l.status === 'booked' || l.status === 'paid'); }
+  function roundEst(n){ return n >= 1000 ? Math.round(n/50)*50 : n >= 100 ? Math.round(n/10)*10 : Math.round(n); }
+  function fmtEst(n){ return '~' + fmt(roundEst(n)); }
+  const LODGING_SWING = 0.15;
   function fmt(n){
     return '$' + (Math.round(n*100)/100).toLocaleString(undefined,{minimumFractionDigits: n%1===0?0:2, maximumFractionDigits:2});
   }
 
   function renderExpenses(){
     const tbl = document.getElementById('expense-table');
+    if(readOnly){
+      // View-only layout: note sits under the item name, amount in its own column.
+      tbl.classList.add('exp-ro');
+      const order = state.budgetCategories || [];
+      const catsOf = list => [...order.filter(c=> list.some(e=> (e.cat||'Other')===c)), ...[...new Set(list.map(e=> e.cat||'Other'))].filter(c=> !order.includes(c))];
+      const lodgingPP = budgetStays().reduce((t,x)=> t + (parseFloat(x.l.cost)||0), 0) / (state.headcount || 1);
+      const lodgingEst = budgetStays().some(x=> !isFirm(x.l));
+      const rowsFor = list => catsOf(list).map(c=>{
+        const items = list.filter(e=> (e.cat||'Other') === c);
+        const sub = items.reduce((t,e)=> t + (parseFloat(e.cost)||0), 0);
+        return `<tr class="exp-cat"><td>${esc(c)}</td><td class="right">${fmt(sub)}</td></tr>` + items.map(e=>
+          `<tr><td><div class="exp-item">${esc(e.item)}</div>${e.note ? `<div class="exp-note">${esc(e.note)}</div>` : ''}</td><td class="right exp-amt">${fmt(parseFloat(e.cost)||0)}</td></tr>`).join('');
+      }).join('');
+      const shared = state.budgetExpenses.filter(e=> e.split === 'shared');
+      const indiv = state.budgetExpenses.filter(e=> e.split !== 'shared');
+      const sharedTotal = shared.reduce((t,e)=> t + (parseFloat(e.cost)||0), 0) + lodgingPP;
+      const indivTotal = indiv.reduce((t,e)=> t + (parseFloat(e.cost)||0), 0);
+      let html = `<tr class="exp-sec"><td><div>Shared costs</div><small>Split evenly by the group (your share shown)</small></td><td class="right">${lodgingEst ? fmtEst(sharedTotal) : fmt(sharedTotal)}</td></tr>`;
+      const lodgeItems = shared.filter(e=> (e.cat||'') === 'Lodging');
+      const lodgeSub = lodgingPP + lodgeItems.reduce((t,e)=> t + (parseFloat(e.cost)||0), 0);
+      html += `<tr class="exp-cat"><td>Lodging <a href="#lodging" class="exp-jump" data-jump-lodging>see the Accommodations card →</a></td><td class="right" id="exp-lodging-sub">${lodgingEst ? fmtEst(lodgeSub) + ' est.' : fmt(lodgeSub)}</td></tr>`;
+      html += `<tr><td><div class="exp-item">Your share of all stays</div><div class="exp-note">Total for all stays ÷ ${state.headcount || 1} people</div></td><td class="right exp-amt">${lodgingEst ? fmtEst(lodgingPP) : fmt(lodgingPP)}</td></tr>`;
+      html += lodgeItems.map(e=> `<tr><td><div class="exp-item">${esc(e.item)}</div>${e.note ? `<div class="exp-note">${esc(e.note)}</div>` : ''}</td><td class="right exp-amt">${fmt(parseFloat(e.cost)||0)}</td></tr>`).join('');
+      html += rowsFor(shared.filter(e=> (e.cat||'') !== 'Lodging'));
+      html += `<tr class="exp-sec indiv"><td><div>Individual costs</div><small>Each person pays their own</small></td><td class="right">${fmt(indivTotal)}</td></tr>`;
+      html += rowsFor(indiv);
+      tbl.innerHTML = `<tr><th>Item</th><th class="right">Per person</th></tr>` + html;
+      const j = tbl.querySelector('[data-jump-lodging]');
+      if(j) j.addEventListener('click', e=>{ e.preventDefault(); document.getElementById('accom-card').scrollIntoView({behavior:'smooth', block:'start'}); });
+      return;
+    }
     let html = `<tr><th>Item</th><th class="right">$/person</th><th>Note</th><th></th></tr>`;
     state.budgetExpenses.forEach((e,i)=>{
       html += `<tr>
@@ -3143,10 +3614,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
   }
   function renderAccom(){
     const tbl = document.getElementById('accom-table');
-    let html = `<tr><th>Stay</th><th class="right">Total</th><th class="right">Nights</th><th class="right">Pp/night</th></tr>`;
+    let html = `<tr><th>Stay</th><th class="right">Est. total</th><th class="right">Nights</th><th class="right">Pp/night</th></tr>`;
     budgetStays().forEach(({l,i})=>{
       html += `<tr>
-        <td><a href="#lodging" data-goto="${esc(l.id)}" style="color:var(--ink); text-decoration:none; font-weight:500;">${esc(l.name || 'Unnamed stay')}</a>
+        <td><a href="#lodging" data-goto="${esc(l.id)}" class="stay-link">${esc(l.name || 'Unnamed stay')} <span aria-hidden="true">↗</span></a>
           <span class="mono" style="font-size:10px; color:#5a6b74; margin-left:4px;">${esc(statusInfo(l.status).label)}</span></td>
         <td class="right"><input type="number" value="${l.cost||0}" data-path="lodging.${i}.cost" style="text-align:right;"></td>
         <td class="right mono" style="font-size:12px;">${stayNights(l)}</td>
@@ -3164,27 +3635,58 @@ svg.leaflet-image-layer.leaflet-interactive path {
     computeTotals();
   });
 
+  document.getElementById('to-lodging').addEventListener('click', e=>{ e.preventDefault(); document.querySelector('.tab-btn[data-tab="lodging"]').click(); window.scrollTo({top: document.getElementById('panel-lodging').getBoundingClientRect().top + window.scrollY - 70, behavior:'smooth'}); });
+  function renderPriceGuide(){
+    const card = document.getElementById('price-guide-card'), holder = document.getElementById('price-guide');
+    const groups = state.priceGuide || [];
+    if(!card || !groups.length){ if(card) card.style.display = 'none'; return; }
+    const rate = (state.fx && state.fx.rate) || 155;
+    const usd = y => { const d = y / rate; return d < 10 ? '$' + d.toFixed(d < 1 ? 2 : 1).replace(/\.0$/,'') : '$' + Math.round(d); };
+    holder.innerHTML = groups.map(g=> `<div class="pg-group"><div class="pg-title">${esc(g.group)}</div>${g.items.map(it=>{
+      const yen = it.high && it.high !== it.low ? `¥${it.low.toLocaleString()}–${it.high.toLocaleString()}` : `¥${it.low.toLocaleString()}`;
+      const dol = it.high && it.high !== it.low ? `≈ ${usd(it.low)}–${usd(it.high)}` : `≈ ${usd(it.low)}`;
+      return `<div class="pg-row"><div class="pg-item">${esc(it.item)}${it.note ? `<span class="pg-note">${esc(it.note)}</span>` : ''}</div><div class="pg-price"><span class="pg-yen">${yen}</span><span class="pg-usd">${dol}</span></div></div>`;
+    }).join('')}</div>`).join('') + (state.priceGuideNote ? `<div class="pg-foot">${esc(state.priceGuideNote)}</div>` : '');
+    card.style.display = '';
+  }
+
   function computeTotals(){
+    const fx = document.getElementById('fx-box');
+    if(fx && state.fx && state.fx.rate){
+      fx.innerHTML = `<div><span class="fx-label">Exchange rate assumed</span><span class="fx-rate">¥${esc(state.fx.rate)} = $1</span></div><div class="fx-text">${esc(state.fx.note || '')}</div>`;
+      fx.style.display = '';
+    }
     const bn = document.getElementById('budget-note');
     if(bn){ bn.textContent = state.budgetNote || ''; bn.style.display = state.budgetNote ? '' : 'none'; }
     const hc = state.headcount || 1;
-    let accomTotal = 0;
+    let accomTotal = 0, firmTotal = 0, estTotal = 0;
     budgetStays().forEach(({l,i})=>{
       const cost = parseFloat(l.cost) || 0;
       const n = stayNights(l);
       accomTotal += cost;
       const ppn = n>0 ? (cost/hc)/n : 0;
       const el = document.getElementById('accom-ppn-'+i);
-      if(el) el.textContent = cost ? fmt(ppn) : '—';
+      if(el) el.textContent = cost ? (isFirm(l) ? fmt(ppn) : fmtEst(ppn)) : '—';
+      if(isFirm(l)) firmTotal += cost; else estTotal += cost;
     });
-    document.getElementById('accom-total').textContent = fmt(accomTotal);
+    const anyEst = estTotal > 0;
+    document.getElementById('accom-total').textContent = anyEst ? fmtEst(accomTotal) : fmt(accomTotal);
+    const rng = document.getElementById('accom-range');
+    if(rng){
+      if(anyEst){
+        const lo = firmTotal + estTotal*(1-LODGING_SWING), hi = firmTotal + estTotal*(1+LODGING_SWING);
+        rng.textContent = `Estimate only. Nothing is booked${firmTotal ? ' yet for most stays' : ''}, and real prices could land around ${fmt(roundEst(lo))}–${fmt(roundEst(hi))} (±${Math.round(LODGING_SWING*100)}%). Exact amounts show here once a stay is booked.`;
+        rng.style.display = '';
+      }else rng.style.display = 'none';
+    }
     const accomPP = accomTotal / hc;
 
     let expenseTotal = 0;
     state.budgetExpenses.forEach(e=> expenseTotal += (e.cost||0));
 
-    document.getElementById('grand-total').textContent = fmt(expenseTotal + accomPP);
-    document.getElementById('stat-total').textContent = fmt(expenseTotal + accomPP);
+    document.getElementById('grand-total').textContent = fmtEst(expenseTotal + accomPP);
+    document.getElementById('stat-total').textContent = fmtEst(expenseTotal + accomPP);
+    renderPriceGuide();
   }
 
   function renderPaymentMatrix(){
@@ -3269,6 +3771,60 @@ svg.leaflet-image-layer.leaflet-interactive path {
   /* ============================================================
      HEADER STATS
      ============================================================ */
+  /* Countdown cards: next unfinished timeline step, and the trip itself. */
+  function renderCountdowns(){
+    const today = todayStr();
+    const next = state.timeline.find(t=> !t.done);
+    const nNum = document.getElementById('cd-next-num'), nUnit = document.getElementById('cd-next-unit');
+    if(next){
+      document.getElementById('cd-next-title').textContent = next.what;
+      const verb = next.dueLabel || 'Due by';
+      if(next.due){
+        const days = diffDays(today, next.due);
+        if(days > 0){ nNum.textContent = days; nUnit.textContent = days === 1 ? 'day left' : 'days left'; }
+        else if(days === 0){ nNum.textContent = 'Today'; nUnit.textContent = ''; }
+        else { nNum.textContent = Math.abs(days); nUnit.textContent = 'days overdue'; }
+        document.getElementById('cd-next-sub').textContent = `${verb} ${fullDate(next.due)}` + (next.status ? ` · ${next.status}` : '');
+      }else{
+        nNum.textContent = '•'; nUnit.textContent = next.when || '';
+        document.getElementById('cd-next-sub').textContent = next.status || '';
+      }
+    }else{
+      nNum.textContent = '✓'; nUnit.textContent = 'all done';
+      document.getElementById('cd-next-title').textContent = 'Every step on the timeline is done';
+      document.getElementById('cd-next-sub').textContent = '';
+    }
+    // Trip countdown: months while the dates are only a suggestion, days once they're locked.
+    const tNum = document.getElementById('cd-trip-num'), tUnit = document.getElementById('cd-trip-unit');
+    const days = state.itinerary.filter(d=> d.date);
+    const start = days.length ? days[0].date : null;
+    const monthStart = state.tripMonth || (start ? start.slice(0,7) : null);   // YYYY-MM
+    const t = parseD(today);
+    if(state.datesTentative !== false && monthStart){
+      const [y,m] = monthStart.split('-').map(Number);
+      const months = (y*12 + (m-1)) - (t.getUTCFullYear()*12 + t.getUTCMonth());
+      tNum.textContent = Math.max(months, 0);
+      tUnit.textContent = months === 1 ? 'month to go' : 'months to go';
+      document.getElementById('cd-trip-title').textContent = `${['January','February','March','April','May','June','July','August','September','October','November','December'][m-1]} ${y}`;
+      document.getElementById('cd-trip-sub').textContent = months <= 0 ? "It's trip month!" : 'Counting by month until the exact dates are locked.';
+    }else if(start){
+      const d = diffDays(today, start);
+      tNum.textContent = Math.max(d, 0);
+      tUnit.textContent = d === 1 ? 'day to go' : 'days to go';
+      document.getElementById('cd-trip-title').textContent = `Wheels up ${fullDate(start)}`;
+      document.getElementById('cd-trip-sub').textContent = d <= 0 ? "We're in Japan!" : `${days.length} days in Japan`;
+    }
+    // Progress bar: how far we are from when planning started to the trip.
+    const planStart = state.planningStart || '2026-09-01';
+    const target = (state.datesTentative !== false && monthStart) ? monthStart + '-01' : start;
+    if(target){
+      const total = diffDays(planStart, target), gone = diffDays(planStart, today);
+      const pct = Math.max(0, Math.min(100, Math.round(gone / total * 100)));
+      document.getElementById('cd-trip-fill').style.width = pct + '%';
+      document.getElementById('cd-trip-fill').title = pct + '% of the way from the start of planning';
+    }
+  }
+
   function updateHeaderStats(){
     document.getElementById('stat-headcount').textContent = state.rsvp.length;
     document.getElementById('stat-drivers').textContent = state.rsvp.filter(p=>p.attrs && p.attrs.driver).length;
@@ -3326,7 +3882,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
     stops.forEach((s,i)=>{
       const isEnd = (i===0 || i===stops.length-1);
       const marker = L.marker([s.lat, s.lng], { icon: stopIcon(i, isEnd), draggable: !readOnly });
-      marker.bindPopup(`<b>${i+1}. ${esc(s.name)}</b>${s.note? '<br>'+esc(s.note) : ''}`);
+      marker.bindPopup(`<b>${i+1}. ${esc(s.name)}</b>${s.note? '<br>'+esc(s.note) : ''}<br><a href="${esc(gmapsSearch(stopQuery(s)))}" target="_blank" rel="noopener" style="color:#bd4b28; font-family:JetBrains Mono,monospace; font-size:11px;">Open in Google Maps ↗</a>`);
       marker.bindTooltip(esc(s.name), { permanent:true, direction:'right', offset:[10,-12], className:'stop-label' });
       marker.on('dragend', (e)=>{
         const pos = e.target.getLatLng();
@@ -3352,7 +3908,18 @@ svg.leaflet-image-layer.leaflet-interactive path {
     routeLine = L.polyline(latlngs, { color:'#24476b', weight:3, opacity:0.85, dashArray:'1,8', lineCap:'round' }).addTo(leafletMap);
   }
 
+  function renderDriveList(){
+    const holder = document.getElementById('drive-list');
+    if(!holder) return;
+    const days = state.itinerary.filter(d=> d.route && d.route.length > 1 && d.routeMode !== 'bicycling');
+    holder.innerHTML = days.length ? days.map(d=>{
+      const dt = parseD(d.date);
+      return `<div class="drive-row"><span class="dt">${dt ? WD[dt.getUTCDay()] + ' ' + MON_SHORT[dt.getUTCMonth()] + ' ' + dt.getUTCDate() : ''}</span><span>${esc(d.route.map(r=> r.split(',')[0]).join(' → '))}</span><a href="${esc(gmapsDir(d.route))}" target="_blank" rel="noopener">🚗 Route ↗</a></div>`;
+    }).join('') : '<div style="font-size:13px; color:#5a6b74;">No driving days yet.</div>';
+  }
+
   function renderStopList(){
+    renderDriveList();
     const holder = document.getElementById('stop-list');
     if(!holder) return;
     document.getElementById('stop-count').textContent = '(' + state.routeStops.length + ')';
@@ -3368,6 +3935,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         </div>
         <input type="text" value="${esc(s.name)}" data-path="routeStops.${i}.name" placeholder="Stop name">
         <input type="text" class="stop-note" value="${esc(s.note||'')}" data-path="routeStops.${i}.note" placeholder="note">
+        <a class="stop-map" href="${esc(gmapsSearch(stopQuery(s)))}" target="_blank" rel="noopener">Maps ↗</a>
         <button class="stop-rm" data-rm-stop="${i}" title="Remove stop">✕</button>
       `;
       holder.appendChild(row);
@@ -3486,6 +4054,12 @@ svg.leaflet-image-layer.leaflet-interactive path {
       try{ history.replaceState(null, '', '#' + tab); }catch(e){}
     });
   });
+  (function(){
+    const btn = document.getElementById('to-top');
+    const onScroll = ()=> btn.classList.toggle('show', window.scrollY > 500);
+    window.addEventListener('scroll', onScroll, {passive:true});
+    btn.addEventListener('click', ()=>{ try{ window.scrollTo({top:0, behavior:'smooth'}); }catch(e){ window.scrollTo(0,0); } });
+  })();
   function openTabFromHash(){
     const h = (location.hash || '').replace('#','');
     const btn = h && document.querySelector(`.tab-btn[data-tab="${h}"]`);
@@ -3498,10 +4072,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
      ============================================================ */
   function renderAll(){
     const en = document.getElementById('estimate-note');
-    if(state.disclaimer){ en.innerHTML = '<b>Heads up:</b> ' + esc(state.disclaimer); en.style.display = ''; } else { en.style.display = 'none'; }
+    if(state.disclaimer){ en.innerHTML = '<b>⚠ Heads up:</b> ' + esc(state.disclaimer); en.style.display = ''; } else { en.style.display = 'none'; }
     document.getElementById('headcount-input').value = state.headcount;
     renderRoute();
     renderTimeline();
+    renderCountdowns();
     renderSquad();
     renderItinerary();
     renderLodging();
