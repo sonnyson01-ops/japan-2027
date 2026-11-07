@@ -839,7 +839,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .plan-card.mine{ border-color:var(--moss); box-shadow:inset 4px 0 0 var(--moss); }
   .plan-host{ font-family:'JetBrains Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:var(--indigo); }
   .plan-title{ font-weight:700; font-size:14.5px; line-height:1.3; }
-  .plan-desc{ font-size:13px; line-height:1.45; color:#3d4a52; }
+  .links-ro a{ color:var(--vermillion); font-weight:600; text-decoration:none; }
+  .plan-desc{ font-size:13px; line-height:1.45; color:#3d4a52; white-space:pre-line; }
   .plan-map{ font-size:12px; color:var(--vermillion); font-weight:600; text-decoration:none; }
   .plan-going{ font-size:12.5px; line-height:1.4; }
   .plan-going b{ font-family:'JetBrains Mono',monospace; font-size:11px; }
@@ -1288,7 +1289,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 <script type="application/json" id="trip-data-inline">{
  "meta": {
   "updated": "2026-11-06",
-  "note": "New: join day plans on the Itinerary tab (pick your name, tap Join). Next up: locking in the rough itinerary by Nov 30."
+  "note": "Oct 9 Kamakura + Enoshima day trip is planned; join it on the Itinerary tab. Next up: locking in the rough itinerary by Nov 30."
  },
  "squadColumns": [
   {
@@ -1527,38 +1528,40 @@ svg.leaflet-image-layer.leaflet-interactive path {
   {
    "date": "2027-10-08",
    "loc": "Tokyo",
-   "title": "Arrive in Tokyo (HND)",
-   "notes": "",
-   "food": "",
-   "links": "",
+   "title": "Arrive in Tokyo, first night in Ikebukuro",
+   "notes": "Land at Haneda around 2:05 PM. After immigration and customs, take the train to Ikebukuro (about an hour) and drop bags at the Airbnb (check-in is usually 4 PM).",
+   "food": "Mutekiya ramen, Torikizoku yakitori",
+   "links": "Mutekiya https://www.timeout.com/tokyo/restaurants/mutekiya\nPokémon Center Mega Tokyo https://shop.pokemon.co.jp/en/shop/pokemoncenter-megatokyo/\nTorikizoku Minami-Ikebukuro https://gurunavi.com/en/gcrk477/rst",
    "noLodging": false,
-   "area": "Tokyo",
-   "mapQuery": "Tokyo, Japan",
+   "area": "Ikebukuro",
+   "mapQuery": "Ikebukuro Station, Tokyo, Japan",
    "plans": [
     {
      "id": "d02-son",
      "host": "Son",
-     "title": "First night in Tokyo",
-     "desc": "Son is still working this one out."
+     "title": "Ikebukuro: Sunshine City, ramen, yakitori",
+     "desc": "~5 PM: walk Sunshine 60 Street from Ikebukuro Station's East Exit.\n~5:30 PM: Sunshine City mall and Pokémon Center Mega Tokyo (Alpa 2F, closes 8 PM).\n~7:30 PM: Mutekiya ramen. Expect a 40–75 min line and counter seats only, so we'll eat in small groups.\n~9 PM: finish at Torikizoku, the cheap yakitori chain. The Minami-Ikebukuro branch seats 112 and is open until 4 AM.",
+     "mapQuery": "Sunshine City, Ikebukuro, Tokyo, Japan"
     }
    ]
   },
   {
    "date": "2027-10-09",
-   "loc": "Tokyo",
-   "title": "Muscle girl bar?",
-   "notes": "",
-   "food": "",
-   "links": "",
+   "loc": "Kamakura / Enoshima",
+   "title": "Kamakura + Enoshima day trip",
+   "notes": "Day trip by train from Ikebukuro, back the same night. Every leg takes Suica/PASMO or a tap-to-pay credit card. It's a Saturday on a 3-day weekend (Oct 11 is a holiday), so expect crowds.",
+   "food": "Konbini breakfast · Hase Shokudo (shirasu-don) for lunch · Mo-Mo-Paradise all-you-can-eat shabu-shabu/sukiyaki for dinner",
+   "links": "Great Buddha (Kotoku-in) https://www.kotoku-in.jp/en\nMo-Mo-Paradise Ikebukuro https://www.tablecheck.com/en/nabezo-sunshine\nMyoho-yu sento https://livejapan.com/en/in-tokyo/in-pref-tokyo/in-itabashi_nerima/spot-lj0108262",
    "noLodging": false,
-   "area": "Tokyo",
-   "mapQuery": "Tokyo, Japan",
+   "area": "Kamakura → Hase → Enoshima, back via Ofuna",
+   "mapQuery": "Kamakura Station, Kanagawa, Japan",
    "plans": [
     {
      "id": "d03-son",
      "host": "Son",
-     "title": "Muscle girl bar?",
-     "desc": "Son is still working this one out."
+     "title": "Kamakura, Great Buddha, Slam Dunk crossing, Enoshima",
+     "desc": "~7:45 AM: grab breakfast at a konbini, then JR Shonan-Shinjuku Line from Ikebukuro to Kamakura (~1 hr, no transfer).\n9:15 AM: Tsurugaoka Hachimangu shrine, then walk down Komachi-dori as the shops open (~10 AM). Kamakura asks people not to eat while walking, so eat at the stall.\n11:15 AM: Enoden to Hase (4 min). Lunch at Hase Shokudo by the station: shirasu-don sets, plus udon, tempura and curry for anyone who doesn't want fish.\n12:30 PM: Great Buddha at Kotoku-in (¥300, +¥50 to go inside; closes 5 PM).\n1:45 PM: Enoden toward Fujisawa along the ocean (sit or stand on the left). Off at Kamakurakokomae for the Slam Dunk crossing photo: sidewalk or the park photo spot only, never in the road.\n2:30 PM: Enoden 2 stops to Enoshima and walk over the bridge. Shrine, shopping lane, Sea Candle, sunset around 5:15.\n5:45 PM: Shonan Monorail from Shonan-Enoshima to Ofuna (14 min), then JR straight back to Ikebukuro (~1 hr).\n7:30 PM: Dinner at Mo-Mo-Paradise on Sunshine 60 Street: 100-min all-you-can-eat shabu-shabu and sukiyaki, private rooms, English menu. Reserve for 12.\n9:30 PM: Myoho-yu sento (tattoo-friendly, sauna, open until 1 AM). One stop on the Seibu Ikebukuro Line to Shiinamachi, or a 15–20 min walk.",
+     "mapQuery": "Kamakura Station, Kanagawa, Japan"
     }
    ]
   },
@@ -1577,7 +1580,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
      "id": "d04-son",
      "host": "Son",
      "title": "Tokyo day",
-     "desc": "Son is still working this one out. The rental cars get picked up today."
+     "desc": "Son is still working this one out. The rental cars get picked up today.\nIdea moved from Oct 9: muscle girl bar?"
     }
    ]
   },
@@ -1887,7 +1890,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
  "lodging": [
   {
    "id": "tokyo1",
-   "name": "Tokyo Airbnb",
+   "name": "Tokyo Airbnb (option 1)",
    "city": "Tokyo",
    "type": "Airbnb",
    "status": "idea",
@@ -1901,7 +1904,25 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "link": "https://www.airbnb.com/rooms/1360728312123361325",
    "confirmation": "",
    "cancelBy": "",
-   "notes": ""
+   "notes": "One of two Tokyo options for the first 3 nights. The plan is to base in or near Ikebukuro. The other option is the Mejiro house, listed as an alternative."
+  },
+  {
+   "id": "mejiro",
+   "name": "Tokyo Airbnb option 2 (Mejiro)",
+   "city": "Tokyo",
+   "type": "Airbnb",
+   "status": "backup",
+   "checkIn": "2027-10-08",
+   "checkOut": "2027-10-11",
+   "nights": 3,
+   "guests": 12,
+   "cost": 3179,
+   "opensOn": "",
+   "opensNote": "",
+   "link": "https://www.airbnb.com/rooms/1424373814289307918",
+   "confirmation": "",
+   "cancelBy": "",
+   "notes": "Second Tokyo option, an alternative to option 1. 3-minute walk from Mejiro Station, one stop from Ikebukuro on the JR Yamanote line (~7 min to Shinjuku).\n6 bedrooms, 10 beds, 2 shower rooms (each with a toilet), up to 15 guests. Rated 4.89 (44 reviews), Guest favorite.\nCheck-in after 4 PM, check-out by 10 AM; ask the host ahead for early or late.\nPrice: $3,179 total for 3 nights for 12 people (Son's quote from a May 2027 search). October pricing will differ."
   },
   {
    "id": "hakone",
@@ -2534,6 +2555,25 @@ svg.leaflet-image-layer.leaflet-interactive path {
  },
  "changelog": [
   {
+   "version": "2.6",
+   "date": "Nov 6, 2026",
+   "title": "Kamakura day trip",
+   "changes": [
+    "Oct 9 planned: Kamakura and Enoshima day trip. Komachi-dori, the Great Buddha, the Enoden ocean ride, the Slam Dunk crossing, Enoshima at sunset and the Shonan Monorail back.",
+    "Dinner at Mo-Mo-Paradise (all-you-can-eat shabu-shabu/sukiyaki), then the tattoo-friendly Myoho-yu sento.",
+    "The muscle girl bar idea moved from Oct 9 to Oct 10."
+   ]
+  },
+  {
+   "version": "2.5",
+   "date": "Nov 6, 2026",
+   "title": "Tokyo arrival day",
+   "changes": [
+    "Oct 8 (arrival day) planned: Ikebukuro, Sunshine 60 Street, Sunshine City and the Pokémon Center, Mutekiya ramen, then Torikizoku yakitori.",
+    "Added a second Tokyo place to stay: a 6-bedroom house in Mejiro, one stop from Ikebukuro. It's listed as an alternative, so the budget doesn't change."
+   ]
+  },
+  {
    "version": "2.4",
    "date": "Nov 6, 2026",
    "title": "Day plans + sign-ups",
@@ -2542,7 +2582,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
     "Son's starter plan is up for every day. Oct 19 has two: the moped ride to Setoda or staying back in Onomichi.",
     "Anyone can host a plan: send it to Son and he'll add it next to his.",
     "Day notes trimmed to shared logistics (driving, check-in); activities moved into the plans.",
-    "Sign-ups save to a Google Sheet and show up for everyone within seconds."
+    "Sign-ups save to a Google Sheet and show up for everyone within seconds.",
+    "Sign-ups are now live."
    ]
   },
   {
@@ -2601,7 +2642,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   }
  ],
  "signups": {
-  "endpoint": "",
+  "endpoint": "https://script.google.com/macros/s/AKfycbycTAnP5rNNg_m6FYjsU4fYvMGscNqLTt5AdBeh1CAuV6YS1gEn-xYUvaOK2_rRZ6Q/exec",
   "info": [
    "Each day has one or more plans. Pick your name in the box below, then tap Join on the plan you want.",
    "You can only be in one plan per day. Joining another one moves you; tap Leave to go back to undecided. Change your mind anytime.",
@@ -3179,6 +3220,16 @@ svg.leaflet-image-layer.leaflet-interactive path {
       span.textContent = text;
       if(el.tagName === 'TEXTAREA' && !text.trim()) span.classList.add('is-empty');
       if(path) span.setAttribute('data-path', path);
+      if(/^itinerary\.\d+\.links$/.test(path) && /https?:\/\//.test(text)){
+        span.innerHTML = text.split('\n').map(line=>{
+          const m = /(https?:\/\/\S+)/.exec(line);
+          if(!m) return esc(line);
+          let label = line.replace(m[1], '').trim();
+          if(!label){ try{ label = new URL(m[1]).hostname.replace(/^www\./,''); }catch(e){ label = 'Link'; } }
+          return `<a href="${esc(m[1])}" target="_blank" rel="noopener">${esc(label)} ↗</a>`;
+        }).join('\n');
+        span.classList.add('links-ro');
+      }
       if(el.hasAttribute('data-link')) span.setAttribute('data-link','');
       if(el.hasAttribute('data-link') && /^https?:\/\//i.test(text)){
         span.textContent = '';
