@@ -888,6 +888,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .squad-name input:focus{ background:var(--indigo-pale); outline:none; }
   .squad-cell{ display:flex; justify-content:center; padding:10px; }
   .squad-note{ margin:-8px 0 16px; padding:12px 16px; background:#ffffff; color:var(--ink); border:1px solid var(--line); border-left:5px solid var(--vermillion); font-size:13.5px; line-height:1.5; border-radius:3px; box-shadow:var(--shadow); }
+  body.readonly .squad-name .ro{ white-space:nowrap; overflow-wrap:normal; word-break:normal; overflow:hidden; text-overflow:ellipsis; }
+  @media (max-width:480px){ .squad-row.head div{ font-size:9.5px; letter-spacing:.04em; padding:9px 4px; } .squad-name{ padding:12px 10px; } }
   body.readonly .ro-check{ display:inline-block; font-weight:900; color:var(--moss); font-size:16px; line-height:20px; min-width:20px; text-align:center; }
   body.readonly .ro-check.off{ color:var(--line); font-weight:400; }
   .squad-toolbar{ display:flex; gap:10px; margin-top:12px; flex-wrap:wrap; }
@@ -2561,7 +2563,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "changes": [
     "Oct 9 planned: Kamakura and Enoshima day trip. Komachi-dori, the Great Buddha, the Enoden ocean ride, the Slam Dunk crossing, Enoshima at sunset and the Shonan Monorail back.",
     "Dinner at Mo-Mo-Paradise (all-you-can-eat shabu-shabu/sukiyaki), then the tattoo-friendly Myoho-yu sento.",
-    "The muscle girl bar idea moved from Oct 9 to Oct 10."
+    "The muscle girl bar idea moved from Oct 9 to Oct 10.",
+    "Squad list fits on phone screens again (names were squeezed to one letter per line)."
    ]
   },
   {
@@ -3440,7 +3443,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
     note.style.display = state.squadNote ? '' : 'none';
     const grid = document.getElementById('squad-grid');
     const cols = state.squadColumns;
-    const templateCols = `1fr repeat(${cols.length}, 100px)` + (readOnly ? '' : ' 36px');
+    const templateCols = `minmax(84px, 1.4fr) repeat(${cols.length}, minmax(58px, 1fr))` + (readOnly ? '' : ' 36px');
 
     let headHtml = `<div class="squad-row head" style="grid-template-columns:${templateCols};"><div>Name</div>`;
     cols.forEach(c=>{
