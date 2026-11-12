@@ -2786,6 +2786,16 @@ svg.leaflet-image-layer.leaflet-interactive path {
  },
  "changelog": [
   {
+   "version": "2.25",
+   "date": "Nov 11, 2026",
+   "title": "Trip page connected to the trip sheet",
+   "changes": [
+    "Sign-ups now live in the trip sheet: joining a plan here puts an x under your name on the Day Plans tab, and x's added in the sheet show up here.",
+    "Timeline (done, dates, notes), Budget (per-person amounts) and Lodging (status, cost) now load straight from the sheet, so updates there show up on the next refresh. Lodging notes stay in the sheet only.",
+    "Fix: plan cards on the Itinerary tab were blank for up to a minute after opening the tab."
+   ]
+  },
+  {
    "version": "2.24",
    "date": "Nov 11, 2026",
    "title": "Sushi + tempura omakase for everyone on Oct 21",
@@ -3064,10 +3074,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
   }
  ],
  "signups": {
-  "endpoint": "https://script.google.com/macros/s/AKfycbycTAnP5rNNg_m6FYjsU4fYvMGscNqLTt5AdBeh1CAuV6YS1gEn-xYUvaOK2_rRZ6Q/exec",
+  "endpoint": "https://script.google.com/macros/s/AKfycbx676ZzNq3tYTlWMJ6k_-ojWDMrSkM-3k-qJCQYsA9GjdPOV331g_B-vL22pNhCOqFm/exec",
   "info": [
    "Each day has one or more plans. Pick your name in the box below, then tap Join on the plan you want.",
    "You can only be in one plan per day. Joining another one moves you; tap Leave to go back to undecided. Change your mind anytime.",
+   "Your pick also shows up as an x under your name on the Day Plans tab of the trip sheet, and an x Son types there shows up here.",
    "Some days are group days (like Oct 11 in Hakone). Everyone goes, so there's nothing to sign up for.",
    "Travel, driving and where we sleep stay the same for everyone. Plans are just what you do with the day.",
    "Want to host your own plan? Send it to Son (day, title, a line or two on what you'll do) and he'll add it."
@@ -4859,7 +4870,7 @@ ${readOnly ? '' : `<div class="fld full"><div class="lbl">Notes</div><textarea r
       btn.classList.add('active');
       document.getElementById('panel-'+btn.getAttribute('data-tab')).classList.add('active');
       const tab = btn.getAttribute('data-tab');
-      if(tab === 'itinerary'){ renderItinerary(); applyReadOnly(); }
+      if(tab === 'itinerary'){ renderItinerary(); renderPlans(); applyReadOnly(); }
       if(tab === 'lodging'){ renderLodging(); applyReadOnly(); }
       if(tab === 'map'){
         if(!leafletMap){
@@ -4964,13 +4975,71 @@ ${readOnly ? '' : `<div class="fld full"><div class="lbl">Notes</div><textarea r
       box.querySelectorAll('.plan-btn').forEach(b=> b.addEventListener('click', ()=> choosePlan(+b.getAttribute('data-day'), b.getAttribute('data-plan'))));
     });
   }
+  /* Live trip sheet: the same link also sends Timeline, Budget and Lodging.
+     Only what the sheet sends is replaced; everything else comes from data.json. */
+  let SHEET_SIG = '', SHEET_TL0 = null;
+  const tlNorm = s => String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim().slice(0,40);
+  const LODGE_STATUS = { 'booked':'booked', 'paid':'paid', 'alternative':'backup', 'cancelled':'cancelled' };
+  function applySheet(j){
+    if(!j || j.source !== 'sheet') return false;
+    const sig = JSON.stringify([j.timeline, j.budget, j.lodging, j.headcount, j.fxRate]);
+    if(sig === SHEET_SIG) return false;
+    SHEET_SIG = sig;
+    if(Array.isArray(j.timeline) && j.timeline.length){
+      if(!SHEET_TL0) SHEET_TL0 = deepClone(state.timeline || []);
+      state.timeline = j.timeline.map(row=>{
+        const k = tlNorm(row.what);
+        const m = SHEET_TL0.find(t=> tlNorm(t.what) === k);
+        const guess = /^(book|reserve|buy)/i.test(row.what) ? 'book' : 'todo';
+        const t = { when: row.when, what: row.what, tag: m ? m.tag : guess,
+          status: String(row.notes||'').replace(/this sheet/g,'this page'), due: row.due || '',
+          dueLabel: (m && m.dueLabel) || 'Due by' };
+        if(row.done) t.done = true;
+        return t;
+      });
+    }
+    if(Array.isArray(j.budget) && j.budget.length){
+      state.budgetExpenses = j.budget.map(b=>({ item:b.item, cat:b.cat, split:b.split, cost:Math.round(+b.cost||0), note:b.note||'' }));
+    }
+    if(Array.isArray(j.lodging)){
+      j.lodging.forEach(row=>{
+        const l = state.lodging.find(x=> x.name === row.name);
+        if(!l) return;
+        const st = String(row.status||'').toLowerCase();
+        if(LODGE_STATUS[st]) l.status = LODGE_STATUS[st];
+        else if(st === 'option' && !['idea','watching','open'].includes(l.status)) l.status = 'idea';
+        if(row.cost > 0) l.cost = row.cost;
+        if(row.guests > 0) l.guests = row.guests;
+      });
+    }
+    if(j.headcount > 0) state.headcount = j.headcount;
+    if(j.fxRate > 0 && state.fx) state.fx.rate = j.fxRate;
+    return true;
+  }
+  function rerenderFromSheet(){
+    try{
+      const hc = document.getElementById('headcount-input'); if(hc) hc.value = state.headcount;
+      renderTimeline(); renderCountdowns(); renderLodging(); renderExpenses(); renderAccom();
+      renderPaymentMatrix(); computeTotals(); updateHeaderStats(); applyReadOnly();
+    }catch(e){ console.warn('sheet render', e); }
+  }
+  function sheetLiveNote(j){
+    if(!j || j.source !== 'sheet') return;
+    const t = new Date();
+    setLive(`Live from the trip sheet: sign-ups, timeline, budget and lodging update as soon as Son changes them. Checked ${t.toLocaleTimeString([], {hour:'numeric', minute:'2-digit'})}.`);
+  }
+  function takeSheet(j){
+    SU.data = j.signups || {};
+    if(applySheet(j)) rerenderFromSheet();
+    sheetLiveNote(j);
+  }
   async function loadSignups(){
     if(!suEndpoint()){ renderPlans(); return; }
     try{
       const r = await fetch(suEndpoint() + (suEndpoint().includes('?') ? '&' : '?') + 't=' + Date.now());
       const j = await r.json();
       if(!j || !j.ok) throw new Error('bad');
-      SU.data = j.signups || {}; SU.loaded = true; SU.error = '';
+      takeSheet(j); SU.loaded = true; SU.error = '';
     }catch(e){ SU.error = 'net'; }
     renderPlans();
   }
@@ -4990,7 +5059,7 @@ ${readOnly ? '' : `<div class="fld full"><div class="lbl">Notes</div><textarea r
       const r = await fetch(suEndpoint(), { method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify({ name: SU.me, day: dk, plan: planId }) });
       const j = await r.json();
       if(!j || !j.ok) throw new Error((j && j.error) || 'failed');
-      SU.data = j.signups || SU.data;
+      if(j.signups) takeSheet(j);
       SU.msg = planId ? 'Saved. You\'re in.' : 'Saved. You\'re undecided for that day.';
     }catch(e){
       SU.data[dk][SU.me] = prev;
