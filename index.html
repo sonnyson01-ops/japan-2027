@@ -1014,6 +1014,27 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .unpaid{ color:var(--line); }
 
   /* ---------- wishlist tab ---------- */
+  .guide{ margin-bottom:22px; }
+  .guide > h3{ font-size:20px; margin:0 0 6px; display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; }
+  .guide > h3 .jp{ font-size:13px; color:#5a6b74; font-weight:400; }
+  .guide .guide-intro{ font-size:14.5px; line-height:1.55; margin:0 0 14px; }
+  .guide-toc{ display:flex; flex-wrap:wrap; gap:6px; margin:0 0 14px; }
+  .guide-toc a{ font-family:'JetBrains Mono',monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:.03em; background:var(--paper-dim); padding:5px 9px; border-radius:20px; text-decoration:none; color:inherit; }
+  .guide-sec{ border-top:1px solid var(--line); padding:14px 0 6px; }
+  .guide-sec h4{ margin:0 0 8px; font-size:15.5px; }
+  .guide-sec ul, .guide-sec ol{ margin:0 0 6px; padding-left:22px; }
+  .guide-sec li{ margin:0 0 7px; line-height:1.5; font-size:14px; }
+  .guide-sec p{ margin:8px 0 4px; font-size:13.5px; line-height:1.5; color:#3d4a52; }
+  .guide-table-wrap{ overflow-x:auto; }
+  .guide-table{ width:100%; border-collapse:collapse; font-size:13px; }
+  .guide-table th{ text-align:left; font-family:'JetBrains Mono',monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:.04em; color:#5a6b74; padding:6px 8px; border-bottom:2px solid var(--line); }
+  .guide-table td{ padding:8px; border-bottom:1px solid var(--line); vertical-align:top; line-height:1.45; }
+  @media (max-width: 700px){
+    .guide-table thead{ display:none; }
+    .guide-table tr{ display:block; border-bottom:2px solid var(--line); padding:6px 0; }
+    .guide-table td{ display:block; border:none; padding:3px 4px; }
+    .guide-table td::before{ content:attr(data-label) ": "; font-family:'JetBrains Mono',monospace; font-size:10px; text-transform:uppercase; color:#5a6b74; }
+  }
   .wish-cols{ display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:18px; }
   @media (max-width: 900px){ .wish-cols{ grid-template-columns:1fr; } }
   .wish-col h3{ display:flex; align-items:center; gap:8px; }
@@ -1592,9 +1613,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
   },
   {
    "when": "Sep 2027",
-   "what": "Luggage forwarding: ask Hotel Royal Classic Osaka to accept and hold 12 suitcases arriving the morning of Oct 15 (before check-in) and to ship them out on Oct 17. Ask the Mukaishima and Shin-Okubo hosts whether deliveries are OK (we'll be there for the 4 to 6 PM slots)",
+   "what": "Luggage forwarding: ask Hotel Royal Classic Osaka to accept and hold 12 suitcases arriving the morning of Oct 15 (before check-in) and to ship them out on Oct 17. Confirm hours for the two Yamato pickup centers: the Onomichi shopping-street center (pickup Oct 18 around 5 PM) and the Shinjuku Hyakunincho center by Okubo Station (pickup Oct 22 around 3 PM)",
    "tag": "book",
-   "status": "If a host says no, ship to the nearest Yamato center instead and pick the bags up there.",
+   "status": "Nothing gets delivered to the Airbnbs. Drop-offs at 7-Eleven or FamilyMart (up to 160 cm; FamilyMart under 25 kg), pickups at Yamato centers, which hold any size.",
    "due": "2027-09-30",
    "dueLabel": "Due by"
   },
@@ -1897,7 +1918,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "date": "2027-10-17",
    "loc": "Kyoto / Osaka",
    "title": "Free day: JRA races at Kyoto or your own plan",
-   "notes": "Son's plan: JRA horse racing at Kyoto Racecourse on Sunday, likely Shuka Sho day, a Grade 1 race (optional early stop at Fushimi Inari), back to Namba around 5:45 PM, then a Kobe beef dinner in Osaka. No trip to Kobe needed. Cars stay parked.\nDon's plan: a Kyoto sightseeing day (Fushimi Inari, Kiyomizu-dera, Pontocho, Arashiyama), back for the same Kobe beef dinner.\nLuggage (tonight, everyone): ship your big suitcase from the Osaka hotel front desk to the Onomichi house on Mukaishima for Oct 18, 4 to 6 PM delivery. Keep tomorrow's denim day and overnight things in your small bag. About ¥3,000 per suitcase.",
+   "notes": "Son's plan: JRA horse racing at Kyoto Racecourse on Sunday, likely Shuka Sho day, a Grade 1 race (optional early stop at Fushimi Inari), back to Namba around 5:45 PM, then a Kobe beef dinner in Osaka. No trip to Kobe needed. Cars stay parked.\nDon's plan: a Kyoto sightseeing day (Fushimi Inari, Kiyomizu-dera, Pontocho, Arashiyama), back for the same Kobe beef dinner.\nLuggage (tonight, everyone): ship your big suitcase from the Osaka hotel front desk to be held for pickup at Yamato's Onomichi shopping-street center (Onomichi Hondori arcade, 1-4-21 Tsuchido, near Onomichi Station and the ferry), arriving Oct 18. On the waybill, write the center's name and \"eigyosho-dome\" (hold at center), plus your name and phone. Keep tomorrow's denim day and overnight things in your small bag. About ¥3,000 per suitcase.",
    "food": "Track food at the races · Kobe beef dinner at Yakiniku Daibokujo, Dotonbori",
    "links": "Kyoto Racecourse (English guide) https://japanracing.jp/en/racing/go_racing/jra_racecourses/j03.html\nJRA beginner's guide to going racing https://japanracing.jp/en/racing/go_racing/guide/",
    "noLodging": false,
@@ -1929,7 +1950,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "date": "2027-10-18",
    "loc": "To Onomichi",
    "title": "Kojima denim, lunch in Kurashiki, then Onomichi",
-   "notes": "Leave Osaka at 8. Kojima Jeans Street for denim shopping, lunch and a canal walk in the Kurashiki Bikan quarter, then about an hour to Onomichi. Check in around 5 PM, easy ramen dinner.\nLuggage: the big suitcases arrive at the house between 4 and 6 PM (shipped from Osaka last night). If we're late, use the missed-delivery slip to rebook for 7 to 9 PM.",
+   "notes": "Leave Osaka at 8. Kojima Jeans Street for denim shopping, lunch and a canal walk in the Kurashiki Bikan quarter, then about an hour to Onomichi. Check in around 5 PM, easy ramen dinner.\nLuggage pickup: the big suitcases wait at Yamato's Onomichi shopping-street center (open until about 6 PM; confirm hours). Drop everyone at the house first (~4:45 PM), then the two drivers plus a helper each drive back over the bridge (10 min), fold the back seats, take 6 suitcases per van, and return by about 5:30. Bring the tracking numbers and your passport or ID. Backup if we're running late: an 8 AM run on Oct 19, or carry them over on the ferry (5 min, bags allowed).",
    "food": "Demi-katsu lunch in Kurashiki · \"denim\" buns and ice cream · muscat grapes · Onomichi ramen",
    "links": "Kojima Jeans Street https://www.okayama-japan.jp/en/spot/906\nMomotaro Jeans https://momotarojeans.net/",
    "noLodging": false,
@@ -1983,7 +2004,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "date": "2027-10-20",
    "loc": "Shimanami Kaido",
    "title": "Moped ride to Omishima (group splits tonight)",
-   "notes": "Riders: walk from the house to Shimarider Mukaishima (both by the ferry pier), pick up 50cc scooters, then ride the moped lanes over the Innoshima, Ikuchi and Tatara bridges with stops in Setoda (lunch, Kosanji) and at Oyamazumi Shrine. Overnight at Benton Guesthouse on Omishima.\nEveryone else stays at the house on Mukaishima with the vans and bags (or takes the ferry to Setoda to meet the riders for lunch). We all regroup in Onomichi on Oct 21.\nMoped riders: everyone needs their own International Driving Permit (1949 Geneva, from AAA) before leaving the US, since you can't get one in Japan. Shimarider says a regular car IDP (Category B) is fine for the 50cc scooters (Vino / Gyro). The 110cc/125cc ones need Category A (motorcycle), so stick to the 50cc ones. Upload photos of your IDP, US license and passport at least 3 days before the rental, and bring all the originals on the day (no copies).\nLuggage (today, the stay-back crew): take all 12 big suitcases to a konbini by the Mukaishima pier and ship them to the Tokyo house for Oct 22, 4 to 6 PM delivery. Riders pack theirs the night before and leave them labeled. Everyone keeps a small bag for the last two Onomichi nights and the flight. About ¥3,300 per suitcase.",
+   "notes": "Riders: walk from the house to Shimarider Mukaishima (both by the ferry pier), pick up 50cc scooters, then ride the moped lanes over the Innoshima, Ikuchi and Tatara bridges with stops in Setoda (lunch, Kosanji) and at Oyamazumi Shrine. Overnight at Benton Guesthouse on Omishima.\nEveryone else stays at the house on Mukaishima with the vans and bags (or takes the ferry to Setoda to meet the riders for lunch). We all regroup in Onomichi on Oct 21.\nMoped riders: everyone needs their own International Driving Permit (1949 Geneva, from AAA) before leaving the US, since you can't get one in Japan. Shimarider says a regular car IDP (Category B) is fine for the 50cc scooters (Vino / Gyro). The 110cc/125cc ones need Category A (motorcycle), so stick to the 50cc ones. Upload photos of your IDP, US license and passport at least 3 days before the rental, and bring all the originals on the day (no copies).\nLuggage (today, the stay-back crew): take all 12 big suitcases to a konbini by the Mukaishima pier (7-Eleven or FamilyMart; both take Yamato up to 160 cm, and FamilyMart's limit is 25 kg) and ship them to be held at Yamato's Shinjuku Hyakunincho center, 1 min from Okubo Station's North Exit, next to Shin-Okubo (write \"eigyosho-dome\"). Split them between two stores if one is overwhelmed. Riders pack theirs the night before and leave them labeled. Everyone keeps a small bag for the last two Onomichi nights and the flight. About ¥3,300 per suitcase.",
    "food": "Lunch on Setoda's Shiomachi street: seafood bowl, lemon croquettes, Setoda lemon gelato · groceries and a cook-in at the guesthouse",
    "links": "Shimarider (50cc scooter rental) https://www.shimarider.com/\nBenton Guesthouse, Omishima https://www.airbnb.com/rooms/902413133356587873",
    "noLodging": false,
@@ -2052,7 +2073,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "date": "2027-10-22",
    "loc": "Tokyo",
    "title": "Fly Hiroshima → Tokyo, sushi + tempura omakase, then a night out",
-   "notes": "Travel is everyone together: check out at 9, drive to Hiroshima Airport, return the vans, about a 12:30 PM flight to Haneda, check in at the Tokyo Airbnb by mid-afternoon.\nGroup dinner (everyone): 6:00 PM sushi + tempura omakase at Shinjuku Sushi Yokota, the Shinjuku branch of Tentomi Yokoda (in the Michelin Guide 8 years running). The course mixes seasonal nigiri and tempura made in front of you. One stop from Shin-Okubo.\nAfter dinner is sign-up: Son's local izakaya night in Koenji (under-the-tracks izakaya, small groups) or Shibuya (Shibuya Sky at night, the Crossing). Everyone meets for karaoke in Shinjuku around 10:30.\nLuggage: fly with just your small bag (the big suitcases were shipped Oct 20 and arrive at the Shin-Okubo house 4 to 6 PM). Check tracking on the way in; if they're running late, call the driver's number on the tracking page.",
+   "notes": "Travel is everyone together: check out at 9, drive to Hiroshima Airport, return the vans, about a 12:30 PM flight to Haneda, check in at the Tokyo Airbnb by mid-afternoon.\nGroup dinner (everyone): 6:00 PM sushi + tempura omakase at Shinjuku Sushi Yokota, the Shinjuku branch of Tentomi Yokoda (in the Michelin Guide 8 years running). The course mixes seasonal nigiri and tempura made in front of you. One stop from Shin-Okubo.\nAfter dinner is sign-up: Son's local izakaya night in Koenji (under-the-tracks izakaya, small groups) or Shibuya (Shibuya Sky at night, the Crossing). Everyone meets for karaoke in Shinjuku around 10:30.\nLuggage: fly with just your small bag. The big suitcases (shipped Oct 20) wait at Yamato's Shinjuku Hyakunincho center by Okubo Station: on the way in from Haneda (~3 PM), stop there, collect them with your tracking number and ID, and roll them about 5 min to the house. Confirm the center's hours before the trip.",
    "food": "Lunch at Hiroshima Airport · sushi + tempura omakase at Shinjuku Sushi Yokota (group dinner) · drinks in Koenji (cash)",
    "links": "Shinjuku Sushi Yokota (Tabelog) https://tabelog.com/en/tokyo/A1304/A130401/13261620/\nBackup: Sasano Moto-Azabu, separate sushi and tempura counters https://www.tablecheck.com/en/sasano-moto-azabu/reserve\nKoenji nightlife guide https://experience-suginami.tokyo/2018/05/koenji-street/\nShibuya Sky tickets https://www.gotokyo.org/en/spot/1749/index.html",
    "noLodging": false,
@@ -2314,7 +2335,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "link": "https://www.airbnb.com/rooms/1371317586923556617",
    "confirmation": "",
    "cancelBy": "",
-   "notes": "The pick for Onomichi. Whole house with an izakaya-style kitchen, on Mukaishima island across the channel: a 3-min flat walk to the Mukaishima pier, then a 5-min ferry to Onomichi Station (about every 15 min, 6 AM to 10 PM). By car, about 10 min from the Onomichi-Ohashi exit.\n5 bedrooms, sleeps up to 19 (base rate covers 16). 3 shower rooms (showers only, no tub). Steep stairs.\nFree parking for up to 4 cars, reservation required, so reserve 2 spots for the vans.\nCheck-in 3 to 8 PM (remote self check-in), check-out 10 AM. Quiet outside after 9 PM; no smoking indoors.\nCommercial gas stove and a chef's counter, 100-inch projector, free-to-use beer server (kegs bought separately), hammock and play room, washer and dryer (¥300 a load).\nKept for all 4 nights, including Oct 20, so anyone skipping the moped ride stays here with the parked vans and everyone's bags. Shimarider Mukaishima is right by the same pier.\nLuggage: suitcases arrive by Yamato on Oct 18, 4 to 6 PM, and go out to Tokyo on Oct 20."
+   "notes": "The pick for Onomichi. Whole house with an izakaya-style kitchen, on Mukaishima island across the channel: a 3-min flat walk to the Mukaishima pier, then a 5-min ferry to Onomichi Station (about every 15 min, 6 AM to 10 PM). By car, about 10 min from the Onomichi-Ohashi exit.\n5 bedrooms, sleeps up to 19 (base rate covers 16). 3 shower rooms (showers only, no tub). Steep stairs.\nFree parking for up to 4 cars, reservation required, so reserve 2 spots for the vans.\nCheck-in 3 to 8 PM (remote self check-in), check-out 10 AM. Quiet outside after 9 PM; no smoking indoors.\nCommercial gas stove and a chef's counter, 100-inch projector, free-to-use beer server (kegs bought separately), hammock and play room, washer and dryer (¥300 a load).\nKept for all 4 nights, including Oct 20, so anyone skipping the moped ride stays here with the parked vans and everyone's bags. Shimarider Mukaishima is right by the same pier.\nLuggage: nothing is delivered to the house. Suitcases are picked up at Yamato's Onomichi shopping-street center on Oct 18 and dropped at a konbini by the Mukaishima pier on Oct 20."
   },
   {
    "id": "setoda",
@@ -2350,7 +2371,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "link": "https://www.airbnb.com/rooms/1198050518689967535",
    "confirmation": "",
    "cancelBy": "",
-   "notes": "Shortlist for Oct 22 to 24 (price not set yet; the cost here is still the original listing's):\n1. Shin-Okubo house (the pick): architect-designed house, 180 m², sleeps 15, 6 bedrooms, 2 bathrooms and 3 toilets. 3 min to Shin-Okubo Station (JR Yamanote Line); one stop from Shinjuku. Rated 4.94 (49 reviews), Guest Favorite, Superhost. No parties; quiet after 9 PM; no smoking anywhere including the balcony; passport photos needed before check-in. https://www.airbnb.com/rooms/1464889637358508983\n2. Ikebukuro place (backup): 200 m² 7LDK over two floors near Sunshine City, 3 min to Higashi-Ikebukuro Station, 8 min to Ikebukuro. 6 bedrooms, 15 beds, but only 1 bathroom for 12. Rated 4.44 (27 reviews). Check-out 10 AM; late check-out without a week's approval costs ¥30,000. https://www.airbnb.com/rooms/1225310204361016084\nWhy Shin-Okubo: better reviews, 2 bathrooms, and it's on the Yamanote Line for Harajuku (10 min), Shimbashi (no transfer) and the Koenji night (one stop to Shinjuku, then 6 min).\nLuggage: suitcases arrive by Yamato on Oct 22, 4 to 6 PM."
+   "notes": "Shortlist for Oct 22 to 24 (price not set yet; the cost here is still the original listing's):\n1. Shin-Okubo house (the pick): architect-designed house, 180 m², sleeps 15, 6 bedrooms, 2 bathrooms and 3 toilets. 3 min to Shin-Okubo Station (JR Yamanote Line); one stop from Shinjuku. Rated 4.94 (49 reviews), Guest Favorite, Superhost. No parties; quiet after 9 PM; no smoking anywhere including the balcony; passport photos needed before check-in. https://www.airbnb.com/rooms/1464889637358508983\n2. Ikebukuro place (backup): 200 m² 7LDK over two floors near Sunshine City, 3 min to Higashi-Ikebukuro Station, 8 min to Ikebukuro. 6 bedrooms, 15 beds, but only 1 bathroom for 12. Rated 4.44 (27 reviews). Check-out 10 AM; late check-out without a week's approval costs ¥30,000. https://www.airbnb.com/rooms/1225310204361016084\nWhy Shin-Okubo: better reviews, 2 bathrooms, and it's on the Yamanote Line for Harajuku (10 min), Shimbashi (no transfer) and the Koenji night (one stop to Shinjuku, then 6 min).\nLuggage: nothing is delivered to the house. Suitcases are picked up at Yamato's Shinjuku Hyakunincho center by Okubo Station on Oct 22."
   }
  ],
  "budgetExpenses": [
@@ -2406,7 +2427,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   {
    "item": "Luggage forwarding (3 shipments)",
    "cost": 65,
-   "note": "One big suitcase per person sent ahead by Yamato: Tokyo → Osaka hotel (Oct 11), Osaka → Onomichi house (Oct 17), Onomichi → Tokyo house (Oct 20). About ¥3,000 to ¥3,300 each for a large (160 cm) suitcase, so about ¥9,500 total. Oversized bags (over 160 cm or 25 kg) cost more.",
+   "note": "One big suitcase per person sent ahead by Yamato: Tokyo → Osaka hotel (Oct 11), Osaka → Yamato center in Onomichi (Oct 17), Mukaishima konbini → Yamato center by Okubo Station in Tokyo (Oct 20). About ¥3,000 to ¥3,300 each for a large (160 cm) suitcase, so about ¥9,500 total. Oversized bags (over 160 cm or 25 kg) cost more and can't go through a konbini.",
    "cat": "Getting around",
    "split": "individual"
   },
@@ -2864,6 +2885,23 @@ svg.leaflet-image-layer.leaflet-interactive path {
  },
  "changelog": [
   {
+   "version": "2.31",
+   "date": "Nov 17, 2026",
+   "title": "New How-to tab: luggage forwarding",
+   "changes": [
+    "New How-to tab with a step-by-step guide to luggage forwarding: what to pack, how to ship at a konbini or the hotel, exactly what to write on each label, how to pick up at a Yamato center, tracking, phrases, and what to do if something goes wrong."
+   ]
+  },
+  {
+   "version": "2.30",
+   "date": "Nov 17, 2026",
+   "title": "Luggage: no deliveries to the Airbnbs",
+   "changes": [
+    "Suitcases are no longer delivered to the Onomichi or Tokyo houses. They're held at Yamato centers for pickup instead: the Onomichi shopping-street center (pickup Oct 18 around 5 PM, the drivers do a van run) and the Shinjuku Hyakunincho center by Okubo Station (pickup Oct 22 on the way in from Haneda).",
+    "Drop-offs stay at konbini (7-Eleven or FamilyMart) by the Ikebukuro house and the Mukaishima pier. The Osaka hotel still receives and sends from its front desk."
+   ]
+  },
+  {
    "version": "2.29",
    "date": "Nov 17, 2026",
    "title": "Luggage forwarding",
@@ -3205,7 +3243,181 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "Travel, driving and where we sleep stay the same for everyone. Plans are just what you do with the day.",
    "Want to host your own plan? Send it to Son (day, title, a line or two on what you'll do) and he'll add it."
   ]
- }
+ },
+ "guides": [
+  {
+   "id": "luggage",
+   "title": "Luggage forwarding (Yamato TA-Q-BIN)",
+   "jp": "宅急便",
+   "intro": "Takkyubin (Yamato's TA-Q-BIN, the black cat logo) is a courier that moves your big suitcase to our next stop, usually overnight, for about ¥3,000. We use it three times so the vans only carry small bags. It takes about 5 minutes per bag once you know the steps below.",
+   "sections": [
+    {
+     "heading": "Our plan at a glance",
+     "table": {
+      "head": [
+       "Leg",
+       "Ship",
+       "Pick up",
+       "Who",
+       "Cost"
+      ],
+      "rows": [
+       [
+        "Tokyo → Osaka",
+        "Mon Oct 11, night: 7-Eleven or FamilyMart near the Ikebukuro house",
+        "Fri Oct 15: waiting at the front desk of Hotel Royal Classic Osaka",
+        "Everyone ships their own",
+        "~¥3,200"
+       ],
+       [
+        "Osaka → Onomichi",
+        "Sun Oct 17, night: Osaka hotel front desk",
+        "Mon Oct 18, ~5 PM: Yamato's Onomichi shopping-street center",
+        "Son and Don collect 6 bags each with the vans",
+        "~¥3,000"
+       ],
+       [
+        "Onomichi → Tokyo",
+        "Wed Oct 20: 7-Eleven or FamilyMart by the Mukaishima pier",
+        "Fri Oct 22, ~3 PM: Yamato's Shinjuku Hyakunincho center by Okubo Station",
+        "Stay-back crew ships all 12; everyone picks up their own",
+        "~¥3,300"
+       ]
+      ]
+     },
+     "after": "Arrival (Oct 9) and the flight home (Oct 24): bags travel with you. Same-day forwarding from Haneda closes at 11 AM, and airport delivery needs about 2 days' notice."
+    },
+    {
+     "heading": "Before the trip: pack for it",
+     "bullets": [
+      "One big suitcase, 160 cm or less (length + width + height added up) and under 25 kg. Measure it at home. Bigger or heavier costs more, and convenience stores won't take it.",
+      "One small bag (backpack or duffel) that holds 4 nights. It's all you'll have from Oct 12 to 15 and again Oct 20 to 22.",
+      "Always in the small bag, never in the shipped suitcase: passport, cash and cards, medication, phone, laptop or camera, chargers and power banks, anything valuable, and what you need for the next few nights.",
+      "Don't ship: spray cans, lighters, camping gas or fuel, or anything flammable.",
+      "Put a name tag on your suitcase and take a photo of it. Twelve black suitcases look alike.",
+      "Carry some cash (yen) and a pen.",
+      "The Kuroneko Yamato app can make labels on your phone, but signing up usually needs a Japanese phone number, so plan on the paper label. Store staff are used to helping tourists."
+     ]
+    },
+    {
+     "heading": "How to ship at a convenience store (Oct 11 and Oct 20)",
+     "steps": [
+      "Go to a 7-Eleven or FamilyMart (Lawson uses Japan Post, not Yamato). Say \"Takkyubin, onegaishimasu\" and point at your suitcase.",
+      "Ask for a Yamato paper label (okurijo) and fill it in. See \"What to write on the label\" below.",
+      "The clerk measures and weighs the bag and tells you the price. Pay cash or card.",
+      "Keep the customer copy: it has the 12-digit tracking number. Take a photo of it and post it in the group chat.",
+      "Twelve bags at once can swamp a small store, so split between two stores or go in waves."
+     ]
+    },
+    {
+     "heading": "How to ship from the Osaka hotel (Oct 17)",
+     "bullets": [
+      "Bring your suitcase to the front desk the night of Oct 17 and say \"Takkyubin, onegaishimasu.\" They hand you the label, take payment and give it to the driver.",
+      "Ask the desk for their pickup cutoff so the bags make the next-day delivery to Onomichi."
+     ]
+    },
+    {
+     "heading": "What to write on the label",
+     "table": {
+      "head": [
+       "Leg",
+       "To: name",
+       "To: address",
+       "Delivery"
+      ],
+      "rows": [
+       [
+        "Tokyo → Osaka",
+        "Your own name, plus 宿泊者 10/15チェックイン (hotel guest, check-in Oct 15)",
+        "ホテルロイヤルクラシック大阪 (Hotel Royal Classic Osaka), 大阪市中央区難波4-3-3, tel 06-6633-0030",
+        "Oct 15, morning (午前中)"
+       ],
+       [
+        "Osaka → Onomichi",
+        "Your van's driver (Son or Don), so one person can collect 6 bags with one passport. Put your own name in the item box.",
+        "ヤマト運輸 尾道商店街センター止め (Yamato Onomichi shopping-street center, hold for pickup), 広島県尾道市土堂1-4-21. Name and address to confirm in Sep 2027.",
+        "Oct 18, hold at center (営業所止め)"
+       ],
+       [
+        "Onomichi → Tokyo",
+        "Your own name (everyone picks up their own with their passport)",
+        "ヤマト運輸 新宿百人町営業所止め (Yamato Shinjuku Hyakunincho center by Okubo Station, hold for pickup). Exact address to confirm in Sep 2027.",
+        "Oct 21, hold at center (営業所止め)"
+       ]
+      ]
+     },
+     "after": "From (every leg): your name, the address where you're staying that night (house or hotel) and a phone number (your US number with +1 is fine). Item (品名): 衣類 (clothes) or 身の回り品 (personal items). If you show the clerk the center's name, they can fill in its center code."
+    },
+    {
+     "heading": "How to pick up at a Yamato center (Oct 18 and Oct 22)",
+     "bullets": [
+      "Bring the tracking numbers and the passport of the person named on the label.",
+      "Say \"Nimotsu o uketori ni kimashita\" (I'm here to pick up my package) and show the tracking numbers.",
+      "Oct 18: drop everyone at the house around 4:45 PM. Son and Don (plus a helper each) drive back over the bridge (10 min), fold the back seats, take 6 bags per van and are back by about 5:30. The center was listed as closing at 6 PM. Backup: an 8 AM run on Oct 19, or roll them onto the ferry (5 min).",
+      "Oct 22: from Haneda, go to the Okubo Station center first (~3 PM), everyone collects their own, then roll them about 5 minutes to the house.",
+      "Confirm both centers' hours in Sep 2027 (it's on the Timeline)."
+     ]
+    },
+    {
+     "heading": "Track your bag",
+     "bullets": [
+      "Enter the 12-digit tracking number on Yamato's English site: https://www.kuronekoyamato.co.jp/ytc/en/",
+      "If a bag is late, call the number on your receipt or ask hotel staff to call for you."
+     ]
+    },
+    {
+     "heading": "Handy phrases",
+     "table": {
+      "head": [
+       "English",
+       "Japanese",
+       "Say it"
+      ],
+      "rows": [
+       [
+        "Luggage forwarding, please.",
+        "宅急便でお願いします",
+        "Takkyubin de onegaishimasu"
+       ],
+       [
+        "Hold it at the Yamato center for pickup.",
+        "営業所止めでお願いします",
+        "Eigyosho-dome de onegaishimasu"
+       ],
+       [
+        "Delivery on October 15, in the morning.",
+        "10月15日の午前中でお願いします",
+        "Juugatsu juugo-nichi no gozenchuu de onegaishimasu"
+       ],
+       [
+        "Can you hold these until check-in?",
+        "チェックインまで預かってもらえますか",
+        "Chekku-in made azukatte moraemasu ka"
+       ],
+       [
+        "I'm here to pick up my package.",
+        "荷物を受け取りに来ました",
+        "Nimotsu o uketori ni kimashita"
+       ],
+       [
+        "How much is it?",
+        "いくらですか",
+        "Ikura desu ka"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "If something goes wrong",
+     "bullets": [
+      "Store won't take the bag (too big or over 25 kg): take it to any Yamato center, which takes up to 200 cm and 30 kg.",
+      "Lost the receipt: the tracking number is in your photo and the group chat.",
+      "Missed the pickup time: the center holds the bag for several days, so come back the next morning."
+     ]
+    }
+   ]
+  }
+ ]
 }</script>
 
 <div id="loading" class="loading-screen">
@@ -3262,8 +3474,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <button class="tab-btn" data-tab="lodging"><span class="tab-num">04</span>Lodging</button>
     <button class="tab-btn" data-tab="budget"><span class="tab-num">05</span>Budget</button>
     <button class="tab-btn" data-tab="wishlist"><span class="tab-num">06</span>Wishlist</button>
-    <button class="tab-btn" data-tab="map"><span class="tab-num">07</span>Map</button>
-    <button class="tab-btn" data-tab="about"><span class="tab-num">08</span>About</button>
+    <button class="tab-btn" data-tab="howto"><span class="tab-num">07</span>How-to</button>
+    <button class="tab-btn" data-tab="map"><span class="tab-num">08</span>Map</button>
+    <button class="tab-btn" data-tab="about"><span class="tab-num">09</span>About</button>
   </nav>
 
   <div class="wrap">
@@ -3420,6 +3633,13 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <div class="wish-add editor-only"><input type="text" class="new-item" data-cat="places" placeholder="Add a place…"><input type="text" class="new-where where" data-cat="places" placeholder="where"><button class="btn small" data-add="places">+</button></div>
         </div>
       </div>
+    </section>
+
+    <!-- ===================== HOW-TO ===================== -->
+    <section class="panel" id="panel-howto">
+      <h2 class="panel-title">How-to <span class="jp">使い方</span></h2>
+      <div class="panel-sub">Step-by-step guides for the parts of the trip nobody has done before.</div>
+      <div id="guides-holder"></div>
     </section>
 
     <!-- ===================== MAP ===================== -->
@@ -5207,6 +5427,41 @@ ${readOnly ? '' : `<div class="fld full"><div class="lbl">Notes</div><textarea r
   /* ============================================================
      RENDER ALL / INIT
      ============================================================ */
+  /* How-to guides (data.guides) */
+  function guideText(s){
+    return esc(String(s||'')).replace(/(https?:\/\/[^\s<]+)/g, u => `<a href="${u}" target="_blank" rel="noopener">${u}</a>`);
+  }
+  function renderGuides(){
+    const holder = document.getElementById('guides-holder');
+    if(!holder) return;
+    const guides = state.guides || [];
+    if(!guides.length){ holder.innerHTML = '<div class="card card-pad">No guides yet.</div>'; return; }
+    holder.innerHTML = guides.map(g=>{
+      const secs = (g.sections||[]).map((s,i)=>{
+        let body = '';
+        if(s.text) body += `<p>${guideText(s.text)}</p>`;
+        if(s.bullets) body += '<ul>' + s.bullets.map(b=>`<li>${guideText(b)}</li>`).join('') + '</ul>';
+        if(s.steps) body += '<ol>' + s.steps.map(b=>`<li>${guideText(b)}</li>`).join('') + '</ol>';
+        if(s.table){
+          const head = s.table.head||[];
+          body += '<div class="guide-table-wrap"><table class="guide-table"><thead><tr>' + head.map(h=>`<th>${esc(h)}</th>`).join('') + '</tr></thead><tbody>' +
+            (s.table.rows||[]).map(r=>'<tr>' + r.map((c,j)=>`<td data-label="${esc(head[j]||'')}">${guideText(c)}</td>`).join('') + '</tr>').join('') + '</tbody></table></div>';
+        }
+        if(s.after) body += `<p>${guideText(s.after)}</p>`;
+        return `<div class="guide-sec" id="guide-${esc(g.id)}-${i}"><h4>${esc(s.heading)}</h4>${body}</div>`;
+      }).join('');
+      const toc = (g.sections||[]).map((s,i)=>`<a href="#" data-jump="guide-${esc(g.id)}-${i}">${esc(s.heading)}</a>`).join('');
+      return `<div class="guide card card-pad"><h3>${esc(g.title)}${g.jp?` <span class="jp">${esc(g.jp)}</span>`:''}</h3>
+        ${g.intro?`<p class="guide-intro">${guideText(g.intro)}</p>`:''}
+        <div class="guide-toc">${toc}</div>${secs}</div>`;
+    }).join('');
+    holder.querySelectorAll('[data-jump]').forEach(a=> a.addEventListener('click', e=>{
+      e.preventDefault();
+      const t = document.getElementById(a.getAttribute('data-jump'));
+      if(t) t.scrollIntoView({behavior:'smooth', block:'start'});
+    }));
+  }
+
   function renderAll(){
     const en = document.getElementById('estimate-note');
     if(state.disclaimer){ en.innerHTML = '<b>⚠ Heads up:</b> ' + esc(state.disclaimer); en.style.display = ''; } else { en.style.display = 'none'; }
@@ -5221,6 +5476,7 @@ ${readOnly ? '' : `<div class="fld full"><div class="lbl">Notes</div><textarea r
     renderAccom();
     renderPaymentMatrix();
     renderWishlist();
+    renderGuides();
     renderStopList();
     renderAbout();
     renderSignupBox();
