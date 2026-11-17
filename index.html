@@ -1015,6 +1015,15 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
   /* ---------- wishlist tab ---------- */
   .guide{ margin-bottom:22px; }
+  .guide-picker{ display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:8px; margin:0 0 16px; }
+  .guide-pick{ text-align:left; background:var(--paper-dim); border:2px solid transparent; border-radius:10px; padding:10px 12px; cursor:pointer; font:inherit; color:inherit; display:flex; flex-direction:column; gap:2px; }
+  .guide-pick:hover{ border-color:var(--line); }
+  .guide-pick.on{ border-color:currentColor; background:#fff; box-shadow:0 2px 0 rgba(0,0,0,.08); }
+  .guide-pick .gp-title{ font-weight:700; font-size:14.5px; }
+  .guide-pick .gp-jp{ font-size:12px; color:#5a6b74; }
+  .guide-pick .gp-num{ font-family:'JetBrains Mono',monospace; font-size:10px; color:#5a6b74; letter-spacing:.05em; }
+  .guide-nav{ display:flex; justify-content:space-between; gap:10px; margin-top:16px; flex-wrap:wrap; }
+  .guide-nav button{ font:inherit; font-size:13.5px; background:var(--paper-dim); border:1px solid var(--line); border-radius:8px; padding:8px 12px; cursor:pointer; color:inherit; }
   .guide > h3{ font-size:20px; margin:0 0 6px; display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; }
   .guide > h3 .jp{ font-size:13px; color:#5a6b74; font-weight:400; }
   .guide .guide-intro{ font-size:14.5px; line-height:1.55; margin:0 0 14px; }
@@ -1022,6 +1031,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .guide-toc a{ font-family:'JetBrains Mono',monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:.03em; background:var(--paper-dim); padding:5px 9px; border-radius:20px; text-decoration:none; color:inherit; }
   .guide-sec{ border-top:1px solid var(--line); padding:14px 0 6px; }
   .guide-sec h4{ margin:0 0 8px; font-size:15.5px; }
+  .guide-fig{ margin:6px 0 14px; padding:12px; background:var(--paper-card); border:1px solid var(--line); border-radius:8px; }
+  .guide-fig svg{ display:block; width:100%; max-width:560px; height:auto; margin:0 auto; }
+  .guide-fig figcaption{ font-size:12.5px; color:#5a6b74; line-height:1.45; margin-top:8px; text-align:center; }
+  @media (max-width:520px){ .guide-fig{ padding:6px; margin-left:-4px; margin-right:-4px; overflow-x:auto; -webkit-overflow-scrolling:touch; } .guide-fig svg{ width:470px; max-width:none; } .guide-fig figcaption{ position:sticky; left:0; max-width:calc(100vw - 80px); text-align:left; } }
   .guide-sec ul, .guide-sec ol{ margin:0 0 6px; padding-left:22px; }
   .guide-sec li{ margin:0 0 7px; line-height:1.5; font-size:14px; }
   .guide-sec p{ margin:8px 0 4px; font-size:13.5px; line-height:1.5; color:#3d4a52; }
@@ -1755,7 +1768,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "date": "2027-10-11",
    "loc": "Tokyo / Yokohama",
    "title": "Pick up the rental cars, then Yokohama",
-   "notes": "Son and Don pick up both rental cars as soon as the office opens and park them by the Airbnb. Then everyone takes the train to Yokohama and back, so nobody has to drive or skip drinks.\nOct 11 is a national holiday (Sports Day), so expect holiday crowds in Chinatown and at the Cup Noodles Museum (open today; it closes on Tuesdays).\nDon's plan (sign-up): Ryogoku, Workman Plus in Shinagawa and the Sompo Museum of Art instead of Yokohama.\nLuggage (tonight, everyone): pack a small bag for the next 4 nights (Hakone, Takayama x2, first Osaka night), then ship your big suitcase to Hotel Royal Classic Osaka with a delivery date of Oct 15, morning. Drop it at a konbini near the Airbnb (7-Eleven, FamilyMart) or book a Yamato pickup at the house. About ¥3,200 per suitcase. The vans only carry the small bags until Osaka.",
+   "notes": "Son and Don pick up both rental cars as soon as the office opens and park them by the Airbnb. All four named drivers bring license, IDP and passport; the pickup checklist is in the How-to tab (Driving guide). Then everyone takes the train to Yokohama and back, so nobody has to drive or skip drinks.\nOct 11 is a national holiday (Sports Day), so expect holiday crowds in Chinatown and at the Cup Noodles Museum (open today; it closes on Tuesdays).\nDon's plan (sign-up): Ryogoku, Workman Plus in Shinagawa and the Sompo Museum of Art instead of Yokohama.\nLuggage (tonight, everyone): pack a small bag for the next 4 nights (Hakone, Takayama x2, first Osaka night), then ship your big suitcase to Hotel Royal Classic Osaka with a delivery date of Oct 15, morning. Drop it at a konbini near the Airbnb (7-Eleven, FamilyMart) or book a Yamato pickup at the house. About ¥3,200 per suitcase. The vans only carry the small bags until Osaka.",
    "food": "Chinatown street food (steamed buns, xiaolongbao) · early Chinatown lunch · Noge izakaya dinner",
    "links": "Good Luck Yokohama Engraving Store https://maps.app.goo.gl/LoGmpzbCMdcoiWk77\nCup Noodles Museum https://www.cupnoodles-museum.jp/en/yokohama/\nKirin Brewery Yokohama (swap-in) https://www.kirin.co.jp/experience/factory/en/yokohama/\nSompo Museum of Art https://www.sompo-museum.org/en/",
    "noLodging": false,
@@ -1918,7 +1931,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "date": "2027-10-17",
    "loc": "Kyoto / Osaka",
    "title": "Free day: JRA races at Kyoto or your own plan",
-   "notes": "Son's plan: JRA horse racing at Kyoto Racecourse on Sunday, likely Shuka Sho day, a Grade 1 race (optional early stop at Fushimi Inari), back to Namba around 5:45 PM, then a Kobe beef dinner in Osaka. No trip to Kobe needed. Cars stay parked.\nDon's plan: a Kyoto sightseeing day (Fushimi Inari, Kiyomizu-dera, Pontocho, Arashiyama), back for the same Kobe beef dinner.\nLuggage (tonight, everyone): ship your big suitcase from the Osaka hotel front desk to be held for pickup at Yamato's Onomichi shopping-street center (Onomichi Hondori arcade, 1-4-21 Tsuchido, near Onomichi Station and the ferry), arriving Oct 18. On the waybill, write the center's name and \"eigyosho-dome\" (hold at center), plus your name and phone. Keep tomorrow's denim day and overnight things in your small bag. About ¥3,000 per suitcase.",
+   "notes": "Son's plan: JRA horse racing at Kyoto Racecourse on Sunday, likely Shuka Sho day, a Grade 1 race (optional early stop at Fushimi Inari), back to Namba around 5:45 PM, then a Kobe beef dinner in Osaka. No trip to Kobe needed. Cars stay parked. How to bet is in the How-to tab under 'Race day betting'.\nDon's plan: a Kyoto sightseeing day (Fushimi Inari, Kiyomizu-dera, Pontocho, Arashiyama), back for the same Kobe beef dinner.\nLuggage (tonight, everyone): ship your big suitcase from the Osaka hotel front desk to be held for pickup at Yamato's Onomichi shopping-street center (Onomichi Hondori arcade, 1-4-21 Tsuchido, near Onomichi Station and the ferry), arriving Oct 18. On the waybill, write the center's name and \"eigyosho-dome\" (hold at center), plus your name and phone. Keep tomorrow's denim day and overnight things in your small bag. About ¥3,000 per suitcase.",
    "food": "Track food at the races · Kobe beef dinner at Yakiniku Daibokujo, Dotonbori",
    "links": "Kyoto Racecourse (English guide) https://japanracing.jp/en/racing/go_racing/jra_racecourses/j03.html\nJRA beginner's guide to going racing https://japanracing.jp/en/racing/go_racing/guide/",
    "noLodging": false,
@@ -2885,6 +2898,33 @@ svg.leaflet-image-layer.leaflet-interactive path {
  },
  "changelog": [
   {
+   "version": "2.34",
+   "date": "Nov 17, 2026",
+   "title": "New Driving guide",
+   "changes": [
+    "New How-to guide for driving: documents and IDPs, picking up the vans, driving on the left, signs, the alcohol rule, expressways and ETC tolls, gas, parking, navigation, our driving days, and what to do after an accident. With 6 diagrams.",
+    "Gas stations and tolls moved from the Paying guide into the Driving guide."
+   ]
+  },
+  {
+   "version": "2.33",
+   "date": "Nov 17, 2026",
+   "title": "Pictures in the how-to guides",
+   "changes": [
+    "Added 11 diagrams to the How-to guides: the luggage route, what to pack, the shipping label, bet types, the mark card, reading the odds, buying a ticket, konbini questions, ramen ticket machines, tax-free refunds and gas pumps."
+   ]
+  },
+  {
+   "version": "2.32",
+   "date": "Nov 17, 2026",
+   "title": "More how-to guides",
+   "changes": [
+    "The How-to tab now has a guide picker, so you can switch between guides.",
+    "New guide: betting at the JRA races (getting in, bet types, filling in the mark card, phone QR betting, odds, cashing winners, phrases).",
+    "New guide: paying and ordering (what to carry, konbini, restaurants, splitting as a group of 12, ramen ticket machines, the new tax-free refund rules, gas stations, tolls, phrases)."
+   ]
+  },
+  {
    "version": "2.31",
    "date": "Nov 17, 2026",
    "title": "New How-to tab: luggage forwarding",
@@ -3285,7 +3325,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
        ]
       ]
      },
-     "after": "Arrival (Oct 9) and the flight home (Oct 24): bags travel with you. Same-day forwarding from Haneda closes at 11 AM, and airport delivery needs about 2 days' notice."
+     "after": "Arrival (Oct 9) and the flight home (Oct 24): bags travel with you. Same-day forwarding from Haneda closes at 11 AM, and airport delivery needs about 2 days' notice.",
+     "visual": {
+      "svg": "<svg viewBox=\"0 0 480 250\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Map of the three luggage hops: Tokyo to Osaka, Osaka to Onomichi, Onomichi to Tokyo\" font-family=\"system-ui,-apple-system,'Segoe UI',Roboto,'Hiragino Sans','Noto Sans JP',sans-serif\"><line x1=\"78\" y1=\"82\" x2=\"146\" y2=\"82\" stroke=\"#24476b\" stroke-width=\"2\" stroke-dasharray=\"5 4\"/><polygon points=\"152,82 143,77 143,87\" fill=\"#24476b\"/><rect x=\"111.4\" y=\"71\" width=\"7.2\" height=\"5\" rx=\"2\" fill=\"none\" stroke=\"#bd4b28\" stroke-width=\"2\"/><rect x=\"106.0\" y=\"75\" width=\"18\" height=\"14\" rx=\"3\" fill=\"#bd4b28\" stroke=\"none\" stroke-width=\"1\"/><line x1=\"111.94\" y1=\"77\" x2=\"111.94\" y2=\"87\" stroke=\"#ffffff\" stroke-width=\"1\"/><line x1=\"118.06\" y1=\"77\" x2=\"118.06\" y2=\"87\" stroke=\"#ffffff\" stroke-width=\"1\"/><text x=\"115.0\" y=\"62\" font-size=\"12\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">Oct 11 → 15<\/text><line x1=\"204\" y1=\"82\" x2=\"272\" y2=\"82\" stroke=\"#24476b\" stroke-width=\"2\" stroke-dasharray=\"5 4\"/><polygon points=\"278,82 269,77 269,87\" fill=\"#24476b\"/><rect x=\"237.4\" y=\"71\" width=\"7.2\" height=\"5\" rx=\"2\" fill=\"none\" stroke=\"#bd4b28\" stroke-width=\"2\"/><rect x=\"232.0\" y=\"75\" width=\"18\" height=\"14\" rx=\"3\" fill=\"#bd4b28\" stroke=\"none\" stroke-width=\"1\"/><line x1=\"237.94\" y1=\"77\" x2=\"237.94\" y2=\"87\" stroke=\"#ffffff\" stroke-width=\"1\"/><line x1=\"244.06\" y1=\"77\" x2=\"244.06\" y2=\"87\" stroke=\"#ffffff\" stroke-width=\"1\"/><text x=\"241.0\" y=\"62\" font-size=\"12\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">Oct 17 → 18<\/text><line x1=\"330\" y1=\"82\" x2=\"398\" y2=\"82\" stroke=\"#24476b\" stroke-width=\"2\" stroke-dasharray=\"5 4\"/><polygon points=\"404,82 395,77 395,87\" fill=\"#24476b\"/><rect x=\"363.4\" y=\"71\" width=\"7.2\" height=\"5\" rx=\"2\" fill=\"none\" stroke=\"#bd4b28\" stroke-width=\"2\"/><rect x=\"358.0\" y=\"75\" width=\"18\" height=\"14\" rx=\"3\" fill=\"#bd4b28\" stroke=\"none\" stroke-width=\"1\"/><line x1=\"363.94\" y1=\"77\" x2=\"363.94\" y2=\"87\" stroke=\"#ffffff\" stroke-width=\"1\"/><line x1=\"370.06\" y1=\"77\" x2=\"370.06\" y2=\"87\" stroke=\"#ffffff\" stroke-width=\"1\"/><text x=\"367.0\" y=\"62\" font-size=\"12\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">Oct 20 → 22<\/text><circle cx=\"52\" cy=\"82\" r=\"22\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><text x=\"52\" y=\"88\" font-size=\"17\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">1<\/text><text x=\"52\" y=\"128\" font-size=\"15\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">Tokyo<\/text><text x=\"52\" y=\"146\" font-size=\"12\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\">Ikebukuro konbini<\/text><circle cx=\"178\" cy=\"82\" r=\"22\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><text x=\"178\" y=\"88\" font-size=\"17\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">2<\/text><text x=\"178\" y=\"128\" font-size=\"15\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">Osaka<\/text><text x=\"178\" y=\"146\" font-size=\"12\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\">hotel front desk<\/text><circle cx=\"304\" cy=\"82\" r=\"22\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><text x=\"304\" y=\"88\" font-size=\"17\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">3<\/text><text x=\"304\" y=\"128\" font-size=\"15\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">Onomichi<\/text><text x=\"304\" y=\"146\" font-size=\"12\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\">Yamato center<\/text><circle cx=\"430\" cy=\"82\" r=\"22\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><text x=\"430\" y=\"88\" font-size=\"17\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">4<\/text><text x=\"430\" y=\"128\" font-size=\"15\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">Tokyo<\/text><text x=\"430\" y=\"146\" font-size=\"12\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\">Yamato, Okubo<\/text><text x=\"240\" y=\"26\" font-size=\"13\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">Your big suitcase travels on its own, overnight<\/text><rect x=\"10\" y=\"170\" width=\"460\" height=\"72\" rx=\"6\" fill=\"#ece3cd\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"26\" y=\"188\" width=\"26\" height=\"32\" rx=\"7\" fill=\"#5c6b4f\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"32\" y=\"202\" width=\"14\" height=\"10\" rx=\"2\" fill=\"#7d8c70\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"33\" y=\"184\" width=\"12\" height=\"7\" rx=\"3\" fill=\"none\" stroke=\"#5c6b4f\" stroke-width=\"2\"/><text x=\"66\" y=\"198\" font-size=\"13.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">In between, you only carry a small bag<\/text><text x=\"66\" y=\"216\" font-size=\"12\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\">Oct 12–15 and Oct 20–22. On arrival day and the flight<\/text><text x=\"66\" y=\"231\" font-size=\"12\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\">home, your suitcase stays with you as normal.<\/text><\/svg>",
+      "caption": "Three hops, numbered in order. The dates are when you ship → when you can pick up."
+     }
     },
     {
      "heading": "Before the trip: pack for it",
@@ -3297,7 +3341,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
       "Put a name tag on your suitcase and take a photo of it. Twelve black suitcases look alike.",
       "Carry some cash (yen) and a pen.",
       "The Kuroneko Yamato app can make labels on your phone, but signing up usually needs a Japanese phone number, so plan on the paper label. Store staff are used to helping tourists."
-     ]
+     ],
+     "visual": {
+      "svg": "<svg viewBox=\"0 0 480 292\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"What goes in the shipped suitcase versus the small bag you carry\" font-family=\"system-ui,-apple-system,'Segoe UI',Roboto,'Hiragino Sans','Noto Sans JP',sans-serif\"><rect x=\"8\" y=\"8\" width=\"226\" height=\"236\" rx=\"8\" fill=\"#e8d3ca\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"246\" y=\"8\" width=\"226\" height=\"236\" rx=\"8\" fill=\"#dfe8f0\" stroke=\"none\" stroke-width=\"1\"/><text x=\"121\" y=\"34\" font-size=\"13\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">SHIPS AHEAD<\/text><text x=\"121\" y=\"52\" font-size=\"12.5\" font-weight=\"400\" fill=\"#16232e\" text-anchor=\"middle\">one big suitcase<\/text><rect x=\"98\" y=\"64\" width=\"32\" height=\"16\" rx=\"5\" fill=\"none\" stroke=\"#24476b\" stroke-width=\"4\"/><rect x=\"72\" y=\"78\" width=\"84\" height=\"112\" rx=\"10\" fill=\"#c8d6e3\" stroke=\"#24476b\" stroke-width=\"2.5\"/><line x1=\"100.0\" y1=\"86\" x2=\"100.0\" y2=\"182\" stroke=\"#24476b\" stroke-width=\"1.5\"/><line x1=\"128.0\" y1=\"86\" x2=\"128.0\" y2=\"182\" stroke=\"#24476b\" stroke-width=\"1.5\"/><circle cx=\"86\" cy=\"196\" r=\"5\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><circle cx=\"142\" cy=\"196\" r=\"5\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"80\" y=\"90\" width=\"22\" height=\"14\" rx=\"2\" fill=\"#ffffff\" stroke=\"#24476b\" stroke-width=\"1\"/><text x=\"91\" y=\"100\" font-size=\"8\" font-weight=\"700\" fill=\"#24476b\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">tag<\/text><line x1=\"170\" y1=\"78\" x2=\"170\" y2=\"190\" stroke=\"#bd4b28\" stroke-width=\"1.5\"/><text x=\"176\" y=\"138.0\" font-size=\"13\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"start\">H<\/text><line x1=\"72\" y1=\"210\" x2=\"156\" y2=\"210\" stroke=\"#bd4b28\" stroke-width=\"1.5\"/><text x=\"114.0\" y=\"224\" font-size=\"13\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"middle\">W<\/text><text x=\"56\" y=\"138.0\" font-size=\"13\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"middle\">L<\/text><text x=\"121\" y=\"236\" font-size=\"12\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">L + W + H ≤ 160 cm · under 25 kg<\/text><text x=\"359\" y=\"34\" font-size=\"13\" font-weight=\"700\" fill=\"#24476b\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">STAYS WITH YOU<\/text><text x=\"359\" y=\"52\" font-size=\"12.5\" font-weight=\"400\" fill=\"#16232e\" text-anchor=\"middle\">small bag, 4 nights<\/text><circle cx=\"266\" cy=\"78\" r=\"7\" fill=\"#5c6b4f\" stroke=\"none\" stroke-width=\"1\"/><path d=\"M262.5 78 l2.5 2.5 l4.5 -5\" stroke=\"#ffffff\" stroke-width=\"1.8\" fill=\"none\"/><text x=\"280\" y=\"82\" font-size=\"13\" font-weight=\"400\" fill=\"#16232e\" text-anchor=\"start\">Passport<\/text><circle cx=\"266\" cy=\"101\" r=\"7\" fill=\"#5c6b4f\" stroke=\"none\" stroke-width=\"1\"/><path d=\"M262.5 101 l2.5 2.5 l4.5 -5\" stroke=\"#ffffff\" stroke-width=\"1.8\" fill=\"none\"/><text x=\"280\" y=\"105\" font-size=\"13\" font-weight=\"400\" fill=\"#16232e\" text-anchor=\"start\">Cash + cards<\/text><circle cx=\"266\" cy=\"124\" r=\"7\" fill=\"#5c6b4f\" stroke=\"none\" stroke-width=\"1\"/><path d=\"M262.5 124 l2.5 2.5 l4.5 -5\" stroke=\"#ffffff\" stroke-width=\"1.8\" fill=\"none\"/><text x=\"280\" y=\"128\" font-size=\"13\" font-weight=\"400\" fill=\"#16232e\" text-anchor=\"start\">Medication<\/text><circle cx=\"266\" cy=\"147\" r=\"7\" fill=\"#5c6b4f\" stroke=\"none\" stroke-width=\"1\"/><path d=\"M262.5 147 l2.5 2.5 l4.5 -5\" stroke=\"#ffffff\" stroke-width=\"1.8\" fill=\"none\"/><text x=\"280\" y=\"151\" font-size=\"13\" font-weight=\"400\" fill=\"#16232e\" text-anchor=\"start\">Phone, laptop, camera<\/text><circle cx=\"266\" cy=\"170\" r=\"7\" fill=\"#5c6b4f\" stroke=\"none\" stroke-width=\"1\"/><path d=\"M262.5 170 l2.5 2.5 l4.5 -5\" stroke=\"#ffffff\" stroke-width=\"1.8\" fill=\"none\"/><text x=\"280\" y=\"174\" font-size=\"13\" font-weight=\"400\" fill=\"#16232e\" text-anchor=\"start\">Chargers, power banks<\/text><circle cx=\"266\" cy=\"193\" r=\"7\" fill=\"#5c6b4f\" stroke=\"none\" stroke-width=\"1\"/><path d=\"M262.5 193 l2.5 2.5 l4.5 -5\" stroke=\"#ffffff\" stroke-width=\"1.8\" fill=\"none\"/><text x=\"280\" y=\"197\" font-size=\"13\" font-weight=\"400\" fill=\"#16232e\" text-anchor=\"start\">Clothes for 4 nights<\/text><circle cx=\"266\" cy=\"216\" r=\"7\" fill=\"#5c6b4f\" stroke=\"none\" stroke-width=\"1\"/><path d=\"M262.5 216 l2.5 2.5 l4.5 -5\" stroke=\"#ffffff\" stroke-width=\"1.8\" fill=\"none\"/><text x=\"280\" y=\"220\" font-size=\"13\" font-weight=\"400\" fill=\"#16232e\" text-anchor=\"start\">Pen + some yen<\/text><rect x=\"8\" y=\"252\" width=\"464\" height=\"32\" rx=\"6\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><text x=\"24\" y=\"273\" font-size=\"15\" font-weight=\"700\" fill=\"#f08a6b\" text-anchor=\"start\">✕<\/text><text x=\"44\" y=\"273\" font-size=\"12.5\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"start\">Never ship: spray cans, lighters, fuel, anything flammable<\/text><\/svg>",
+      "caption": "Measure the suitcase at home: add length, width and height together."
+     }
     },
     {
      "heading": "How to ship at a convenience store (Oct 11 and Oct 20)",
@@ -3346,7 +3394,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
        ]
       ]
      },
-     "after": "From (every leg): your name, the address where you're staying that night (house or hotel) and a phone number (your US number with +1 is fine). Item (品名): 衣類 (clothes) or 身の回り品 (personal items). If you show the clerk the center's name, they can fill in its center code."
+     "after": "From (every leg): your name, the address where you're staying that night (house or hotel) and a phone number (your US number with +1 is fine). Item (品名): 衣類 (clothes) or 身の回り品 (personal items). If you show the clerk the center's name, they can fill in its center code.",
+     "visual": {
+      "svg": "<svg viewBox=\"0 0 480 288\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Simplified sketch of the boxes on a Yamato waybill\" font-family=\"system-ui,-apple-system,'Segoe UI',Roboto,'Hiragino Sans','Noto Sans JP',sans-serif\"><rect x=\"10\" y=\"10\" width=\"460\" height=\"268\" rx=\"6\" fill=\"#ffffff\" stroke=\"#16232e\" stroke-width=\"1.5\"/><rect x=\"10\" y=\"10\" width=\"460\" height=\"30\" rx=\"6\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"10\" y=\"30\" width=\"460\" height=\"10\" rx=\"0\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><text x=\"24\" y=\"31\" font-size=\"13\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"start\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">宅急便  WAYBILL<\/text><text x=\"456\" y=\"31\" font-size=\"11\" font-weight=\"400\" fill=\"#c8d6e3\" text-anchor=\"end\">simplified sketch<\/text><rect x=\"22\" y=\"52\" width=\"268\" height=\"92\" rx=\"3\" fill=\"#fbf8f0\" stroke=\"#16232e\" stroke-width=\"1\"/><text x=\"30\" y=\"69\" font-size=\"12.5\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"start\">お届け先<\/text><text x=\"282\" y=\"69\" font-size=\"10.5\" font-weight=\"700\" fill=\"#5a6b74\" text-anchor=\"end\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">TO<\/text><text x=\"30\" y=\"89\" font-size=\"12.5\" font-weight=\"400\" fill=\"#16232e\" text-anchor=\"start\">Name (see table above)<\/text><text x=\"30\" y=\"106\" font-size=\"12.5\" font-weight=\"400\" fill=\"#16232e\" text-anchor=\"start\">Address in Japanese<\/text><text x=\"30\" y=\"123\" font-size=\"12.5\" font-weight=\"400\" fill=\"#16232e\" text-anchor=\"start\">Phone number<\/text><rect x=\"22\" y=\"152\" width=\"268\" height=\"64\" rx=\"3\" fill=\"#fbf8f0\" stroke=\"#16232e\" stroke-width=\"1\"/><text x=\"30\" y=\"169\" font-size=\"12.5\" font-weight=\"700\" fill=\"#24476b\" text-anchor=\"start\">ご依頼主<\/text><text x=\"282\" y=\"169\" font-size=\"10.5\" font-weight=\"700\" fill=\"#5a6b74\" text-anchor=\"end\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">FROM<\/text><text x=\"30\" y=\"189\" font-size=\"12.5\" font-weight=\"400\" fill=\"#16232e\" text-anchor=\"start\">Your name + phone<\/text><rect x=\"300\" y=\"52\" width=\"158\" height=\"56\" rx=\"3\" fill=\"#fbf8f0\" stroke=\"#16232e\" stroke-width=\"1\"/><text x=\"308\" y=\"69\" font-size=\"12.5\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"start\">お届け予定日<\/text><text x=\"450\" y=\"69\" font-size=\"10.5\" font-weight=\"700\" fill=\"#5a6b74\" text-anchor=\"end\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">DATE<\/text><text x=\"308\" y=\"89\" font-size=\"12.5\" font-weight=\"400\" fill=\"#16232e\" text-anchor=\"start\">e.g. 10/15 午前中<\/text><rect x=\"300\" y=\"116\" width=\"158\" height=\"48\" rx=\"3\" fill=\"#fbf8f0\" stroke=\"#16232e\" stroke-width=\"1\"/><text x=\"308\" y=\"133\" font-size=\"12.5\" font-weight=\"700\" fill=\"#24476b\" text-anchor=\"start\">品名<\/text><text x=\"450\" y=\"133\" font-size=\"10.5\" font-weight=\"700\" fill=\"#5a6b74\" text-anchor=\"end\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">ITEM<\/text><text x=\"308\" y=\"153\" font-size=\"12.5\" font-weight=\"400\" fill=\"#16232e\" text-anchor=\"start\">suitcase<\/text><rect x=\"300\" y=\"172\" width=\"158\" height=\"44\" rx=\"3\" fill=\"#e8d3ca\" stroke=\"#bd4b28\" stroke-width=\"1.5\"/><rect x=\"310\" y=\"184\" width=\"18\" height=\"18\" rx=\"2\" fill=\"#ffffff\" stroke=\"#bd4b28\" stroke-width=\"1.5\"/><path d=\"M313 193 l4 5 l8 -10\" stroke=\"#bd4b28\" stroke-width=\"2.5\" fill=\"none\"/><text x=\"336\" y=\"190\" font-size=\"12.5\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"start\">営業所止め<\/text><text x=\"336\" y=\"206\" font-size=\"11\" font-weight=\"400\" fill=\"#16232e\" text-anchor=\"start\">hold at center<\/text><rect x=\"24.0\" y=\"230\" width=\"1\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"28.5\" y=\"230\" width=\"2\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"33.0\" y=\"230\" width=\"2\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"37.5\" y=\"230\" width=\"1\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"42.0\" y=\"230\" width=\"2\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"46.5\" y=\"230\" width=\"2\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"51.0\" y=\"230\" width=\"1\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"55.5\" y=\"230\" width=\"2\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"60.0\" y=\"230\" width=\"2\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"64.5\" y=\"230\" width=\"1\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"69.0\" y=\"230\" width=\"2\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"73.5\" y=\"230\" width=\"2\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"78.0\" y=\"230\" width=\"1\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"82.5\" y=\"230\" width=\"2\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"87.0\" y=\"230\" width=\"2\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"91.5\" y=\"230\" width=\"1\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"96.0\" y=\"230\" width=\"2\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"100.5\" y=\"230\" width=\"2\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"105.0\" y=\"230\" width=\"1\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"109.5\" y=\"230\" width=\"2\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"114.0\" y=\"230\" width=\"2\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"118.5\" y=\"230\" width=\"1\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"123.0\" y=\"230\" width=\"2\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"127.5\" y=\"230\" width=\"2\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"132.0\" y=\"230\" width=\"1\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"136.5\" y=\"230\" width=\"2\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"141.0\" y=\"230\" width=\"2\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"145.5\" y=\"230\" width=\"1\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"150.0\" y=\"230\" width=\"2\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"154.5\" y=\"230\" width=\"2\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"159.0\" y=\"230\" width=\"1\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"163.5\" y=\"230\" width=\"2\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"168.0\" y=\"230\" width=\"2\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"172.5\" y=\"230\" width=\"1\" height=\"30\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><text x=\"190\" y=\"244\" font-size=\"12\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">← customer copy: 12-digit tracking no.<\/text><text x=\"190\" y=\"261\" font-size=\"12\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\">Take a photo, post it in the group chat.<\/text><\/svg>",
+      "caption": "A simplified sketch, not the real form. The real label is laid out differently but has these same boxes. Ask the clerk to point if you can’t find one."
+     }
     },
     {
      "heading": "How to pick up at a Yamato center (Oct 18 and Oct 22)",
@@ -3414,6 +3466,659 @@ svg.leaflet-image-layer.leaflet-interactive path {
       "Lost the receipt: the tracking number is in your photo and the group chat.",
       "Missed the pickup time: the center holds the bag for several days, so come back the next morning."
      ]
+    }
+   ],
+   "short": "Luggage forwarding"
+  },
+  {
+   "id": "races",
+   "short": "Race day betting",
+   "jp": "競馬",
+   "title": "Betting at the JRA races (Kyoto, Sun Oct 17)",
+   "intro": "Japanese horse racing (keiba) is run by the JRA and it is pari-mutuel: you bet against the other fans, not a bookie, and the odds keep moving until betting closes. The smallest bet is ¥100, you must be 20 or older, and you buy tickets from machines with a paper mark card or a QR code on your phone. It is cash only at the machines, so bring yen. You don't need any Japanese beyond a few numbers and the bet names below.",
+   "sections": [
+    {
+     "heading": "The day at a glance",
+     "table": {
+      "head": [
+       "When",
+       "What"
+      ],
+      "rows": [
+       [
+        "Morning",
+        "From Namba: Osaka Metro Midosuji line to Yodoyabashi, then the Keihan line to Yodo Station (about an hour). The track is right next to the station."
+       ],
+       [
+        "From 9:20",
+        "Ticket machines at each gate open. Admission was ¥500 on the 2026 big-race days (¥200 on normal days). Cash."
+       ],
+       [
+        "~10:00",
+        "Race 1. There are about 12 races, roughly every 30 to 35 minutes."
+       ],
+       [
+        "~15:40",
+        "The main race (Shuka Sho, a Grade 1). Crowds are biggest here, so get bets in early."
+       ],
+       [
+        "~16:30",
+        "Last race. Cash any winners before you leave (see 'Cashing a winner')."
+       ],
+       [
+        "~17:00",
+        "Head back to Namba for the Kobe beef dinner."
+       ]
+      ]
+     },
+     "after": "Times are from the 2026 version of this race day. Check the JRA site the week before; the main race usually starts about 3:40 PM."
+    },
+    {
+     "heading": "Getting in",
+     "bullets": [
+      "Easiest: just show up and buy a same-day admission ticket from the machine at the gate (cash). No booking needed.",
+      "Reserved seats are sold online only, through JRA's site, by lottery about two weeks ahead, with a limit of 2 seats per member on big-race days. With 12 of us, general admission is simpler: grab a spot in the stands or on the lawn near the finish line.",
+      "First stop inside: the Information Desk (案内所, annaijo). The English racing program and the English 'How to Bet' booklet are free there.",
+      "Better yet, print JRA's English 'How to Bet' booklet at home and bring it: https://japanracing.jp/en/go-racing/jra-howtobet/index.html",
+      "No dress code. Food stalls and beer are cash or IC card in most spots."
+     ]
+    },
+    {
+     "heading": "Bet types (what you'll see on the card)",
+     "table": {
+      "head": [
+       "Bet",
+       "On the card",
+       "You win if…",
+       "Good for"
+      ],
+      "rows": [
+       [
+        "Win",
+        "単勝 (tansho)",
+        "Your horse finishes 1st.",
+        "Simplest. Start here."
+       ],
+       [
+        "Place",
+        "複勝 (fukusho)",
+        "Your horse finishes in the top 3 (top 2 if 7 or fewer horses run).",
+        "Safest; small payouts."
+       ],
+       [
+        "Quinella",
+        "馬連 (umaren)",
+        "Your 2 horses finish 1st and 2nd, in either order.",
+        "Popular all-rounder."
+       ],
+       [
+        "Wide (Quinella Place)",
+        "ワイド (waido)",
+        "Your 2 horses both finish in the top 3.",
+        "Good beginner combo bet."
+       ],
+       [
+        "Exacta",
+        "馬単 (umatan)",
+        "Your 2 horses finish 1st and 2nd, in that exact order.",
+        "Bigger odds."
+       ],
+       [
+        "Trio",
+        "3連複 (sanrenpuku)",
+        "Your 3 horses are the top 3, any order.",
+        "Long shot, fun for the main race."
+       ],
+       [
+        "Trifecta",
+        "3連単 (sanrentan)",
+        "Your 3 horses finish 1st, 2nd, 3rd in that exact order.",
+        "Lottery-ticket payouts."
+       ],
+       [
+        "Bracket Quinella",
+        "枠連 (wakuren)",
+        "Uses gate brackets (colors), not horse numbers.",
+        "Skip it, it's confusing."
+       ]
+      ]
+     },
+     "after": "Each ¥100 'point' is one combination. Picking 3 horses for a Trio box is 1 combination; boxing 4 horses is 4 combinations (¥400).",
+     "visual": {
+      "svg": "<svg viewBox=\"0 0 480 346\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Which finishing positions each bet type needs\" font-family=\"system-ui,-apple-system,'Segoe UI',Roboto,'Hiragino Sans','Noto Sans JP',sans-serif\"><text x=\"169.0\" y=\"28\" font-size=\"12\" font-weight=\"700\" fill=\"#5a6b74\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">1st<\/text><text x=\"221.0\" y=\"28\" font-size=\"12\" font-weight=\"700\" fill=\"#5a6b74\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">2nd<\/text><text x=\"273.0\" y=\"28\" font-size=\"12\" font-weight=\"700\" fill=\"#5a6b74\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">3rd<\/text><text x=\"352\" y=\"28\" font-size=\"11\" font-weight=\"700\" fill=\"#5a6b74\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">ORDER<\/text><text x=\"432\" y=\"28\" font-size=\"11\" font-weight=\"700\" fill=\"#5a6b74\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">PAYS<\/text><rect x=\"4\" y=\"38\" width=\"472\" height=\"38\" rx=\"4\" fill=\"#f3eee1\" stroke=\"none\" stroke-width=\"1\"/><text x=\"14\" y=\"55\" font-size=\"14\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">Win<\/text><text x=\"14\" y=\"71\" font-size=\"12\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\">単勝<\/text><rect x=\"146\" y=\"45\" width=\"46\" height=\"26\" rx=\"4\" fill=\"none\" stroke=\"#b8c2c8\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><rect x=\"198\" y=\"45\" width=\"46\" height=\"26\" rx=\"4\" fill=\"none\" stroke=\"#b8c2c8\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><rect x=\"250\" y=\"45\" width=\"46\" height=\"26\" rx=\"4\" fill=\"none\" stroke=\"#b8c2c8\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><rect x=\"146\" y=\"45\" width=\"46\" height=\"26\" rx=\"4\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><text x=\"169.0\" y=\"63\" font-size=\"14\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">A<\/text><text x=\"352\" y=\"62\" font-size=\"12.5\" font-weight=\"700\" fill=\"#5a6b74\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">—<\/text><text x=\"432\" y=\"62\" font-size=\"14\" font-weight=\"700\" fill=\"#a97e1f\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">$$<\/text><text x=\"14\" y=\"95\" font-size=\"14\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">Place<\/text><text x=\"14\" y=\"111\" font-size=\"12\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\">複勝<\/text><rect x=\"146\" y=\"85\" width=\"46\" height=\"26\" rx=\"4\" fill=\"none\" stroke=\"#b8c2c8\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><rect x=\"198\" y=\"85\" width=\"46\" height=\"26\" rx=\"4\" fill=\"none\" stroke=\"#b8c2c8\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><rect x=\"250\" y=\"85\" width=\"46\" height=\"26\" rx=\"4\" fill=\"none\" stroke=\"#b8c2c8\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><rect x=\"146\" y=\"85\" width=\"150\" height=\"26\" rx=\"13\" fill=\"#dfe8f0\" stroke=\"#24476b\" stroke-width=\"1.5\"/><text x=\"221.0\" y=\"102\" font-size=\"12\" font-weight=\"700\" fill=\"#24476b\" text-anchor=\"middle\">A in top 3<\/text><text x=\"352\" y=\"102\" font-size=\"12.5\" font-weight=\"700\" fill=\"#5a6b74\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">—<\/text><text x=\"432\" y=\"102\" font-size=\"14\" font-weight=\"700\" fill=\"#a97e1f\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">$<\/text><rect x=\"4\" y=\"118\" width=\"472\" height=\"38\" rx=\"4\" fill=\"#f3eee1\" stroke=\"none\" stroke-width=\"1\"/><text x=\"14\" y=\"135\" font-size=\"14\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">Quinella<\/text><text x=\"14\" y=\"151\" font-size=\"12\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\">馬連<\/text><rect x=\"146\" y=\"125\" width=\"46\" height=\"26\" rx=\"4\" fill=\"none\" stroke=\"#b8c2c8\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><rect x=\"198\" y=\"125\" width=\"46\" height=\"26\" rx=\"4\" fill=\"none\" stroke=\"#b8c2c8\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><rect x=\"250\" y=\"125\" width=\"46\" height=\"26\" rx=\"4\" fill=\"none\" stroke=\"#b8c2c8\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><rect x=\"146\" y=\"125\" width=\"98\" height=\"26\" rx=\"13\" fill=\"#dfe8f0\" stroke=\"#24476b\" stroke-width=\"1.5\"/><text x=\"195.0\" y=\"142\" font-size=\"12\" font-weight=\"700\" fill=\"#24476b\" text-anchor=\"middle\">A + B<\/text><text x=\"352\" y=\"142\" font-size=\"12.5\" font-weight=\"700\" fill=\"#5a6b74\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">any<\/text><text x=\"432\" y=\"142\" font-size=\"14\" font-weight=\"700\" fill=\"#a97e1f\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">$$<\/text><text x=\"14\" y=\"175\" font-size=\"14\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">Wide<\/text><text x=\"14\" y=\"191\" font-size=\"12\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\">ワイド<\/text><rect x=\"146\" y=\"165\" width=\"46\" height=\"26\" rx=\"4\" fill=\"none\" stroke=\"#b8c2c8\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><rect x=\"198\" y=\"165\" width=\"46\" height=\"26\" rx=\"4\" fill=\"none\" stroke=\"#b8c2c8\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><rect x=\"250\" y=\"165\" width=\"46\" height=\"26\" rx=\"4\" fill=\"none\" stroke=\"#b8c2c8\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><rect x=\"146\" y=\"165\" width=\"150\" height=\"26\" rx=\"13\" fill=\"#dfe8f0\" stroke=\"#24476b\" stroke-width=\"1.5\"/><text x=\"221.0\" y=\"182\" font-size=\"12\" font-weight=\"700\" fill=\"#24476b\" text-anchor=\"middle\">A + B both here<\/text><text x=\"352\" y=\"182\" font-size=\"12.5\" font-weight=\"700\" fill=\"#5a6b74\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">any<\/text><text x=\"432\" y=\"182\" font-size=\"14\" font-weight=\"700\" fill=\"#a97e1f\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">$<\/text><rect x=\"4\" y=\"198\" width=\"472\" height=\"38\" rx=\"4\" fill=\"#f3eee1\" stroke=\"none\" stroke-width=\"1\"/><text x=\"14\" y=\"215\" font-size=\"14\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">Exacta<\/text><text x=\"14\" y=\"231\" font-size=\"12\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\">馬単<\/text><rect x=\"146\" y=\"205\" width=\"46\" height=\"26\" rx=\"4\" fill=\"none\" stroke=\"#b8c2c8\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><rect x=\"198\" y=\"205\" width=\"46\" height=\"26\" rx=\"4\" fill=\"none\" stroke=\"#b8c2c8\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><rect x=\"250\" y=\"205\" width=\"46\" height=\"26\" rx=\"4\" fill=\"none\" stroke=\"#b8c2c8\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><rect x=\"146\" y=\"205\" width=\"46\" height=\"26\" rx=\"4\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><text x=\"169.0\" y=\"223\" font-size=\"14\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">A<\/text><rect x=\"198\" y=\"205\" width=\"46\" height=\"26\" rx=\"4\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><text x=\"221.0\" y=\"223\" font-size=\"14\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">B<\/text><text x=\"352\" y=\"222\" font-size=\"12.5\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">exact<\/text><text x=\"432\" y=\"222\" font-size=\"14\" font-weight=\"700\" fill=\"#a97e1f\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">$$$<\/text><text x=\"14\" y=\"255\" font-size=\"14\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">Trio<\/text><text x=\"14\" y=\"271\" font-size=\"12\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\">3連複<\/text><rect x=\"146\" y=\"245\" width=\"46\" height=\"26\" rx=\"4\" fill=\"none\" stroke=\"#b8c2c8\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><rect x=\"198\" y=\"245\" width=\"46\" height=\"26\" rx=\"4\" fill=\"none\" stroke=\"#b8c2c8\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><rect x=\"250\" y=\"245\" width=\"46\" height=\"26\" rx=\"4\" fill=\"none\" stroke=\"#b8c2c8\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><rect x=\"146\" y=\"245\" width=\"150\" height=\"26\" rx=\"13\" fill=\"#dfe8f0\" stroke=\"#24476b\" stroke-width=\"1.5\"/><text x=\"221.0\" y=\"262\" font-size=\"12\" font-weight=\"700\" fill=\"#24476b\" text-anchor=\"middle\">A + B + C<\/text><text x=\"352\" y=\"262\" font-size=\"12.5\" font-weight=\"700\" fill=\"#5a6b74\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">any<\/text><text x=\"432\" y=\"262\" font-size=\"14\" font-weight=\"700\" fill=\"#a97e1f\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">$$$<\/text><rect x=\"4\" y=\"278\" width=\"472\" height=\"38\" rx=\"4\" fill=\"#f3eee1\" stroke=\"none\" stroke-width=\"1\"/><text x=\"14\" y=\"295\" font-size=\"14\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">Trifecta<\/text><text x=\"14\" y=\"311\" font-size=\"12\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\">3連単<\/text><rect x=\"146\" y=\"285\" width=\"46\" height=\"26\" rx=\"4\" fill=\"none\" stroke=\"#b8c2c8\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><rect x=\"198\" y=\"285\" width=\"46\" height=\"26\" rx=\"4\" fill=\"none\" stroke=\"#b8c2c8\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><rect x=\"250\" y=\"285\" width=\"46\" height=\"26\" rx=\"4\" fill=\"none\" stroke=\"#b8c2c8\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><rect x=\"146\" y=\"285\" width=\"46\" height=\"26\" rx=\"4\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><text x=\"169.0\" y=\"303\" font-size=\"14\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">A<\/text><rect x=\"198\" y=\"285\" width=\"46\" height=\"26\" rx=\"4\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><text x=\"221.0\" y=\"303\" font-size=\"14\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">B<\/text><rect x=\"250\" y=\"285\" width=\"46\" height=\"26\" rx=\"4\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><text x=\"273.0\" y=\"303\" font-size=\"14\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">C<\/text><text x=\"352\" y=\"302\" font-size=\"12.5\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">exact<\/text><text x=\"432\" y=\"302\" font-size=\"14\" font-weight=\"700\" fill=\"#a97e1f\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">$$$$<\/text><text x=\"14\" y=\"336\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\">A, B, C = the horses you pick.  $ = typical payout size, from small to huge.<\/text><\/svg>",
+      "caption": "Solid boxes mean the horse must finish in that exact spot. Rounded bars mean any order inside the bar."
+     }
+    },
+    {
+     "heading": "Filling in a mark card",
+     "steps": [
+      "Take a GREEN mark card (緑のカード) from the counters near the machines. It handles every bet type and is the one beginners use. Pencils are at the counters.",
+      "Mark the racecourse: 京都 (Kyoto).",
+      "Mark the race number (1R to 12R). Check the big screen or program; the main race is usually 11R.",
+      "Mark the bet type, e.g. 単勝 (Win) or ワイド (Wide).",
+      "Mark the horse number(s). Use the horse number (馬番, umaban, the big number on the saddle cloth), not the bracket.",
+      "Mark the amount: a digit plus a unit. For example 5 and 百円 = ¥500; 1 and 千円 = ¥1,000.",
+      "Made a mistake? Fill in the 取消 (cancel) box on that line and redo it on the next line, or grab a new card. Don't fold or bend the card."
+     ],
+     "after": "The English 'How to Bet' booklet has a picture of the card with every box labeled. Keep one open next to you the first time.",
+     "visual": {
+      "svg": "<svg viewBox=\"0 0 480 322\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Simplified mark card with the six parts you fill in\" font-family=\"system-ui,-apple-system,'Segoe UI',Roboto,'Hiragino Sans','Noto Sans JP',sans-serif\"><rect x=\"8\" y=\"8\" width=\"464\" height=\"306\" rx=\"8\" fill=\"#f1f6ec\" stroke=\"#5c6b4f\" stroke-width=\"2\"/><rect x=\"8\" y=\"8\" width=\"464\" height=\"28\" rx=\"8\" fill=\"#5c6b4f\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"8\" y=\"26\" width=\"464\" height=\"10\" rx=\"0\" fill=\"#5c6b4f\" stroke=\"none\" stroke-width=\"1\"/><text x=\"22\" y=\"27\" font-size=\"12.5\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"start\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">GREEN MARK CARD<\/text><text x=\"458\" y=\"27\" font-size=\"11\" font-weight=\"400\" fill=\"#dfe8d4\" text-anchor=\"end\">simplified layout<\/text><circle cx=\"29\" cy=\"54\" r=\"9\" fill=\"#bd4b28\" stroke=\"none\" stroke-width=\"1\"/><text x=\"29\" y=\"57.96\" font-size=\"11\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">1<\/text><text x=\"44\" y=\"58\" font-size=\"12.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">場<\/text><text x=\"63\" y=\"58\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\">racecourse<\/text><rect x=\"22\" y=\"66\" width=\"38\" height=\"22\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"41.0\" y=\"81.07\" font-size=\"11\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">札幌<\/text><rect x=\"64\" y=\"66\" width=\"38\" height=\"22\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"83.0\" y=\"81.07\" font-size=\"11\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">東京<\/text><rect x=\"106\" y=\"66\" width=\"38\" height=\"22\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"125.0\" y=\"81.07\" font-size=\"11\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">中山<\/text><rect x=\"148\" y=\"66\" width=\"38\" height=\"22\" rx=\"2\" fill=\"#16232e\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"167.0\" y=\"81.07\" font-size=\"11\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\">京都<\/text><rect x=\"190\" y=\"66\" width=\"38\" height=\"22\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"209.0\" y=\"81.07\" font-size=\"11\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">阪神<\/text><circle cx=\"253\" cy=\"54\" r=\"9\" fill=\"#bd4b28\" stroke=\"none\" stroke-width=\"1\"/><text x=\"253\" y=\"57.96\" font-size=\"11\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">2<\/text><text x=\"268\" y=\"58\" font-size=\"12.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">レース<\/text><text x=\"313\" y=\"58\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\">race<\/text><rect x=\"246\" y=\"66\" width=\"15\" height=\"22\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"253.5\" y=\"80.515\" font-size=\"9.5\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">1<\/text><rect x=\"264\" y=\"66\" width=\"15\" height=\"22\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"271.5\" y=\"80.515\" font-size=\"9.5\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">2<\/text><rect x=\"282\" y=\"66\" width=\"15\" height=\"22\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"289.5\" y=\"80.515\" font-size=\"9.5\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">3<\/text><rect x=\"300\" y=\"66\" width=\"15\" height=\"22\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"307.5\" y=\"80.515\" font-size=\"9.5\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">4<\/text><rect x=\"318\" y=\"66\" width=\"15\" height=\"22\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"325.5\" y=\"80.515\" font-size=\"9.5\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">5<\/text><rect x=\"336\" y=\"66\" width=\"15\" height=\"22\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"343.5\" y=\"80.515\" font-size=\"9.5\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">6<\/text><rect x=\"354\" y=\"66\" width=\"15\" height=\"22\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"361.5\" y=\"80.515\" font-size=\"9.5\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">7<\/text><rect x=\"372\" y=\"66\" width=\"15\" height=\"22\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"379.5\" y=\"80.515\" font-size=\"9.5\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">8<\/text><rect x=\"390\" y=\"66\" width=\"15\" height=\"22\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"397.5\" y=\"80.515\" font-size=\"9.5\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">9<\/text><rect x=\"408\" y=\"66\" width=\"15\" height=\"22\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"415.5\" y=\"80.515\" font-size=\"9.5\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">10<\/text><rect x=\"426\" y=\"66\" width=\"15\" height=\"22\" rx=\"2\" fill=\"#16232e\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"433.5\" y=\"80.515\" font-size=\"9.5\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\">11<\/text><rect x=\"444\" y=\"66\" width=\"15\" height=\"22\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"451.5\" y=\"80.515\" font-size=\"9.5\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">12<\/text><circle cx=\"29\" cy=\"112\" r=\"9\" fill=\"#bd4b28\" stroke=\"none\" stroke-width=\"1\"/><text x=\"29\" y=\"115.96\" font-size=\"11\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">3<\/text><text x=\"44\" y=\"116\" font-size=\"12.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">式別<\/text><text x=\"76\" y=\"116\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\">bet type<\/text><rect x=\"22\" y=\"124\" width=\"51\" height=\"24\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"47.5\" y=\"140.07\" font-size=\"11\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">単勝<\/text><rect x=\"77\" y=\"124\" width=\"51\" height=\"24\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"102.5\" y=\"140.07\" font-size=\"11\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">複勝<\/text><rect x=\"132\" y=\"124\" width=\"51\" height=\"24\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"157.5\" y=\"140.07\" font-size=\"11\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">枠連<\/text><rect x=\"187\" y=\"124\" width=\"51\" height=\"24\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"212.5\" y=\"140.07\" font-size=\"11\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">馬連<\/text><rect x=\"242\" y=\"124\" width=\"51\" height=\"24\" rx=\"2\" fill=\"#16232e\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"267.5\" y=\"140.07\" font-size=\"11\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\">ワイド<\/text><rect x=\"297\" y=\"124\" width=\"51\" height=\"24\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"322.5\" y=\"140.07\" font-size=\"11\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">馬単<\/text><rect x=\"352\" y=\"124\" width=\"51\" height=\"24\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"377.5\" y=\"140.07\" font-size=\"11\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">3連複<\/text><rect x=\"407\" y=\"124\" width=\"51\" height=\"24\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"432.5\" y=\"140.07\" font-size=\"11\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">3連単<\/text><circle cx=\"29\" cy=\"170\" r=\"9\" fill=\"#bd4b28\" stroke=\"none\" stroke-width=\"1\"/><text x=\"29\" y=\"173.96\" font-size=\"11\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">4<\/text><text x=\"44\" y=\"174\" font-size=\"12.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">馬番<\/text><text x=\"76\" y=\"174\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\">horse number<\/text><rect x=\"22\" y=\"182\" width=\"21\" height=\"20\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"32.5\" y=\"196.07\" font-size=\"11\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">1<\/text><rect x=\"46\" y=\"182\" width=\"21\" height=\"20\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"56.5\" y=\"196.07\" font-size=\"11\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">2<\/text><rect x=\"70\" y=\"182\" width=\"21\" height=\"20\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"80.5\" y=\"196.07\" font-size=\"11\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">3<\/text><rect x=\"94\" y=\"182\" width=\"21\" height=\"20\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"104.5\" y=\"196.07\" font-size=\"11\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">4<\/text><rect x=\"118\" y=\"182\" width=\"21\" height=\"20\" rx=\"2\" fill=\"#16232e\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"128.5\" y=\"196.07\" font-size=\"11\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\">5<\/text><rect x=\"142\" y=\"182\" width=\"21\" height=\"20\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"152.5\" y=\"196.07\" font-size=\"11\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">6<\/text><rect x=\"166\" y=\"182\" width=\"21\" height=\"20\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"176.5\" y=\"196.07\" font-size=\"11\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">7<\/text><rect x=\"190\" y=\"182\" width=\"21\" height=\"20\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"200.5\" y=\"196.07\" font-size=\"11\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">8<\/text><rect x=\"214\" y=\"182\" width=\"21\" height=\"20\" rx=\"2\" fill=\"#16232e\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"224.5\" y=\"196.07\" font-size=\"11\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\">9<\/text><rect x=\"22\" y=\"206\" width=\"21\" height=\"20\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"32.5\" y=\"219.7\" font-size=\"10\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">10<\/text><rect x=\"46\" y=\"206\" width=\"21\" height=\"20\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"56.5\" y=\"219.7\" font-size=\"10\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">11<\/text><rect x=\"70\" y=\"206\" width=\"21\" height=\"20\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"80.5\" y=\"219.7\" font-size=\"10\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">12<\/text><rect x=\"94\" y=\"206\" width=\"21\" height=\"20\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"104.5\" y=\"219.7\" font-size=\"10\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">13<\/text><rect x=\"118\" y=\"206\" width=\"21\" height=\"20\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"128.5\" y=\"219.7\" font-size=\"10\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">14<\/text><rect x=\"142\" y=\"206\" width=\"21\" height=\"20\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"152.5\" y=\"219.7\" font-size=\"10\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">15<\/text><rect x=\"166\" y=\"206\" width=\"21\" height=\"20\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"176.5\" y=\"219.7\" font-size=\"10\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">16<\/text><rect x=\"190\" y=\"206\" width=\"21\" height=\"20\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"200.5\" y=\"219.7\" font-size=\"10\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">17<\/text><rect x=\"214\" y=\"206\" width=\"21\" height=\"20\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"224.5\" y=\"219.7\" font-size=\"10\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">18<\/text><circle cx=\"259\" cy=\"170\" r=\"9\" fill=\"#bd4b28\" stroke=\"none\" stroke-width=\"1\"/><text x=\"259\" y=\"173.96\" font-size=\"11\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">5<\/text><text x=\"274\" y=\"174\" font-size=\"12.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">金額<\/text><text x=\"306\" y=\"174\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\">amount<\/text><rect x=\"252.0\" y=\"182\" width=\"21\" height=\"20\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"262.5\" y=\"196.07\" font-size=\"11\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">1<\/text><rect x=\"275.5\" y=\"182\" width=\"21\" height=\"20\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"286.0\" y=\"196.07\" font-size=\"11\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">2<\/text><rect x=\"299.0\" y=\"182\" width=\"21\" height=\"20\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"309.5\" y=\"196.07\" font-size=\"11\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">3<\/text><rect x=\"322.5\" y=\"182\" width=\"21\" height=\"20\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"333.0\" y=\"196.07\" font-size=\"11\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">4<\/text><rect x=\"346.0\" y=\"182\" width=\"21\" height=\"20\" rx=\"2\" fill=\"#16232e\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"356.5\" y=\"196.07\" font-size=\"11\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\">5<\/text><rect x=\"369.5\" y=\"182\" width=\"21\" height=\"20\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"380.0\" y=\"196.07\" font-size=\"11\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">6<\/text><rect x=\"393.0\" y=\"182\" width=\"21\" height=\"20\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"403.5\" y=\"196.07\" font-size=\"11\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">7<\/text><rect x=\"416.5\" y=\"182\" width=\"21\" height=\"20\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"427.0\" y=\"196.07\" font-size=\"11\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">8<\/text><rect x=\"440.0\" y=\"182\" width=\"21\" height=\"20\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"450.5\" y=\"196.07\" font-size=\"11\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">9<\/text><rect x=\"252\" y=\"206\" width=\"52\" height=\"20\" rx=\"2\" fill=\"#16232e\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"278.0\" y=\"220.07\" font-size=\"11\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\">百円<\/text><rect x=\"308\" y=\"206\" width=\"52\" height=\"20\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"334.0\" y=\"220.07\" font-size=\"11\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">千円<\/text><rect x=\"364\" y=\"206\" width=\"52\" height=\"20\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><text x=\"390.0\" y=\"220.07\" font-size=\"11\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">万円<\/text><circle cx=\"29\" cy=\"250\" r=\"9\" fill=\"#bd4b28\" stroke=\"none\" stroke-width=\"1\"/><text x=\"29\" y=\"253.96\" font-size=\"11\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">6<\/text><text x=\"44\" y=\"254\" font-size=\"12.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">取消<\/text><text x=\"76\" y=\"254\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\">cancel a line<\/text><rect x=\"196\" y=\"242\" width=\"22\" height=\"16\" rx=\"2\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"1\"/><rect x=\"18\" y=\"272\" width=\"444\" height=\"32\" rx=\"5\" fill=\"#ffffff\" stroke=\"#c9d6bd\" stroke-width=\"1\"/><text x=\"30\" y=\"293\" font-size=\"12.5\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"start\">This example:<\/text><text x=\"124\" y=\"293\" font-size=\"12.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">Kyoto · race 11 · Wide · horses 5 + 9 · ¥500<\/text><\/svg>",
+      "caption": "A simplified layout so you know what each part does. On the real card the boxes are arranged differently, so use the English How to Bet booklet next to you the first time."
+     }
+    },
+    {
+     "heading": "Option: bet from your phone (SMAPPY QR)",
+     "steps": [
+      "On your phone, open jra.go.jp and tap スマッピー (SMAPPY) in the menu. No app or account needed.",
+      "Pick the track (京都), race, bet type, horses and amount (enter 1 for ¥100, 5 for ¥500).",
+      "Tap 投票用QR表示 to make a QR code. Screenshot it.",
+      "At a machine with the SMAPPY sticker, hold the QR up to the reader, insert cash and take your ticket."
+     ],
+     "after": "The site is in Japanese but it's mostly numbers. JRA has an English walkthrough PDF on the same page as the How to Bet booklet. You can make QR codes from Saturday 7:30 PM for Sunday races, so you can set your picks over dinner the night before."
+    },
+    {
+     "heading": "Buying the ticket",
+     "steps": [
+      "Go to any betting machine (発売機, hatsubaiki). Lines get long right before each race, so bet 10+ minutes early.",
+      "Insert your mark card (or scan your QR), then insert cash. Machines take bills and give change.",
+      "Take the ticket (馬券, baken) and check it: race number, bet type, horses and amount are printed on it.",
+      "Betting closes about 2 minutes before the start. A bell and announcements count it down.",
+      "Keep your ticket flat and safe until the result is official (確定, kakutei, shown on the board)."
+     ],
+     "visual": {
+      "svg": "<svg viewBox=\"0 0 480 150\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Four steps: fill in the card, use the machine, check the ticket, cash winners\" font-family=\"system-ui,-apple-system,'Segoe UI',Roboto,'Hiragino Sans','Noto Sans JP',sans-serif\"><rect x=\"8.0\" y=\"12\" width=\"105.5\" height=\"126\" rx=\"8\" fill=\"#fbf8f0\" stroke=\"#c9c0a8\" stroke-width=\"1\"/><circle cx=\"24.0\" cy=\"30\" r=\"11\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><text x=\"24.0\" y=\"34.32\" font-size=\"12\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">1<\/text><rect x=\"44.75\" y=\"44\" width=\"32\" height=\"42\" rx=\"3\" fill=\"#f1f6ec\" stroke=\"#5c6b4f\" stroke-width=\"1.5\"/><rect x=\"49.75\" y=\"52\" width=\"9\" height=\"7\" rx=\"1\" fill=\"#16232e\" stroke=\"#5c6b4f\" stroke-width=\"0.8\"/><rect x=\"61.75\" y=\"52\" width=\"9\" height=\"7\" rx=\"1\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"0.8\"/><rect x=\"49.75\" y=\"64\" width=\"9\" height=\"7\" rx=\"1\" fill=\"#ffffff\" stroke=\"#5c6b4f\" stroke-width=\"0.8\"/><rect x=\"61.75\" y=\"64\" width=\"9\" height=\"7\" rx=\"1\" fill=\"#16232e\" stroke=\"#5c6b4f\" stroke-width=\"0.8\"/><text x=\"60.75\" y=\"106\" font-size=\"12.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">Fill in card<\/text><text x=\"60.75\" y=\"123\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\">or make a QR<\/text><polygon points=\"125.5,75.0 116.5,69.0 116.5,81.0\" fill=\"#bd4b28\"/><rect x=\"127.5\" y=\"12\" width=\"105.5\" height=\"126\" rx=\"8\" fill=\"#fbf8f0\" stroke=\"#c9c0a8\" stroke-width=\"1\"/><circle cx=\"143.5\" cy=\"30\" r=\"11\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><text x=\"143.5\" y=\"34.32\" font-size=\"12\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">2<\/text><rect x=\"158.25\" y=\"42\" width=\"44\" height=\"46\" rx=\"5\" fill=\"#c8d6e3\" stroke=\"#24476b\" stroke-width=\"1.5\"/><rect x=\"165.25\" y=\"48\" width=\"30\" height=\"14\" rx=\"2\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"165.25\" y=\"68\" width=\"14\" height=\"4\" rx=\"0\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"183.25\" y=\"68\" width=\"12\" height=\"4\" rx=\"0\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"172.25\" y=\"77\" width=\"16\" height=\"5\" rx=\"1\" fill=\"#bd4b28\" stroke=\"none\" stroke-width=\"1\"/><text x=\"180.25\" y=\"106\" font-size=\"12.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">Card in, cash in<\/text><text x=\"180.25\" y=\"123\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\">machine 発売機<\/text><polygon points=\"245.0,75.0 236.0,69.0 236.0,81.0\" fill=\"#bd4b28\"/><rect x=\"247.0\" y=\"12\" width=\"105.5\" height=\"126\" rx=\"8\" fill=\"#fbf8f0\" stroke=\"#c9c0a8\" stroke-width=\"1\"/><circle cx=\"263.0\" cy=\"30\" r=\"11\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><text x=\"263.0\" y=\"34.32\" font-size=\"12\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">3<\/text><rect x=\"275.75\" y=\"51\" width=\"48\" height=\"30\" rx=\"3\" fill=\"#ffffff\" stroke=\"#16232e\" stroke-width=\"1.5\"/><line x1=\"283.75\" y1=\"61\" x2=\"313.75\" y2=\"61\" stroke=\"#16232e\" stroke-width=\"1.5\"/><line x1=\"283.75\" y1=\"68\" x2=\"307.75\" y2=\"68\" stroke=\"#5a6b74\" stroke-width=\"1.2\"/><line x1=\"283.75\" y1=\"74\" x2=\"311.75\" y2=\"74\" stroke=\"#5a6b74\" stroke-width=\"1.2\"/><text x=\"317.75\" y=\"76\" font-size=\"9\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"middle\">¥<\/text><text x=\"299.75\" y=\"106\" font-size=\"12.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">Check ticket<\/text><text x=\"299.75\" y=\"123\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\">race, bet, ¥<\/text><polygon points=\"364.5,75.0 355.5,69.0 355.5,81.0\" fill=\"#bd4b28\"/><rect x=\"366.5\" y=\"12\" width=\"105.5\" height=\"126\" rx=\"8\" fill=\"#fbf8f0\" stroke=\"#c9c0a8\" stroke-width=\"1\"/><circle cx=\"382.5\" cy=\"30\" r=\"11\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><text x=\"382.5\" y=\"34.32\" font-size=\"12\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">4<\/text><rect x=\"397.25\" y=\"54\" width=\"44\" height=\"24\" rx=\"3\" fill=\"#d9e3c9\" stroke=\"#5c6b4f\" stroke-width=\"1.5\"/><circle cx=\"419.25\" cy=\"66\" r=\"7\" fill=\"none\" stroke=\"#5c6b4f\" stroke-width=\"1.5\"/><text x=\"419.25\" y=\"70\" font-size=\"10\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">¥<\/text><circle cx=\"439.25\" cy=\"80\" r=\"6\" fill=\"#a97e1f\" stroke=\"none\" stroke-width=\"1\"/><text x=\"419.25\" y=\"106\" font-size=\"12.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">Won? Payout<\/text><text x=\"419.25\" y=\"123\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\">machine 払戻<\/text><\/svg>",
+      "caption": "Bet 10+ minutes early. Betting closes about 2 minutes before the start."
+     }
+    },
+    {
+     "heading": "Reading the odds",
+     "bullets": [
+      "Odds are shown as the payout per ¥1. Odds of 3.5 means ¥350 back for every ¥100 bet (your ¥100 included).",
+      "人気 (ninki) is the favorite ranking: 1番人気 is the favorite.",
+      "Odds on the screens and the paper programs change until betting closes. Your payout uses the final odds, not the odds when you bought."
+     ],
+     "visual": {
+      "svg": "<svg viewBox=\"0 0 480 172\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Example of reading the odds: 3.5 on a 100 yen bet pays 350 yen\" font-family=\"system-ui,-apple-system,'Segoe UI',Roboto,'Hiragino Sans','Noto Sans JP',sans-serif\"><rect x=\"8\" y=\"14\" width=\"196\" height=\"132\" rx=\"8\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><text x=\"28\" y=\"40\" font-size=\"11\" font-weight=\"700\" fill=\"#a97e1f\" text-anchor=\"start\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">NO.<\/text><text x=\"100\" y=\"40\" font-size=\"11\" font-weight=\"700\" fill=\"#a97e1f\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">ODDS<\/text><text x=\"170\" y=\"40\" font-size=\"11\" font-weight=\"700\" fill=\"#a97e1f\" text-anchor=\"middle\">人気<\/text><text x=\"32\" y=\"70\" font-size=\"16\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"start\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">3<\/text><text x=\"100\" y=\"70\" font-size=\"16\" font-weight=\"700\" fill=\"#ffd479\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">12.4<\/text><text x=\"170\" y=\"70\" font-size=\"14\" font-weight=\"400\" fill=\"#c8d6e3\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">5<\/text><rect x=\"16\" y=\"80\" width=\"180\" height=\"26\" rx=\"4\" fill=\"#3a2a1c\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"16\" y=\"80\" width=\"180\" height=\"26\" rx=\"4\" fill=\"none\" stroke=\"#a97e1f\" stroke-width=\"1.5\"/><text x=\"32\" y=\"98\" font-size=\"16\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"start\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">7<\/text><text x=\"100\" y=\"98\" font-size=\"16\" font-weight=\"700\" fill=\"#ffd479\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">3.5<\/text><text x=\"170\" y=\"98\" font-size=\"14\" font-weight=\"400\" fill=\"#c8d6e3\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">1<\/text><text x=\"32\" y=\"126\" font-size=\"16\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"start\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">9<\/text><text x=\"100\" y=\"126\" font-size=\"16\" font-weight=\"700\" fill=\"#ffd479\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">8.0<\/text><text x=\"170\" y=\"126\" font-size=\"14\" font-weight=\"400\" fill=\"#c8d6e3\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">3<\/text><text x=\"106\" y=\"162\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\">人気 1 = the favorite<\/text><text x=\"226\" y=\"48\" font-size=\"15\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">¥100 on horse 7 (Win)<\/text><text x=\"226\" y=\"82\" font-size=\"22\" font-weight=\"700\" fill=\"#a97e1f\" text-anchor=\"start\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">× 3.5<\/text><line x1=\"226\" y1=\"96\" x2=\"460\" y2=\"96\" stroke=\"#16232e\" stroke-width=\"1.5\"/><text x=\"226\" y=\"128\" font-size=\"24\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"start\">= ¥350 back<\/text><text x=\"226\" y=\"150\" font-size=\"12\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\">(that’s ¥250 profit + your ¥100)<\/text><\/svg>",
+      "caption": "Odds are the payout per ¥1. They keep moving until betting closes, and you get the final odds."
+     }
+    },
+    {
+     "heading": "Cashing a winner",
+     "steps": [
+      "When the board shows 確定 (official), take your winning ticket to a payout machine (払戻, haraimodoshi). Many betting machines do both.",
+      "Insert the ticket. The machine pays out cash. Losing tickets are just returned or rejected.",
+      "Cash everything before you leave the track. JRA ended its weekday payout service in fall 2026, and we leave Kyoto the next morning."
+     ]
+    },
+    {
+     "heading": "Group tips",
+     "bullets": [
+      "Pick a meeting spot the moment we get in (a pillar number or a food stall), since phones may be spotty in a big crowd.",
+      "Set a budget before you go. ¥100 bets make every race fun; there's no need to bet big.",
+      "Watch the horses in the paddock (パドック) about 20 minutes before each race. It's free and the best way to pick a horse.",
+      "One fun move for the main race: everyone chips in ¥500 for a group Trio or Trifecta box."
+     ]
+    },
+    {
+     "heading": "Handy phrases",
+     "table": {
+      "head": [
+       "English",
+       "Japanese",
+       "Say it"
+      ],
+      "rows": [
+       [
+        "Where is the information desk?",
+        "案内所はどこですか",
+        "Annaijo wa doko desu ka"
+       ],
+       [
+        "Do you have an English guide?",
+        "英語のガイドはありますか",
+        "Eigo no gaido wa arimasu ka"
+       ],
+       [
+        "Is this ticket a winner?",
+        "これ、当たってますか",
+        "Kore, atattemasu ka"
+       ],
+       [
+        "Where do I cash this?",
+        "払戻はどこですか",
+        "Haraimodoshi wa doko desu ka"
+       ],
+       [
+        "Which race is next?",
+        "次は何レースですか",
+        "Tsugi wa nan-reesu desu ka"
+       ],
+       [
+        "Where is the paddock?",
+        "パドックはどこですか",
+        "Padokku wa doko desu ka"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "paying",
+   "short": "Paying & ordering",
+   "jp": "お会計",
+   "title": "Paying and ordering: restaurants, shops, konbini",
+   "intro": "Japan takes cards and phone tap-to-pay almost everywhere now, but cash still matters at small restaurants, ramen ticket machines, temples and the racetrack. There's no tipping anywhere, and you usually pay at the register by the door, not at the table. Staff will ask a few quick questions at checkout. The phrases below cover nearly all of them, and a nod or a head shake works too.",
+   "sections": [
+    {
+     "heading": "What to carry",
+     "bullets": [
+      "A Visa or Mastercard with tap-to-pay and no foreign transaction fee. Amex is accepted less often. Tell your bank you're traveling.",
+      "Suica in your phone wallet: iPhone users can add Suica in Apple Wallet before the flight (or use JR East's Welcome Suica Mobile app). Android users get a physical card at the airport. It pays for trains, konbini, vending machines and many cafes.",
+      "¥20,000 to ¥30,000 in cash, plus a coin purse. ¥1 to ¥500 coins pile up fast.",
+      "Cash from ATMs: 7-Eleven and Japan Post ATMs take foreign cards and have English menus. Choose to be charged in yen if the ATM or card machine asks.",
+      "Top up Suica with cash at station machines, or from your phone with your own card. Station machines usually don't take foreign cards."
+     ]
+    },
+    {
+     "heading": "At the konbini register",
+     "steps": [
+      "Put your items on the counter (or the basket down). The clerk scans them.",
+      "Expect questions in this order: point card? bag? heat it up? chopsticks? You can answer every one with 'iie' (no) or 'hai, onegaishimasu' (yes please). See the phrase table.",
+      "The total shows on a small screen facing you.",
+      "To pay by card or phone, say 'Kaado de' or 'Suica de' and tap when the clerk points to the reader.",
+      "Paying cash: many konbini have a cash machine at the register. Feed bills and coins in yourself and it gives change. Otherwise put cash on the small tray, not in the clerk's hand.",
+      "Hot water for cup noodles and a microwave are usually by the door, and the trash bins are inside the store, since there are almost none on the street."
+     ],
+     "visual": {
+      "svg": "<svg viewBox=\"0 0 480 324\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"The four questions a konbini clerk asks and how to answer\" font-family=\"system-ui,-apple-system,'Segoe UI',Roboto,'Hiragino Sans','Noto Sans JP',sans-serif\"><text x=\"12\" y=\"20\" font-size=\"11\" font-weight=\"700\" fill=\"#24476b\" text-anchor=\"start\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">CLERK ASKS<\/text><text x=\"292\" y=\"20\" font-size=\"11\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"start\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">YOU SAY<\/text><rect x=\"8\" y=\"30\" width=\"240\" height=\"50\" rx=\"12\" fill=\"#dfe8f0\" stroke=\"none\" stroke-width=\"1\"/><polygon points=\"22,80 34,80 22,90\" fill=\"#dfe8f0\"/><text x=\"22\" y=\"52\" font-size=\"15\" font-weight=\"700\" fill=\"#24476b\" text-anchor=\"start\">ポイントカードは?<\/text><text x=\"22\" y=\"70\" font-size=\"12\" font-weight=\"400\" fill=\"#16232e\" text-anchor=\"start\">Point card?<\/text><line x1=\"254\" y1=\"55\" x2=\"275\" y2=\"55\" stroke=\"#5a6b74\" stroke-width=\"1.5\"/><polygon points=\"282,55 273,50 273,60\" fill=\"#5a6b74\"/><rect x=\"288\" y=\"30\" width=\"184\" height=\"50\" rx=\"12\" fill=\"#e8d3ca\" stroke=\"none\" stroke-width=\"1\"/><polygon points=\"458,80 446,80 458,90\" fill=\"#e8d3ca\"/><text x=\"302\" y=\"52\" font-size=\"14.5\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"start\">Nai desu<\/text><text x=\"302\" y=\"70\" font-size=\"12\" font-weight=\"400\" fill=\"#16232e\" text-anchor=\"start\">No<\/text><rect x=\"8\" y=\"92\" width=\"240\" height=\"50\" rx=\"12\" fill=\"#dfe8f0\" stroke=\"none\" stroke-width=\"1\"/><polygon points=\"22,142 34,142 22,152\" fill=\"#dfe8f0\"/><text x=\"22\" y=\"114\" font-size=\"15\" font-weight=\"700\" fill=\"#24476b\" text-anchor=\"start\">袋はいりますか?<\/text><text x=\"22\" y=\"132\" font-size=\"12\" font-weight=\"400\" fill=\"#16232e\" text-anchor=\"start\">Need a bag?<\/text><line x1=\"254\" y1=\"117\" x2=\"275\" y2=\"117\" stroke=\"#5a6b74\" stroke-width=\"1.5\"/><polygon points=\"282,117 273,112 273,122\" fill=\"#5a6b74\"/><rect x=\"288\" y=\"92\" width=\"184\" height=\"50\" rx=\"12\" fill=\"#e8d3ca\" stroke=\"none\" stroke-width=\"1\"/><polygon points=\"458,142 446,142 458,152\" fill=\"#e8d3ca\"/><text x=\"302\" y=\"114\" font-size=\"14.5\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"start\">Irimasen<\/text><text x=\"302\" y=\"132\" font-size=\"12\" font-weight=\"400\" fill=\"#16232e\" text-anchor=\"start\">No thanks<\/text><rect x=\"8\" y=\"154\" width=\"240\" height=\"50\" rx=\"12\" fill=\"#dfe8f0\" stroke=\"none\" stroke-width=\"1\"/><polygon points=\"22,204 34,204 22,214\" fill=\"#dfe8f0\"/><text x=\"22\" y=\"176\" font-size=\"15\" font-weight=\"700\" fill=\"#24476b\" text-anchor=\"start\">温めますか?<\/text><text x=\"22\" y=\"194\" font-size=\"12\" font-weight=\"400\" fill=\"#16232e\" text-anchor=\"start\">Heat it up?<\/text><line x1=\"254\" y1=\"179\" x2=\"275\" y2=\"179\" stroke=\"#5a6b74\" stroke-width=\"1.5\"/><polygon points=\"282,179 273,174 273,184\" fill=\"#5a6b74\"/><rect x=\"288\" y=\"154\" width=\"184\" height=\"50\" rx=\"12\" fill=\"#e8d3ca\" stroke=\"none\" stroke-width=\"1\"/><polygon points=\"458,204 446,204 458,214\" fill=\"#e8d3ca\"/><text x=\"302\" y=\"176\" font-size=\"14.5\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"start\">Onegaishimasu<\/text><text x=\"302\" y=\"194\" font-size=\"12\" font-weight=\"400\" fill=\"#16232e\" text-anchor=\"start\">Yes please · Iie = no<\/text><rect x=\"8\" y=\"216\" width=\"240\" height=\"50\" rx=\"12\" fill=\"#dfe8f0\" stroke=\"none\" stroke-width=\"1\"/><polygon points=\"22,266 34,266 22,276\" fill=\"#dfe8f0\"/><text x=\"22\" y=\"238\" font-size=\"15\" font-weight=\"700\" fill=\"#24476b\" text-anchor=\"start\">お箸は?<\/text><text x=\"22\" y=\"256\" font-size=\"12\" font-weight=\"400\" fill=\"#16232e\" text-anchor=\"start\">Chopsticks?<\/text><line x1=\"254\" y1=\"241\" x2=\"275\" y2=\"241\" stroke=\"#5a6b74\" stroke-width=\"1.5\"/><polygon points=\"282,241 273,236 273,246\" fill=\"#5a6b74\"/><rect x=\"288\" y=\"216\" width=\"184\" height=\"50\" rx=\"12\" fill=\"#e8d3ca\" stroke=\"none\" stroke-width=\"1\"/><polygon points=\"458,266 446,266 458,276\" fill=\"#e8d3ca\"/><text x=\"302\" y=\"238\" font-size=\"14.5\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"start\">Onegaishimasu<\/text><text x=\"302\" y=\"256\" font-size=\"12\" font-weight=\"400\" fill=\"#16232e\" text-anchor=\"start\">Yes please<\/text><rect x=\"8\" y=\"282\" width=\"464\" height=\"34\" rx=\"6\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><text x=\"22\" y=\"304\" font-size=\"13\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"start\">Then: “Kaado de” and tap, or feed cash into the machine.<\/text><\/svg>",
+      "caption": "They always come in about this order. A nod or a little head shake works too."
+     }
+    },
+    {
+     "heading": "At restaurants",
+     "steps": [
+      "At the door, hold up fingers or say the number: 'Juuni-mei desu' (12 people). Wait to be seated.",
+      "Ordering: call staff with 'Sumimasen!' or the button on the table. Many places use a tablet or a QR code menu on your phone instead.",
+      "When done, say 'Okaikei onegaishimasu' (check please), or do the X sign with your index fingers.",
+      "Take the bill slip (if there is one) to the register by the door. Don't leave money on the table.",
+      "No tip. If you leave money behind, staff will often run after you to give it back. 'Gochisousama deshita' (thanks for the meal) on the way out is the tip."
+     ],
+     "after": "Prices on menus include tax. Izakaya add a small cover charge (otoshi, ¥300 to ¥600 a person) that comes with a little starter dish you didn't order. That's normal."
+    },
+    {
+     "heading": "Paying as a group of 12",
+     "bullets": [
+      "Plan on one bill. Splitting 12 ways at the register is slow and many places won't do it, especially on busy nights.",
+      "One person pays with a card (points!), then everyone pays them back on Venmo or Zelle that night. Rotate who pays.",
+      "For booked dinners (omakase, oyster dinner, Kobe beef) the price is usually set per person ahead of time. The organizer pays the restaurant, and everyone pays the organizer.",
+      "If a place does take separate payments, the phrase is 'Betsu-betsu de onegaishimasu'. Ask before ordering, not at the end.",
+      "Gas, tolls and parking are split per van the same way. The Driving guide covers how to pay for each."
+     ]
+    },
+    {
+     "heading": "Ticket-machine restaurants (ramen, gyudon, curry)",
+     "steps": [
+      "Look for a vending machine (食券機, shokkenki) just inside the door. If there is one, you pay before you sit down.",
+      "Insert cash first (many only take ¥1,000 bills and coins; some take Suica), then press the button for your dish. Pictures help; the top-left button is often the house special.",
+      "Take the ticket(s) and hand them to the staff at the counter, or leave them on the counter in front of your seat.",
+      "Change comes out of the machine. Press the おつり (otsuri) button if it doesn't come out automatically."
+     ],
+     "visual": {
+      "svg": "<svg viewBox=\"0 0 480 320\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A ramen ticket machine and the four steps to use it\" font-family=\"system-ui,-apple-system,'Segoe UI',Roboto,'Hiragino Sans','Noto Sans JP',sans-serif\"><rect x=\"18\" y=\"10\" width=\"216\" height=\"300\" rx=\"10\" fill=\"#ece3cd\" stroke=\"#16232e\" stroke-width=\"1.5\"/><rect x=\"18\" y=\"10\" width=\"216\" height=\"30\" rx=\"10\" fill=\"#bd4b28\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"18\" y=\"30\" width=\"216\" height=\"10\" rx=\"0\" fill=\"#bd4b28\" stroke=\"none\" stroke-width=\"1\"/><text x=\"126.0\" y=\"31\" font-size=\"13\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">食券 TICKETS<\/text><rect x=\"32\" y=\"54\" width=\"58\" height=\"34\" rx=\"4\" fill=\"#bd4b28\" stroke=\"#16232e\" stroke-width=\"1\"/><text x=\"61\" y=\"69\" font-size=\"11.5\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\">ラーメン<\/text><text x=\"61\" y=\"82\" font-size=\"9.5\" font-weight=\"400\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">¥950<\/text><rect x=\"96\" y=\"54\" width=\"58\" height=\"34\" rx=\"4\" fill=\"#ffffff\" stroke=\"#16232e\" stroke-width=\"1\"/><text x=\"125\" y=\"69\" font-size=\"11.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">味玉<\/text><text x=\"125\" y=\"82\" font-size=\"9.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">¥150<\/text><rect x=\"160\" y=\"54\" width=\"58\" height=\"34\" rx=\"4\" fill=\"#ffffff\" stroke=\"#16232e\" stroke-width=\"1\"/><text x=\"189\" y=\"69\" font-size=\"11.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">大盛<\/text><text x=\"189\" y=\"82\" font-size=\"9.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">¥150<\/text><rect x=\"32\" y=\"96\" width=\"58\" height=\"34\" rx=\"4\" fill=\"#ffffff\" stroke=\"#16232e\" stroke-width=\"1\"/><text x=\"61\" y=\"111\" font-size=\"11.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">替玉<\/text><text x=\"61\" y=\"124\" font-size=\"9.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">¥150<\/text><rect x=\"96\" y=\"96\" width=\"58\" height=\"34\" rx=\"4\" fill=\"#ffffff\" stroke=\"#16232e\" stroke-width=\"1\"/><text x=\"125\" y=\"111\" font-size=\"11.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">餃子<\/text><text x=\"125\" y=\"124\" font-size=\"9.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">¥400<\/text><rect x=\"160\" y=\"96\" width=\"58\" height=\"34\" rx=\"4\" fill=\"#ffffff\" stroke=\"#16232e\" stroke-width=\"1\"/><text x=\"189\" y=\"111\" font-size=\"11.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">ライス<\/text><text x=\"189\" y=\"124\" font-size=\"9.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">¥200<\/text><rect x=\"32\" y=\"138\" width=\"58\" height=\"34\" rx=\"4\" fill=\"#ffffff\" stroke=\"#16232e\" stroke-width=\"1\"/><text x=\"61\" y=\"153\" font-size=\"11.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">ビール<\/text><text x=\"61\" y=\"166\" font-size=\"9.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">¥550<\/text><rect x=\"96\" y=\"138\" width=\"58\" height=\"34\" rx=\"4\" fill=\"#ffffff\" stroke=\"#16232e\" stroke-width=\"1\"/><text x=\"125\" y=\"153\" font-size=\"11.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">コーラ<\/text><text x=\"125\" y=\"166\" font-size=\"9.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">¥200<\/text><rect x=\"160\" y=\"138\" width=\"58\" height=\"34\" rx=\"4\" fill=\"#ffffff\" stroke=\"#16232e\" stroke-width=\"1\"/><text x=\"189\" y=\"153\" font-size=\"11.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">のり<\/text><text x=\"189\" y=\"166\" font-size=\"9.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">¥100<\/text><circle cx=\"90\" cy=\"54\" r=\"9\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><text x=\"90\" y=\"57.96\" font-size=\"11\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">2<\/text><rect x=\"34\" y=\"196\" width=\"92\" height=\"30\" rx=\"4\" fill=\"#ffffff\" stroke=\"#16232e\" stroke-width=\"1\"/><rect x=\"42\" y=\"209\" width=\"76\" height=\"5\" rx=\"2\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><text x=\"80\" y=\"238\" font-size=\"10.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">お札 bills<\/text><rect x=\"138\" y=\"196\" width=\"44\" height=\"30\" rx=\"4\" fill=\"#ffffff\" stroke=\"#16232e\" stroke-width=\"1\"/><rect x=\"158\" y=\"202\" width=\"4\" height=\"18\" rx=\"2\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><text x=\"160\" y=\"238\" font-size=\"10.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">硬貨<\/text><circle cx=\"208\" cy=\"211\" r=\"15\" fill=\"#a97e1f\" stroke=\"none\" stroke-width=\"1\"/><text x=\"208\" y=\"215\" font-size=\"9\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\">おつり<\/text><text x=\"208\" y=\"238\" font-size=\"10.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">change<\/text><circle cx=\"30\" cy=\"196\" r=\"9\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><text x=\"30\" y=\"199.96\" font-size=\"11\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">1<\/text><circle cx=\"224\" cy=\"194\" r=\"9\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><text x=\"224\" y=\"197.96\" font-size=\"11\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">3<\/text><rect x=\"64\" y=\"258\" width=\"124\" height=\"34\" rx=\"4\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"80\" y=\"268\" width=\"92\" height=\"14\" rx=\"1\" fill=\"#ffffff\" stroke=\"none\" stroke-width=\"1\"/><text x=\"126\" y=\"279\" font-size=\"9.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">ticket + coins<\/text><circle cx=\"262\" cy=\"46\" r=\"12\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><text x=\"262\" y=\"50.68\" font-size=\"13\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">1<\/text><text x=\"282\" y=\"51\" font-size=\"14\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">Cash in first<\/text><text x=\"282\" y=\"70\" font-size=\"12\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\">¥1,000 bills + coins<\/text><circle cx=\"262\" cy=\"110\" r=\"12\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><text x=\"262\" y=\"114.68\" font-size=\"13\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">2<\/text><text x=\"282\" y=\"115\" font-size=\"14\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">Press your dish<\/text><text x=\"282\" y=\"134\" font-size=\"12\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\">top-left = house pick<\/text><circle cx=\"262\" cy=\"174\" r=\"12\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><text x=\"262\" y=\"178.68\" font-size=\"13\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">3<\/text><text x=\"282\" y=\"179\" font-size=\"14\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">Take ticket + change<\/text><text x=\"282\" y=\"198\" font-size=\"12\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\">おつり button if stuck<\/text><circle cx=\"262\" cy=\"238\" r=\"12\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><text x=\"262\" y=\"242.68\" font-size=\"13\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">4<\/text><text x=\"282\" y=\"243\" font-size=\"14\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">Hand ticket to staff<\/text><text x=\"282\" y=\"262\" font-size=\"12\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\">then sit down<\/text><\/svg>",
+      "caption": "Many machines are cash only and take ¥1,000 bills, not ¥10,000. Break big bills at a konbini first."
+     }
+    },
+    {
+     "heading": "Shopping and tax-free (new rules)",
+     "bullets": [
+      "Since Nov 1, 2026, tax-free shopping works as a refund. You pay the full price, including 10% tax, at the store.",
+      "At a 'Tax-Free' shop, spend about ¥5,000+ in one store on one day, and show your passport at the register so the purchase is recorded.",
+      "At the airport on the way home, show your passport and the goods at the customs tax-refund kiosk before checking your bags. The refund then goes back to your card.",
+      "So: keep tax-free items where you can show them at the airport (not in a suitcase you ship ahead), and keep the receipts."
+     ],
+     "visual": {
+      "svg": "<svg viewBox=\"0 0 480 150\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Tax-free refund steps: pay full price, show passport, keep goods, refund at the airport\" font-family=\"system-ui,-apple-system,'Segoe UI',Roboto,'Hiragino Sans','Noto Sans JP',sans-serif\"><rect x=\"8.0\" y=\"12\" width=\"105.5\" height=\"126\" rx=\"8\" fill=\"#fbf8f0\" stroke=\"#c9c0a8\" stroke-width=\"1\"/><circle cx=\"24.0\" cy=\"30\" r=\"11\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><text x=\"24.0\" y=\"34.32\" font-size=\"12\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">1<\/text><path d=\"M40.75 54 h28 l12 12 l-12 12 h-28 z\" fill=\"#e8d3ca\" stroke=\"#bd4b28\" stroke-width=\"1.5\"/><text x=\"54.75\" y=\"70\" font-size=\"9\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">TAX<\/text><text x=\"60.75\" y=\"106\" font-size=\"12.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">Pay full price<\/text><text x=\"60.75\" y=\"123\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\">incl. 10% tax<\/text><polygon points=\"125.5,75.0 116.5,69.0 116.5,81.0\" fill=\"#bd4b28\"/><rect x=\"127.5\" y=\"12\" width=\"105.5\" height=\"126\" rx=\"8\" fill=\"#fbf8f0\" stroke=\"#c9c0a8\" stroke-width=\"1\"/><circle cx=\"143.5\" cy=\"30\" r=\"11\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><text x=\"143.5\" y=\"34.32\" font-size=\"12\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">2<\/text><rect x=\"165.25\" y=\"46\" width=\"30\" height=\"40\" rx=\"3\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><circle cx=\"180.25\" cy=\"63\" r=\"7\" fill=\"none\" stroke=\"#d6c27a\" stroke-width=\"1.5\"/><rect x=\"171.25\" y=\"75\" width=\"18\" height=\"3\" rx=\"0\" fill=\"#d6c27a\" stroke=\"none\" stroke-width=\"1\"/><text x=\"180.25\" y=\"106\" font-size=\"12.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">Show passport<\/text><text x=\"180.25\" y=\"123\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\">at the register<\/text><polygon points=\"245.0,75.0 236.0,69.0 236.0,81.0\" fill=\"#bd4b28\"/><rect x=\"247.0\" y=\"12\" width=\"105.5\" height=\"126\" rx=\"8\" fill=\"#fbf8f0\" stroke=\"#c9c0a8\" stroke-width=\"1\"/><circle cx=\"263.0\" cy=\"30\" r=\"11\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><text x=\"263.0\" y=\"34.32\" font-size=\"12\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">3<\/text><rect x=\"283.75\" y=\"54\" width=\"32\" height=\"30\" rx=\"4\" fill=\"#ece3cd\" stroke=\"#16232e\" stroke-width=\"1.5\"/><path d=\"M291.75 54 v-6 a8 8 0 0 1 16 0 v6\" stroke=\"#16232e\" stroke-width=\"1.5\" fill=\"none\"/><rect x=\"303.75\" y=\"64\" width=\"14\" height=\"18\" rx=\"1\" fill=\"#ffffff\" stroke=\"#5a6b74\" stroke-width=\"1\"/><text x=\"299.75\" y=\"106\" font-size=\"12.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">Keep goods +<\/text><text x=\"299.75\" y=\"123\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\">receipts handy<\/text><polygon points=\"364.5,75.0 355.5,69.0 355.5,81.0\" fill=\"#bd4b28\"/><rect x=\"366.5\" y=\"12\" width=\"105.5\" height=\"126\" rx=\"8\" fill=\"#fbf8f0\" stroke=\"#c9c0a8\" stroke-width=\"1\"/><circle cx=\"382.5\" cy=\"30\" r=\"11\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><text x=\"382.5\" y=\"34.32\" font-size=\"12\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">4<\/text><rect x=\"399.25\" y=\"46\" width=\"40\" height=\"40\" rx=\"6\" fill=\"#dfe8f0\" stroke=\"#24476b\" stroke-width=\"1.5\"/><path d=\"M407.25 68 l24 -10 l-6 18 l-5 -6 z\" fill=\"#24476b\"/><text x=\"419.25\" y=\"106\" font-size=\"12.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">Airport kiosk<\/text><text x=\"419.25\" y=\"123\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\">before check-in<\/text><\/svg>",
+      "caption": "Since Nov 1, 2026 the tax comes back as a refund to your card after the airport check. About ¥5,000+ in one shop on one day."
+     }
+    },
+    {
+     "heading": "Handy phrases",
+     "table": {
+      "head": [
+       "English",
+       "Japanese",
+       "Say it"
+      ],
+      "rows": [
+       [
+        "Check, please.",
+        "お会計お願いします",
+        "Okaikei onegaishimasu"
+       ],
+       [
+        "By card, please. / By Suica, please.",
+        "カードで / スイカで",
+        "Kaado de / Suika de"
+       ],
+       [
+        "Cash.",
+        "現金で",
+        "Genkin de"
+       ],
+       [
+        "One bill, together.",
+        "一緒でお願いします",
+        "Issho de onegaishimasu"
+       ],
+       [
+        "Separate checks, please.",
+        "別々でお願いします",
+        "Betsu-betsu de onegaishimasu"
+       ],
+       [
+        "12 people.",
+        "12名です",
+        "Juuni-mei desu"
+       ],
+       [
+        "No bag, thanks.",
+        "袋はいりません",
+        "Fukuro wa irimasen"
+       ],
+       [
+        "(Q) Do you have a point card? → No.",
+        "ポイントカードは? → ないです",
+        "Pointo kaado wa? → Nai desu"
+       ],
+       [
+        "(Q) Heat it up? → Yes, please.",
+        "温めますか? → お願いします",
+        "Atatamemasu ka? → Onegaishimasu"
+       ],
+       [
+        "(Q) Chopsticks? → Yes, please.",
+        "お箸は? → お願いします",
+        "Ohashi wa? → Onegaishimasu"
+       ],
+       [
+        "Receipt, please.",
+        "レシートください",
+        "Reshiito kudasai"
+       ],
+       [
+        "Can I use a card?",
+        "カード使えますか",
+        "Kaado tsukaemasu ka"
+       ],
+       [
+        "Excuse me! (to call staff)",
+        "すみません",
+        "Sumimasen"
+       ],
+       [
+        "Thanks for the meal.",
+        "ごちそうさまでした",
+        "Gochisousama deshita"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Little things that trip people up",
+     "bullets": [
+      "Put cash and cards on the little tray at the register (カルトン). Handing money directly to the clerk is a little awkward.",
+      "Card readers often ask you to choose 一括 (ikkatsu, pay in one go). Pick that one.",
+      "If a card is declined, try another card or cash. Small places often take only Japanese cards or QR apps like PayPay.",
+      "Some bars and late-night places add a seat or table charge. If you aren't sure, ask 'Chaaji arimasu ka?' (is there a cover charge?) before sitting down."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "driving",
+   "short": "Driving, gas & tolls",
+   "jp": "運転",
+   "title": "Driving in Japan: the vans, road rules, gas, tolls and parking",
+   "intro": "We have two minivans from Oct 11 (Tokyo) to Oct 22 (drop-off at Hiroshima Airport), with Son and Don driving and two backup drivers. Japanese roads are in great shape and people drive politely, but a few things are different: you drive on the left, the alcohol limit is basically zero, many toll gates need an ETC card, and you park in paid lots, never on the street. This guide covers all of it. Passengers should read it too, since the navigator job is real.",
+   "sections": [
+    {
+     "heading": "Before the trip: documents",
+     "bullets": [
+      "Every driver needs three things in Japan, every day: the physical US license (not a phone or digital ID), an International Driving Permit (IDP) and a passport.",
+      "Get the IDP from AAA in the US before you fly. It must be the 1949 Geneva version, which is what AAA issues. You can't get one once you're in Japan. It's valid for 1 year, so get it in spring or summer 2027 (it's on the Timeline for April).",
+      "Bring 2 passport photos and your license to AAA. It's about $20 and done the same day in person.",
+      "Only drivers named on the rental agreement may drive. That's Son, Don and the two backup drivers, so all four bring their papers to the Oct 11 pickup.",
+      "Moped riders on the Shimanami Kaido also need an IDP (a regular car one works for the 50cc scooters)."
+     ],
+     "visual": {
+      "svg": "<svg viewBox=\"0 0 480 190\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Every driver needs three documents: US license, International Driving Permit and passport\" font-family=\"system-ui,-apple-system,'Segoe UI',Roboto,'Hiragino Sans','Noto Sans JP',sans-serif\"><rect x=\"8\" y=\"10\" width=\"146\" height=\"170\" rx=\"8\" fill=\"#fbf8f0\" stroke=\"#c9c0a8\" stroke-width=\"1\"/><rect x=\"43\" y=\"30\" width=\"76\" height=\"48\" rx=\"5\" fill=\"#dfe8f0\" stroke=\"#24476b\" stroke-width=\"1.5\"/><rect x=\"49\" y=\"38\" width=\"20\" height=\"26\" rx=\"2\" fill=\"#b8c8d8\" stroke=\"none\" stroke-width=\"1\"/><line x1=\"75\" y1=\"42\" x2=\"111\" y2=\"42\" stroke=\"#24476b\" stroke-width=\"2\"/><line x1=\"75\" y1=\"52\" x2=\"105\" y2=\"52\" stroke=\"#5a6b74\" stroke-width=\"1.5\"/><line x1=\"75\" y1=\"61\" x2=\"109\" y2=\"61\" stroke=\"#5a6b74\" stroke-width=\"1.5\"/><text x=\"81\" y=\"112\" font-size=\"15\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">US license<\/text><text x=\"81\" y=\"131\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\">the physical card<\/text><text x=\"81\" y=\"160\" font-size=\"11\" font-weight=\"700\" fill=\"#24476b\" text-anchor=\"middle\">No phone or digital IDs<\/text><text x=\"161\" y=\"100\" font-size=\"20\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"middle\">+<\/text><rect x=\"168\" y=\"10\" width=\"146\" height=\"170\" rx=\"8\" fill=\"#fbf8f0\" stroke=\"#c9c0a8\" stroke-width=\"1\"/><rect x=\"215\" y=\"24\" width=\"52\" height=\"62\" rx=\"3\" fill=\"#d9e3c9\" stroke=\"#5c6b4f\" stroke-width=\"1.5\"/><text x=\"241\" y=\"50\" font-size=\"13\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">IDP<\/text><line x1=\"225\" y1=\"62\" x2=\"257\" y2=\"62\" stroke=\"#5c6b4f\" stroke-width=\"1.2\"/><line x1=\"225\" y1=\"70\" x2=\"251\" y2=\"70\" stroke=\"#5c6b4f\" stroke-width=\"1.2\"/><text x=\"241\" y=\"112\" font-size=\"15\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">IDP<\/text><text x=\"241\" y=\"131\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\">from AAA, before you fly<\/text><text x=\"241\" y=\"160\" font-size=\"11\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"middle\">1949 Geneva version<\/text><text x=\"321\" y=\"100\" font-size=\"20\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"middle\">+<\/text><rect x=\"328\" y=\"10\" width=\"146\" height=\"170\" rx=\"8\" fill=\"#fbf8f0\" stroke=\"#c9c0a8\" stroke-width=\"1\"/><rect x=\"386\" y=\"35\" width=\"30\" height=\"40\" rx=\"3\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><circle cx=\"401\" cy=\"52\" r=\"7\" fill=\"none\" stroke=\"#d6c27a\" stroke-width=\"1.5\"/><rect x=\"392\" y=\"64\" width=\"18\" height=\"3\" rx=\"0\" fill=\"#d6c27a\" stroke=\"none\" stroke-width=\"1\"/><text x=\"401\" y=\"112\" font-size=\"15\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">Passport<\/text><text x=\"401\" y=\"131\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\">with your entry stamp<\/text><text x=\"401\" y=\"160\" font-size=\"11\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"middle\">rental desk checks it<\/text><\/svg>",
+      "caption": "All three, every driver, every day. You can’t get an IDP once you’re in Japan."
+     }
+    },
+    {
+     "heading": "Picking up the vans (Oct 11)",
+     "steps": [
+      "All four named drivers go with their license, IDP and passport.",
+      "Ask for an ETC card in each van (see Tolls). Check it's in the slot and the unit chimes when you start the car.",
+      "Walk around each van with the staff and take a video of every scratch and dent before you leave.",
+      "Set the navigation to English, or plug in a phone for CarPlay or Android Auto and use Google Maps.",
+      "Check the fuel type on the sticker inside the fuel door (almost always Regular) and how the fuel door opens.",
+      "Ask about the coverage: basic insurance is included, and the extra 'NOC' coverage means you don't pay a fee if the van has to come off the road after damage. Get it.",
+      "Note the van's height. The Osaka hotel's garage has a height limit (Son is confirming in Sep 2027).",
+      "Save the rental company's English help line in your phone, and know the drop-off: Hiroshima Airport, Oct 22, with a full tank."
+     ]
+    },
+    {
+     "heading": "Driving on the left",
+     "bullets": [
+      "Traffic keeps left and the driver sits on the right. Your instinct to drift right is strongest when pulling out of a parking lot or turning onto an empty road.",
+      "Left turns are the short, easy ones. Right turns cross oncoming traffic: wait for a gap, and finish in the left lane.",
+      "Turn signals and wipers are often swapped. Everyone hits the wipers at least once.",
+      "On expressways the right lane is for passing only. Cruise in the left lane.",
+      "Pedestrians and bikes always have the right of way, including when you turn across a crosswalk on a green light.",
+      "There is no turning on a red light, left or right, unless a green arrow shows."
+     ],
+     "visual": {
+      "svg": "<svg viewBox=\"0 0 480 300\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Top-down intersection showing driving on the left, easy left turns and right turns that cross traffic\" font-family=\"system-ui,-apple-system,'Segoe UI',Roboto,'Hiragino Sans','Noto Sans JP',sans-serif\"><rect x=\"0\" y=\"0\" width=\"480\" height=\"300\" rx=\"8\" fill=\"#e9e4d6\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"0\" y=\"110\" width=\"480\" height=\"80\" rx=\"0\" fill=\"#5d666c\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"200\" y=\"0\" width=\"80\" height=\"300\" rx=\"0\" fill=\"#5d666c\" stroke=\"none\" stroke-width=\"1\"/><line x1=\"0\" y1=\"150\" x2=\"200\" y2=\"150\" stroke=\"#f2d36b\" stroke-width=\"2\" stroke-dasharray=\"10 8\"/><line x1=\"280\" y1=\"150\" x2=\"480\" y2=\"150\" stroke=\"#f2d36b\" stroke-width=\"2\" stroke-dasharray=\"10 8\"/><line x1=\"240\" y1=\"0\" x2=\"240\" y2=\"110\" stroke=\"#f2d36b\" stroke-width=\"2\" stroke-dasharray=\"10 8\"/><line x1=\"240\" y1=\"190\" x2=\"240\" y2=\"300\" stroke=\"#f2d36b\" stroke-width=\"2\" stroke-dasharray=\"10 8\"/><rect x=\"204\" y=\"196\" width=\"8\" height=\"16\" rx=\"0\" fill=\"#ffffff\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"217\" y=\"196\" width=\"8\" height=\"16\" rx=\"0\" fill=\"#ffffff\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"230\" y=\"196\" width=\"8\" height=\"16\" rx=\"0\" fill=\"#ffffff\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"243\" y=\"196\" width=\"8\" height=\"16\" rx=\"0\" fill=\"#ffffff\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"256\" y=\"196\" width=\"8\" height=\"16\" rx=\"0\" fill=\"#ffffff\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"269\" y=\"196\" width=\"8\" height=\"16\" rx=\"0\" fill=\"#ffffff\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"208\" y=\"222\" width=\"24\" height=\"40\" rx=\"6\" fill=\"#bd4b28\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"212\" y=\"228\" width=\"16\" height=\"9\" rx=\"2\" fill=\"#f7d9cf\" stroke=\"none\" stroke-width=\"1\"/><circle cx=\"225\" cy=\"256\" r=\"3\" fill=\"#ffe28a\" stroke=\"none\" stroke-width=\"1\"/><text x=\"196\" y=\"244\" font-size=\"12\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"end\">you →<\/text><rect x=\"250\" y=\"30\" width=\"24\" height=\"40\" rx=\"6\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"254\" y=\"58\" width=\"16\" height=\"9\" rx=\"2\" fill=\"#dfe8f0\" stroke=\"none\" stroke-width=\"1\"/><text x=\"288\" y=\"46\" font-size=\"11.5\" font-weight=\"700\" fill=\"#24476b\" text-anchor=\"start\">oncoming<\/text><path d=\"M220 214 Q220 170 170 170\" stroke=\"#5c6b4f\" stroke-width=\"5\" fill=\"none\" stroke-linecap=\"round\"/><polygon points=\"160,170 172,163 172,177\" fill=\"#5c6b4f\"/><text x=\"12\" y=\"96\" font-size=\"12\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"start\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">LEFT TURN<\/text><text x=\"12\" y=\"212\" font-size=\"12.5\" font-weight=\"700\" fill=\"#5c6b4f\" text-anchor=\"start\">short and easy:<\/text><text x=\"12\" y=\"228\" font-size=\"12.5\" font-weight=\"400\" fill=\"#16232e\" text-anchor=\"start\">hug the left curb<\/text><line x1=\"80\" y1=\"216\" x2=\"150\" y2=\"180\" stroke=\"#5c6b4f\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><path d=\"M230 214 Q232 132 300 128 L330 128\" stroke=\"#bd4b28\" stroke-width=\"5\" fill=\"none\" stroke-linecap=\"round\" stroke-dasharray=\"1 0\"/><polygon points=\"342,128 330,121 330,135\" fill=\"#bd4b28\"/><text x=\"468\" y=\"96\" font-size=\"12\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"end\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">RIGHT TURN<\/text><text x=\"468\" y=\"212\" font-size=\"12.5\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"end\">crosses oncoming traffic:<\/text><text x=\"468\" y=\"228\" font-size=\"12.5\" font-weight=\"400\" fill=\"#16232e\" text-anchor=\"end\">wait for a gap, end up<\/text><text x=\"468\" y=\"244\" font-size=\"12.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"end\">in the LEFT lane<\/text><rect x=\"12\" y=\"252\" width=\"180\" height=\"34\" rx=\"6\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><text x=\"102\" y=\"274\" font-size=\"11.5\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\">Keep left · driver sits right<\/text><\/svg>",
+      "caption": "The usual mistakes happen leaving parking lots and on empty roads, so say “keep left” out loud for the first day."
+     }
+    },
+    {
+     "heading": "Signs and rules you must know",
+     "bullets": [
+      "止まれ (tomare, an upside-down red triangle) means a complete stop. Police wait at these.",
+      "Stop completely at every railroad crossing, even with no train in sight, look both ways, then cross. Never stop on the tracks.",
+      "Speed limits are in km/h. With no sign posted, it's 60 on regular roads and 100 on expressways. Towns and narrow roads are often 30 to 50. Speed cameras are common.",
+      "Seat belts for every seat, front and back. Holding a phone while driving is illegal; the navigator handles the phone.",
+      "Narrow mountain and village roads: slow down and pull over in the wider spots to let oncoming cars pass. A quick hazard-light blink means 'thanks'."
+     ],
+     "visual": {
+      "svg": "<svg viewBox=\"0 0 480 308\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Six Japanese road signs to know: stop, speed limit, no entry, no parking, one way, rail crossing\" font-family=\"system-ui,-apple-system,'Segoe UI',Roboto,'Hiragino Sans','Noto Sans JP',sans-serif\"><rect x=\"8\" y=\"8\" width=\"148\" height=\"142\" rx=\"8\" fill=\"#fbf8f0\" stroke=\"#d8cfb9\" stroke-width=\"1\"/><polygon points=\"44,30 120,30 82,94\" fill=\"#ffffff\" stroke=\"#c9c0a8\"/><polygon points=\"50,34 114,34 82,88\" fill=\"#d32f2f\"/><text x=\"82\" y=\"54\" font-size=\"14\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\">止まれ<\/text><text x=\"82\" y=\"120\" font-size=\"13\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">止まれ  Stop<\/text><text x=\"82\" y=\"137\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\">full stop, wheels still<\/text><rect x=\"166\" y=\"8\" width=\"148\" height=\"142\" rx=\"8\" fill=\"#fbf8f0\" stroke=\"#d8cfb9\" stroke-width=\"1\"/><circle cx=\"240\" cy=\"60\" r=\"34\" fill=\"#ffffff\" stroke=\"#d32f2f\" stroke-width=\"7\"/><text x=\"240\" y=\"71\" font-size=\"30\" font-weight=\"700\" fill=\"#1f4fa0\" text-anchor=\"middle\">50<\/text><text x=\"240\" y=\"120\" font-size=\"13\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">Speed limit<\/text><text x=\"240\" y=\"137\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\">km/h, not mph<\/text><rect x=\"324\" y=\"8\" width=\"148\" height=\"142\" rx=\"8\" fill=\"#fbf8f0\" stroke=\"#d8cfb9\" stroke-width=\"1\"/><circle cx=\"398\" cy=\"60\" r=\"34\" fill=\"#d32f2f\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"374\" y=\"55\" width=\"48\" height=\"10\" rx=\"1\" fill=\"#ffffff\" stroke=\"none\" stroke-width=\"1\"/><text x=\"398\" y=\"120\" font-size=\"13\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">進入禁止  No entry<\/text><text x=\"398\" y=\"137\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\">often one-way streets<\/text><rect x=\"8\" y=\"158\" width=\"148\" height=\"142\" rx=\"8\" fill=\"#fbf8f0\" stroke=\"#d8cfb9\" stroke-width=\"1\"/><circle cx=\"82\" cy=\"210\" r=\"34\" fill=\"#1f62b5\" stroke=\"#d32f2f\" stroke-width=\"6\"/><line x1=\"60\" y1=\"188\" x2=\"104\" y2=\"232\" stroke=\"#d32f2f\" stroke-width=\"6\"/><text x=\"82\" y=\"270\" font-size=\"13\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">駐車禁止  No parking<\/text><text x=\"82\" y=\"287\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\">red X = no stopping<\/text><rect x=\"166\" y=\"158\" width=\"148\" height=\"142\" rx=\"8\" fill=\"#fbf8f0\" stroke=\"#d8cfb9\" stroke-width=\"1\"/><rect x=\"200\" y=\"192\" width=\"80\" height=\"36\" rx=\"3\" fill=\"#1f62b5\" stroke=\"#ffffff\" stroke-width=\"2\"/><line x1=\"214\" y1=\"210\" x2=\"260\" y2=\"210\" stroke=\"#ffffff\" stroke-width=\"6\"/><polygon points=\"272,210 256,198 256,222\" fill=\"#ffffff\"/><text x=\"240\" y=\"244\" font-size=\"11\" font-weight=\"700\" fill=\"#1f62b5\" text-anchor=\"middle\">一方通行<\/text><text x=\"240\" y=\"270\" font-size=\"13\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">One way<\/text><text x=\"240\" y=\"287\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\">arrow = only direction<\/text><rect x=\"324\" y=\"158\" width=\"148\" height=\"142\" rx=\"8\" fill=\"#fbf8f0\" stroke=\"#d8cfb9\" stroke-width=\"1\"/><polygon points=\"398,174 434,210 398,246 362,210\" fill=\"#f5c400\" stroke=\"#16232e\" stroke-width=\"2\"/><rect x=\"382\" y=\"204\" width=\"26\" height=\"14\" rx=\"2\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"404\" y=\"196\" width=\"6\" height=\"8\" rx=\"0\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><circle cx=\"388\" cy=\"221\" r=\"3.5\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><circle cx=\"402\" cy=\"221\" r=\"3.5\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><text x=\"398\" y=\"270\" font-size=\"13\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">踏切  Rail crossing<\/text><text x=\"398\" y=\"287\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\">always stop before tracks<\/text><\/svg>",
+      "caption": "The stop sign is an upside-down red triangle. Police do enforce the full stop, at signs and at every rail crossing."
+     }
+    },
+    {
+     "heading": "Alcohol: the driver has none",
+     "bullets": [
+      "The legal limit is 0.03% BAC, which can be a single beer. Penalties are jail time or fines up to ¥500,000, and the trip is over for that driver.",
+      "Passengers who ride with a driver they know has been drinking, and anyone who gave them the drink, can be charged too. It's on all of us.",
+      "Watch the morning after: alcohol from a big dinner can still be in your blood at 8 AM. Driving days start early (Oct 12, 13, 15 and 18), so drivers go easy the night before.",
+      "The plan already keeps the vans parked on big drinking nights (Yokohama, Osaka). Keep it that way."
+     ]
+    },
+    {
+     "heading": "Expressways and tolls (ETC)",
+     "bullets": [
+      "Japan's expressways are tolled, and our estimate is about ¥50,000 total for both vans. The ETC card in each van pays automatically; the rental company adds the tolls to the bill when we return the vans.",
+      "Why ETC matters: since spring 2026, dozens of toll gates on routes we use (the Tomei and Chuo expressways, among others) are ETC-only, with no cash lane.",
+      "Lanes: purple ETC = card only, slow to 20 km/h and the bar lifts. ETC/一般 = either. Green 一般 (ippan) = pay cash or card at the booth.",
+      "If the bar doesn't lift: stop, put the hazards on and wait or press the call button. Never back up. If you're in the wrong lane, keep going and talk to staff.",
+      "Tourist expressway passes don't fit our route (the central Japan pass stopped taking new bookings), so we just pay per trip with ETC.",
+      "Rest stops: SA (service area) has food courts, gas and shops; PA (parking area) is smaller. Both have clean bathrooms. Plan one every 1.5 to 2 hours."
+     ],
+     "visual": {
+      "svg": "<svg viewBox=\"0 0 480 280\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Toll plaza lanes: purple ETC, mixed ETC and general, and green general\" font-family=\"system-ui,-apple-system,'Segoe UI',Roboto,'Hiragino Sans','Noto Sans JP',sans-serif\"><rect x=\"0\" y=\"0\" width=\"480\" height=\"280\" rx=\"8\" fill=\"#e9e4d6\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"24\" y=\"62\" width=\"132\" height=\"156\" rx=\"0\" fill=\"#5d666c\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"30\" y=\"14\" width=\"120\" height=\"34\" rx=\"4\" fill=\"#7b3fa0\" stroke=\"none\" stroke-width=\"1\"/><text x=\"90\" y=\"37\" font-size=\"15\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">ETC<\/text><rect x=\"136\" y=\"62\" width=\"20\" height=\"60\" rx=\"0\" fill=\"#c9c0a8\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"54\" y=\"112\" width=\"82\" height=\"6\" rx=\"0\" fill=\"#f2f2f2\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"54\" y=\"112\" width=\"14\" height=\"6\" rx=\"0\" fill=\"#d32f2f\" stroke=\"none\" stroke-width=\"1\"/><text x=\"90\" y=\"240\" font-size=\"13\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">ETC card only<\/text><text x=\"90\" y=\"258\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\">20 km/h max<\/text><rect x=\"174\" y=\"62\" width=\"132\" height=\"156\" rx=\"0\" fill=\"#5d666c\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"180\" y=\"14\" width=\"60\" height=\"34\" rx=\"4\" fill=\"#7b3fa0\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"240\" y=\"14\" width=\"60\" height=\"34\" rx=\"4\" fill=\"#2e8b4a\" stroke=\"none\" stroke-width=\"1\"/><text x=\"210\" y=\"37\" font-size=\"14\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">ETC<\/text><text x=\"270\" y=\"37\" font-size=\"14\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\">一般<\/text><rect x=\"286\" y=\"62\" width=\"20\" height=\"60\" rx=\"0\" fill=\"#c9c0a8\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"204\" y=\"112\" width=\"82\" height=\"6\" rx=\"0\" fill=\"#f2f2f2\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"204\" y=\"112\" width=\"14\" height=\"6\" rx=\"0\" fill=\"#d32f2f\" stroke=\"none\" stroke-width=\"1\"/><text x=\"240\" y=\"240\" font-size=\"13\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">ETC or pay<\/text><text x=\"240\" y=\"258\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\">either works<\/text><rect x=\"324\" y=\"62\" width=\"132\" height=\"156\" rx=\"0\" fill=\"#5d666c\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"330\" y=\"14\" width=\"120\" height=\"34\" rx=\"4\" fill=\"#2e8b4a\" stroke=\"none\" stroke-width=\"1\"/><text x=\"390\" y=\"37\" font-size=\"15\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\">一般<\/text><rect x=\"436\" y=\"62\" width=\"20\" height=\"60\" rx=\"0\" fill=\"#c9c0a8\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"354\" y=\"112\" width=\"82\" height=\"6\" rx=\"0\" fill=\"#f2f2f2\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"354\" y=\"112\" width=\"14\" height=\"6\" rx=\"0\" fill=\"#d32f2f\" stroke=\"none\" stroke-width=\"1\"/><text x=\"390\" y=\"240\" font-size=\"13\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">cash / card<\/text><text x=\"390\" y=\"258\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\">stop at booth<\/text><rect x=\"66\" y=\"150\" width=\"30\" height=\"50\" rx=\"7\" fill=\"#bd4b28\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"71\" y=\"156\" width=\"20\" height=\"10\" rx=\"2\" fill=\"#f7d9cf\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"72\" y=\"172\" width=\"18\" height=\"8\" rx=\"1\" fill=\"#ffe28a\" stroke=\"none\" stroke-width=\"1\"/><text x=\"100\" y=\"196\" font-size=\"11\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"start\">← card in<\/text><text x=\"100\" y=\"210\" font-size=\"11\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"start\">the slot<\/text><\/svg>",
+      "caption": "With the ETC card in its slot, use a purple lane. Since spring 2026 some gates are ETC-only, with no cash lane at all."
+     }
+    },
+    {
+     "heading": "Gas stations",
+     "steps": [
+      "Most stations are self-serve (セルフ, serufu). Some are full-serve, where staff come out to the car.",
+      "Self-serve: on the screen, pick a payment method first (cash 現金, or card カード), then the fuel type, then the amount. 満タン (mantan) means a full tank.",
+      "Fuel: レギュラー (Regular) is the red nozzle and what rental cars almost always use. ハイオク (high octane) is yellow. 軽油 (diesel) is green; never put it in a gas car. Check the sticker inside the fuel door.",
+      "Paying cash: put in a ¥10,000 bill, fill up, and the machine prints a change slip. Scan it at the change machine (精算機) to get your change.",
+      "Full-serve: say 'Regyuraa, mantan de onegaishimasu' and hand over your card. They often offer to take your trash too.",
+      "Fill up within a few km of the rental return and keep the receipt. The rental company may ask to see it."
+     ],
+     "after": "Gas is in the budget at about ¥175 per liter. Fill up before the mountains: in Matsumoto on Oct 13 before the drive to Takayama, and in Takayama before Shirakawa-go and before leaving on Oct 15. Rural stations can close by 7 or 8 PM.",
+     "visual": {
+      "svg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Japanese fuel nozzle colors and the order of the self-serve pump screen\" font-family=\"system-ui,-apple-system,'Segoe UI',Roboto,'Hiragino Sans','Noto Sans JP',sans-serif\"><path d=\"M14 26 h46 a10 10 0 0 1 10 10 v4 h-56 z\" fill=\"#d23b2a\" stroke=\"#16232e\" stroke-width=\"1.2\"/><rect x=\"18\" y=\"40\" width=\"22\" height=\"18\" rx=\"4\" fill=\"#d23b2a\" stroke=\"#16232e\" stroke-width=\"1.2\"/><path d=\"M70 34 l26 6\" stroke=\"#8a949a\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"M44 40 q8 12 -2 16\" stroke=\"#16232e\" stroke-width=\"1.5\" fill=\"none\"/><text x=\"112\" y=\"38\" font-size=\"16\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">レギュラー<\/text><text x=\"112\" y=\"56\" font-size=\"12.5\" font-weight=\"700\" fill=\"#5a6b74\" text-anchor=\"start\">Regular<\/text><text x=\"112\" y=\"72\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\">what rental cars use<\/text><path d=\"M14 104 h46 a10 10 0 0 1 10 10 v4 h-56 z\" fill=\"#e9b51c\" stroke=\"#16232e\" stroke-width=\"1.2\"/><rect x=\"18\" y=\"118\" width=\"22\" height=\"18\" rx=\"4\" fill=\"#e9b51c\" stroke=\"#16232e\" stroke-width=\"1.2\"/><path d=\"M70 112 l26 6\" stroke=\"#8a949a\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"M44 118 q8 12 -2 16\" stroke=\"#16232e\" stroke-width=\"1.5\" fill=\"none\"/><text x=\"112\" y=\"116\" font-size=\"16\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">ハイオク<\/text><text x=\"112\" y=\"134\" font-size=\"12.5\" font-weight=\"700\" fill=\"#5a6b74\" text-anchor=\"start\">High octane<\/text><text x=\"112\" y=\"150\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\">only if the sticker says so<\/text><path d=\"M14 182 h46 a10 10 0 0 1 10 10 v4 h-56 z\" fill=\"#3f8f4a\" stroke=\"#16232e\" stroke-width=\"1.2\"/><rect x=\"18\" y=\"196\" width=\"22\" height=\"18\" rx=\"4\" fill=\"#3f8f4a\" stroke=\"#16232e\" stroke-width=\"1.2\"/><path d=\"M70 190 l26 6\" stroke=\"#8a949a\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"M44 196 q8 12 -2 16\" stroke=\"#16232e\" stroke-width=\"1.5\" fill=\"none\"/><text x=\"112\" y=\"194\" font-size=\"16\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">軽油<\/text><text x=\"112\" y=\"212\" font-size=\"12.5\" font-weight=\"700\" fill=\"#5a6b74\" text-anchor=\"start\">Diesel<\/text><text x=\"112\" y=\"228\" font-size=\"11.5\" font-weight=\"400\" fill=\"#bd4b28\" text-anchor=\"start\">never in a gas car<\/text><rect x=\"286\" y=\"14\" width=\"186\" height=\"236\" rx=\"10\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"298\" y=\"26\" width=\"162\" height=\"22\" rx=\"4\" fill=\"#2b3c49\" stroke=\"none\" stroke-width=\"1\"/><text x=\"379\" y=\"41\" font-size=\"10.5\" font-weight=\"700\" fill=\"#a97e1f\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">SELF PUMP SCREEN<\/text><circle cx=\"306\" cy=\"68\" r=\"9\" fill=\"#bd4b28\" stroke=\"none\" stroke-width=\"1\"/><text x=\"306\" y=\"71.96\" font-size=\"11\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">1<\/text><text x=\"322\" y=\"72\" font-size=\"13.5\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"start\">支払方法<\/text><text x=\"322\" y=\"87\" font-size=\"10.5\" font-weight=\"400\" fill=\"#c8d6e3\" text-anchor=\"start\">pay: 現金 cash / カード card<\/text><circle cx=\"306\" cy=\"104\" r=\"9\" fill=\"#bd4b28\" stroke=\"none\" stroke-width=\"1\"/><text x=\"306\" y=\"107.96\" font-size=\"11\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">2<\/text><text x=\"322\" y=\"108\" font-size=\"13.5\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"start\">油種<\/text><text x=\"322\" y=\"123\" font-size=\"10.5\" font-weight=\"400\" fill=\"#c8d6e3\" text-anchor=\"start\">fuel: レギュラー<\/text><circle cx=\"306\" cy=\"140\" r=\"9\" fill=\"#bd4b28\" stroke=\"none\" stroke-width=\"1\"/><text x=\"306\" y=\"143.96\" font-size=\"11\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">3<\/text><text x=\"322\" y=\"144\" font-size=\"13.5\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"start\">満タン<\/text><text x=\"322\" y=\"159\" font-size=\"10.5\" font-weight=\"400\" fill=\"#c8d6e3\" text-anchor=\"start\">amount: full tank<\/text><circle cx=\"306\" cy=\"176\" r=\"9\" fill=\"#bd4b28\" stroke=\"none\" stroke-width=\"1\"/><text x=\"306\" y=\"179.96\" font-size=\"11\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">4<\/text><text x=\"322\" y=\"180\" font-size=\"13.5\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"start\">給油<\/text><text x=\"322\" y=\"195\" font-size=\"10.5\" font-weight=\"400\" fill=\"#c8d6e3\" text-anchor=\"start\">lift nozzle, fill up<\/text><circle cx=\"306\" cy=\"212\" r=\"9\" fill=\"#bd4b28\" stroke=\"none\" stroke-width=\"1\"/><text x=\"306\" y=\"215.96\" font-size=\"11\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">5<\/text><text x=\"322\" y=\"216\" font-size=\"13.5\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"start\">精算機<\/text><text x=\"322\" y=\"231\" font-size=\"10.5\" font-weight=\"400\" fill=\"#c8d6e3\" text-anchor=\"start\">cash? scan change slip<\/text><\/svg>",
+      "caption": "Nozzle colors are standard in Japan. Still check the sticker inside the rental car’s fuel door."
+     }
+    },
+    {
+     "heading": "Parking",
+     "bullets": [
+      "Never park on the street, even for 'just a minute'. Fines are around ¥10,000 to ¥15,000.",
+      "Coin parking (コインパーキング): park in a numbered space, a metal plate rises under the car, and when you leave you enter the space number at the pay machine (精算機, seisanki). The plate drops, then you drive off.",
+      "Gated lots: take a ticket on the way in, pay at the machine before going back to the car, then feed the ticket at the exit gate.",
+      "Most machines take cash and many take cards or Suica. Keep ¥1,000 bills and coins in the van.",
+      "Where we park: free at Kansuiro, Sekigahara, Kojima and the Mukaishima house; paid lots in Matsumoto, Takayama, Shirakawa-go and Kurashiki; the Osaka hotel garage (about ¥2,500 a night per van, Oct 15 to 18)."
+     ],
+     "visual": {
+      "svg": "<svg viewBox=\"0 0 480 150\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Coin parking steps: park, lock plate rises, pay at the machine with your space number, drive off\" font-family=\"system-ui,-apple-system,'Segoe UI',Roboto,'Hiragino Sans','Noto Sans JP',sans-serif\"><rect x=\"8.0\" y=\"12\" width=\"105.5\" height=\"126\" rx=\"8\" fill=\"#fbf8f0\" stroke=\"#c9c0a8\" stroke-width=\"1\"/><circle cx=\"24.0\" cy=\"30\" r=\"11\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><text x=\"24.0\" y=\"34.32\" font-size=\"12\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">1<\/text><rect x=\"40.75\" y=\"58\" width=\"40\" height=\"26\" rx=\"6\" fill=\"#bd4b28\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"46.75\" y=\"62\" width=\"28\" height=\"8\" rx=\"2\" fill=\"#f7d9cf\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"40.75\" y=\"86\" width=\"40\" height=\"5\" rx=\"1\" fill=\"#8a949a\" stroke=\"none\" stroke-width=\"1\"/><text x=\"60.75\" y=\"106\" font-size=\"12.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">Park, note the<\/text><text x=\"60.75\" y=\"123\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\">space number<\/text><polygon points=\"125.5,75.0 116.5,69.0 116.5,81.0\" fill=\"#bd4b28\"/><rect x=\"127.5\" y=\"12\" width=\"105.5\" height=\"126\" rx=\"8\" fill=\"#fbf8f0\" stroke=\"#c9c0a8\" stroke-width=\"1\"/><circle cx=\"143.5\" cy=\"30\" r=\"11\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><text x=\"143.5\" y=\"34.32\" font-size=\"12\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">2<\/text><rect x=\"160.25\" y=\"48\" width=\"40\" height=\"26\" rx=\"6\" fill=\"#bd4b28\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"166.25\" y=\"52\" width=\"28\" height=\"8\" rx=\"2\" fill=\"#f7d9cf\" stroke=\"none\" stroke-width=\"1\"/><path d=\"M162.25 86 l18 -10 l18 10 z\" fill=\"#a97e1f\"/><text x=\"180.25\" y=\"106\" font-size=\"12.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">A plate rises<\/text><text x=\"180.25\" y=\"123\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\">under the car<\/text><polygon points=\"245.0,75.0 236.0,69.0 236.0,81.0\" fill=\"#bd4b28\"/><rect x=\"247.0\" y=\"12\" width=\"105.5\" height=\"126\" rx=\"8\" fill=\"#fbf8f0\" stroke=\"#c9c0a8\" stroke-width=\"1\"/><circle cx=\"263.0\" cy=\"30\" r=\"11\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><text x=\"263.0\" y=\"34.32\" font-size=\"12\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">3<\/text><rect x=\"281.75\" y=\"42\" width=\"36\" height=\"48\" rx=\"5\" fill=\"#c8d6e3\" stroke=\"#24476b\" stroke-width=\"1.5\"/><rect x=\"287.75\" y=\"48\" width=\"24\" height=\"12\" rx=\"2\" fill=\"#16232e\" stroke=\"none\" stroke-width=\"1\"/><text x=\"299.75\" y=\"57\" font-size=\"9\" font-weight=\"700\" fill=\"#ffd479\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">12<\/text><rect x=\"287.75\" y=\"66\" width=\"7\" height=\"6\" rx=\"0\" fill=\"#ffffff\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"296.75\" y=\"66\" width=\"7\" height=\"6\" rx=\"0\" fill=\"#ffffff\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"305.75\" y=\"66\" width=\"7\" height=\"6\" rx=\"0\" fill=\"#ffffff\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"287.75\" y=\"75\" width=\"25\" height=\"5\" rx=\"1\" fill=\"#bd4b28\" stroke=\"none\" stroke-width=\"1\"/><text x=\"299.75\" y=\"106\" font-size=\"12.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">Pay at 精算機<\/text><text x=\"299.75\" y=\"123\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\">enter space no.<\/text><polygon points=\"364.5,75.0 355.5,69.0 355.5,81.0\" fill=\"#bd4b28\"/><rect x=\"366.5\" y=\"12\" width=\"105.5\" height=\"126\" rx=\"8\" fill=\"#fbf8f0\" stroke=\"#c9c0a8\" stroke-width=\"1\"/><circle cx=\"382.5\" cy=\"30\" r=\"11\" fill=\"#24476b\" stroke=\"none\" stroke-width=\"1\"/><text x=\"382.5\" y=\"34.32\" font-size=\"12\" font-weight=\"700\" fill=\"#ffffff\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">4<\/text><rect x=\"399.25\" y=\"48\" width=\"40\" height=\"26\" rx=\"6\" fill=\"#bd4b28\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"405.25\" y=\"52\" width=\"28\" height=\"8\" rx=\"2\" fill=\"#f7d9cf\" stroke=\"none\" stroke-width=\"1\"/><rect x=\"399.25\" y=\"82\" width=\"40\" height=\"4\" rx=\"1\" fill=\"#8a949a\" stroke=\"none\" stroke-width=\"1\"/><line x1=\"413.25\" y1=\"94\" x2=\"438.25\" y2=\"94\" stroke=\"#5c6b4f\" stroke-width=\"2\"/><polygon points=\"445.25,94 436.25,89 436.25,99\" fill=\"#5c6b4f\"/><text x=\"419.25\" y=\"106\" font-size=\"12.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"middle\">Plate drops,<\/text><text x=\"419.25\" y=\"123\" font-size=\"11.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"middle\">then drive off<\/text><\/svg>",
+      "caption": "Never drive over a raised plate. If it won’t drop after paying, press the call button on the machine. Some newer lots use cameras instead of plates."
+     }
+    },
+    {
+     "heading": "Navigation",
+     "bullets": [
+      "Easiest: Google Maps on a phone through CarPlay or Android Auto, if the van supports it. Download offline maps for central Japan in case signal drops in the mountains.",
+      "The built-in navigation finds places by phone number, which is the quickest way. Put each hotel's phone number in the group chat.",
+      "Mapcodes (a number code for any spot, like 123 456 789*12) also work in Japanese navigation for trailheads and parking lots without a phone number.",
+      "Navigator in the passenger seat: watch for the exit, read signs aloud, handle tolls and parking questions."
+     ]
+    },
+    {
+     "heading": "Our driving days",
+     "table": {
+      "head": [
+       "Day",
+       "Route",
+       "Driving",
+       "Notes"
+      ],
+      "rows": [
+       [
+        "Mon Oct 11",
+        "Pick up both vans, park by the Ikebukuro Airbnb",
+        "Short",
+        "Then everyone takes the train to Yokohama. Paid parking overnight."
+       ],
+       [
+        "Tue Oct 12",
+        "Tokyo → Hakone (Tonosawa)",
+        "1.5–2 hr",
+        "Leave by 7:30. Expressway, ETC."
+       ],
+       [
+        "Wed Oct 13",
+        "Hakone → Matsumoto → Takayama",
+        "~5 hr total",
+        "Fill up in Matsumoto. Mountain road through the Abo Tunnel after lunch."
+       ],
+       [
+        "Thu Oct 14",
+        "Takayama ↔ Shirakawa-go",
+        "~1 hr each way",
+        "Leave by 8 AM. Paid parking at the village."
+       ],
+       [
+        "Fri Oct 15",
+        "Takayama → Sekigahara → Osaka",
+        "~4–4.5 hr",
+        "Vans stay in the Osaka hotel garage until Oct 18."
+       ],
+       [
+        "Mon Oct 18",
+        "Osaka → Kojima → Kurashiki → Onomichi",
+        "~3.5 hr",
+        "Leave at 8. Then the suitcase pickup run in Onomichi."
+       ],
+       [
+        "Fri Oct 22",
+        "Mukaishima → Hiroshima Airport",
+        "~1–1.5 hr",
+        "Check out at 9, fill up near the airport, return the vans."
+       ]
+      ]
+     },
+     "after": "Rotate drivers every couple of hours on the long days (Oct 13 and 15). The backup drivers are there for exactly this."
+    },
+    {
+     "heading": "If something goes wrong",
+     "steps": [
+      "Accident, even a small scrape: stop safely, hazards on, set out the warning triangle if there's one in the van.",
+      "Call the police on 110, even for minor damage. Japanese rental insurance only pays out with a police report, so never settle it on the spot.",
+      "Injuries: call 119 for an ambulance.",
+      "Call the rental company's help line, then take photos of everything, including the other car's plate.",
+      "Breakdown or flat tire: pull fully off the road (on an expressway, get everyone behind the guardrail) and call the rental company's roadside number.",
+      "Keep everyone's passport handy; the police will ask."
+     ]
+    },
+    {
+     "heading": "Handy phrases",
+     "table": {
+      "head": [
+       "English",
+       "Japanese",
+       "Say it"
+      ],
+      "rows": [
+       [
+        "ETC card, please.",
+        "ETCカードをお願いします",
+        "Ii-tii-shii kaado o onegaishimasu"
+       ],
+       [
+        "Regular, full tank please.",
+        "レギュラー満タンでお願いします",
+        "Regyuraa mantan de onegaishimasu"
+       ],
+       [
+        "Is there parking?",
+        "駐車場はありますか",
+        "Chuushajou wa arimasu ka"
+       ],
+       [
+        "What's the height limit?",
+        "高さ制限は何メートルですか",
+        "Takasa seigen wa nan-meetoru desu ka"
+       ],
+       [
+        "There's been an accident.",
+        "事故です",
+        "Jiko desu"
+       ],
+       [
+        "The car broke down.",
+        "車が故障しました",
+        "Kuruma ga koshou shimashita"
+       ],
+       [
+        "Please call the police.",
+        "警察を呼んでください",
+        "Keisatsu o yonde kudasai"
+       ],
+       [
+        "Where is the nearest gas station?",
+        "近くのガソリンスタンドはどこですか",
+        "Chikaku no gasorin sutando wa doko desu ka"
+       ]
+      ]
+     }
     }
    ]
   }
@@ -3638,7 +4343,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <!-- ===================== HOW-TO ===================== -->
     <section class="panel" id="panel-howto">
       <h2 class="panel-title">How-to <span class="jp">使い方</span></h2>
-      <div class="panel-sub">Step-by-step guides for the parts of the trip nobody has done before.</div>
+      <div class="panel-sub">Step-by-step guides for the parts of the trip nobody has done before. Pick a guide below.</div>
       <div id="guides-holder"></div>
     </section>
 
@@ -4022,7 +4727,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
       m.setAttribute('aria-label', el.checked ? 'yes' : 'no');
       el.replaceWith(m);
     });
-    document.querySelectorAll('#app .wrap button:not(.tab-btn):not([data-goto])').forEach(el=>{
+    document.querySelectorAll('#app .wrap button:not(.tab-btn):not([data-goto]):not([data-guide])').forEach(el=>{
       el.setAttribute('disabled',''); el.setAttribute('tabindex','-1');
     });
     if(leafletMap) stopMarkers.forEach(m=>{ if(m.dragging) m.dragging.disable(); });
@@ -5431,30 +6136,42 @@ ${readOnly ? '' : `<div class="fld full"><div class="lbl">Notes</div><textarea r
   function guideText(s){
     return esc(String(s||'')).replace(/(https?:\/\/[^\s<]+)/g, u => `<a href="${u}" target="_blank" rel="noopener">${u}</a>`);
   }
+  let currentGuide = null;
   function renderGuides(){
     const holder = document.getElementById('guides-holder');
     if(!holder) return;
     const guides = state.guides || [];
     if(!guides.length){ holder.innerHTML = '<div class="card card-pad">No guides yet.</div>'; return; }
-    holder.innerHTML = guides.map(g=>{
-      const secs = (g.sections||[]).map((s,i)=>{
-        let body = '';
-        if(s.text) body += `<p>${guideText(s.text)}</p>`;
-        if(s.bullets) body += '<ul>' + s.bullets.map(b=>`<li>${guideText(b)}</li>`).join('') + '</ul>';
-        if(s.steps) body += '<ol>' + s.steps.map(b=>`<li>${guideText(b)}</li>`).join('') + '</ol>';
-        if(s.table){
-          const head = s.table.head||[];
-          body += '<div class="guide-table-wrap"><table class="guide-table"><thead><tr>' + head.map(h=>`<th>${esc(h)}</th>`).join('') + '</tr></thead><tbody>' +
-            (s.table.rows||[]).map(r=>'<tr>' + r.map((c,j)=>`<td data-label="${esc(head[j]||'')}">${guideText(c)}</td>`).join('') + '</tr>').join('') + '</tbody></table></div>';
-        }
-        if(s.after) body += `<p>${guideText(s.after)}</p>`;
-        return `<div class="guide-sec" id="guide-${esc(g.id)}-${i}"><h4>${esc(s.heading)}</h4>${body}</div>`;
-      }).join('');
-      const toc = (g.sections||[]).map((s,i)=>`<a href="#" data-jump="guide-${esc(g.id)}-${i}">${esc(s.heading)}</a>`).join('');
-      return `<div class="guide card card-pad"><h3>${esc(g.title)}${g.jp?` <span class="jp">${esc(g.jp)}</span>`:''}</h3>
-        ${g.intro?`<p class="guide-intro">${guideText(g.intro)}</p>`:''}
-        <div class="guide-toc">${toc}</div>${secs}</div>`;
+    if(!currentGuide || !guides.some(g=>g.id===currentGuide)) currentGuide = guides[0].id;
+    const gi = guides.findIndex(g=>g.id===currentGuide);
+    const g = guides[gi];
+    const picker = guides.length > 1 ? '<div class="guide-picker" role="tablist">' + guides.map((x,i)=>
+      `<button type="button" class="guide-pick${x.id===currentGuide?' on':''}" data-guide="${esc(x.id)}" role="tab" aria-selected="${x.id===currentGuide}"><span class="gp-num">GUIDE ${i+1}</span><span class="gp-title">${esc(x.short||x.title)}</span>${x.jp?`<span class="gp-jp">${esc(x.jp)}</span>`:''}</button>`).join('') + '</div>' : '';
+    const secs = (g.sections||[]).map((s,i)=>{
+      let body = '';
+      if(s.visual && s.visual.svg && /^<svg[\s>]/.test(s.visual.svg)) body += `<figure class="guide-fig">${s.visual.svg}${s.visual.caption?`<figcaption>${esc(s.visual.caption)}</figcaption>`:''}</figure>`;
+      if(s.text) body += `<p>${guideText(s.text)}</p>`;
+      if(s.bullets) body += '<ul>' + s.bullets.map(b=>`<li>${guideText(b)}</li>`).join('') + '</ul>';
+      if(s.steps) body += '<ol>' + s.steps.map(b=>`<li>${guideText(b)}</li>`).join('') + '</ol>';
+      if(s.table){
+        const head = s.table.head||[];
+        body += '<div class="guide-table-wrap"><table class="guide-table"><thead><tr>' + head.map(h=>`<th>${esc(h)}</th>`).join('') + '</tr></thead><tbody>' +
+          (s.table.rows||[]).map(r=>'<tr>' + r.map((c,j)=>`<td data-label="${esc(head[j]||'')}">${guideText(c)}</td>`).join('') + '</tr>').join('') + '</tbody></table></div>';
+      }
+      if(s.after) body += `<p>${guideText(s.after)}</p>`;
+      return `<div class="guide-sec" id="guide-${esc(g.id)}-${i}"><h4>${esc(s.heading)}</h4>${body}</div>`;
     }).join('');
+    const toc = (g.sections||[]).map((s,i)=>`<a href="#" data-jump="guide-${esc(g.id)}-${i}">${esc(s.heading)}</a>`).join('');
+    const prev = guides[gi-1], next = guides[gi+1];
+    const nav = guides.length > 1 ? `<div class="guide-nav">${prev?`<button type="button" data-guide="${esc(prev.id)}" data-scroll="1">← ${esc(prev.short||prev.title)}</button>`:'<span></span>'}${next?`<button type="button" data-guide="${esc(next.id)}" data-scroll="1">Next: ${esc(next.short||next.title)} →</button>`:''}</div>` : '';
+    holder.innerHTML = picker + `<div class="guide card card-pad" id="guide-${esc(g.id)}"><h3>${esc(g.title)}${g.jp?` <span class="jp">${esc(g.jp)}</span>`:''}</h3>
+        ${g.intro?`<p class="guide-intro">${guideText(g.intro)}</p>`:''}
+        <div class="guide-toc">${toc}</div>${secs}${nav}</div>`;
+    holder.querySelectorAll('[data-guide]').forEach(b=> b.addEventListener('click', ()=>{
+      currentGuide = b.getAttribute('data-guide');
+      renderGuides();
+      if(b.hasAttribute('data-scroll')) holder.scrollIntoView({behavior:'smooth', block:'start'});
+    }));
     holder.querySelectorAll('[data-jump]').forEach(a=> a.addEventListener('click', e=>{
       e.preventDefault();
       const t = document.getElementById(a.getAttribute('data-jump'));
