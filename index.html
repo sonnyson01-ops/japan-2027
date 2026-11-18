@@ -1064,6 +1064,17 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .guide-toc a{ font-family:'JetBrains Mono',monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:.03em; background:var(--paper-dim); padding:5px 9px; border-radius:20px; text-decoration:none; color:inherit; }
   .guide-sec{ border-top:1px solid var(--line); padding:14px 0 6px; }
   .guide-sec h4{ margin:0 0 8px; font-size:15.5px; }
+  .pk-wrap{ display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:12px; }
+  .pk-group{ background:#fff; border:1px solid var(--line); border-radius:6px; padding:10px 12px; }
+  .pk-head{ font-weight:700; font-size:13.5px; display:flex; justify-content:space-between; gap:8px; margin-bottom:6px; color:var(--indigo); }
+  .pk-count{ font-family:'JetBrains Mono',monospace; font-size:11px; color:#5a6b74; white-space:nowrap; }
+  .pk-count.all{ color:var(--moss); }
+  .pk-item{ display:flex; gap:9px; align-items:flex-start; padding:6px 0; border-top:1px solid #f0e9da; font-size:13px; line-height:1.4; cursor:pointer; }
+  .pk-item:first-of-type{ border-top:none; }
+  .pk-chk{ width:18px; height:18px; flex:0 0 18px; margin:1px 0 0; accent-color:var(--moss); cursor:pointer; }
+  .pk-chk:checked + span{ color:#8a979e; text-decoration:line-through; }
+  .pk-foot{ display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-top:10px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:#5a6b74; }
+  .pk-reset{ font:inherit; background:none; border:1px solid var(--line); border-radius:6px; padding:5px 10px; cursor:pointer; color:inherit; }
   .guide-fig{ margin:6px 0 14px; padding:12px; background:var(--paper-card); border:1px solid var(--line); border-radius:8px; }
   .guide-fig svg{ display:block; width:100%; max-width:560px; height:auto; margin:0 auto; }
   .guide-fig figcaption{ font-size:12.5px; color:#5a6b74; line-height:1.45; margin-top:8px; text-align:center; }
@@ -2968,6 +2979,15 @@ svg.leaflet-image-layer.leaflet-interactive path {
  },
  "changelog": [
   {
+   "version": "2.39",
+   "date": "Nov 17, 2026",
+   "title": "Packing list and October weather",
+   "changes": [
+    "New How-to guide: Packing & weather. October averages for every stop on the route (chart and table), how to dress for the cold mountain stretch, and a packing checklist you can tick off on your phone.",
+    "Ticks are saved on each person's own phone, so everyone keeps their own list."
+   ]
+  },
+  {
    "version": "2.38",
    "date": "Nov 17, 2026",
    "title": "Easier-to-read day plans",
@@ -4226,6 +4246,215 @@ svg.leaflet-image-layer.leaflet-interactive path {
      }
     }
    ]
+  },
+  {
+   "id": "packing",
+   "short": "Packing & weather",
+   "jp": "持ち物",
+   "title": "Packing list and October weather",
+   "intro": "Mid-October in Japan is mild: most days are in the high 60s to low 70s °F, but the mountain stops (Matsumoto, Takayama, Shirakawa-go, the top of Hakone) drop into the upper 40s at night. So pack layers, not a winter coat. You only carry a small bag for 4 nights (Oct 11–15) while the big suitcase ships ahead, so the warm layer has to fit in the small bag. Tick things off below as you pack; your ticks are saved on your own phone.",
+   "sections": [
+    {
+     "heading": "What the weather is usually like",
+     "table": {
+      "head": [
+       "Stop",
+       "Our dates",
+       "Avg high",
+       "Avg low",
+       "What it feels like"
+      ],
+      "rows": [
+       [
+        "Tokyo / Yokohama / Kamakura",
+        "Oct 9–12, 22–24",
+        "72°F (22°C)",
+        "59°F (15°C)",
+        "T-shirt days, light layer at night. Rainiest stop of the trip."
+       ],
+       [
+        "Hakone (Tonosawa)",
+        "Oct 12",
+        "72°F (22°C)",
+        "57°F (14°C)",
+        "Valley is mild, but Owakudani and the ropeway up top run 3–4°C (5–7°F) colder and windy."
+       ],
+       [
+        "Matsumoto",
+        "Oct 13",
+        "67°F (19°C)",
+        "47°F (8°C)",
+        "Crisp. Cool morning, pleasant afternoon at the castle."
+       ],
+       [
+        "Takayama",
+        "Oct 13–15",
+        "68°F (20°C)",
+        "49°F (9°C)",
+        "Chilly mornings and nights (upper 40s °F). Jacket for dinner."
+       ],
+       [
+        "Shirakawa-go",
+        "Oct 14",
+        "67°F (19°C)",
+        "48°F (9°C)",
+        "Mountain village: coldest morning of the trip, so bring the warm layer."
+       ],
+       [
+        "Osaka / Kyoto",
+        "Oct 15–18",
+        "75°F (24°C)",
+        "61°F (16°C)",
+        "Warmest stop. Short sleeves most days."
+       ],
+       [
+        "Kurashiki / Kojima",
+        "Oct 18",
+        "74°F (23°C)",
+        "56°F (13°C)",
+        "Warm and usually dry."
+       ],
+       [
+        "Onomichi / Mukaishima",
+        "Oct 18–22",
+        "74°F (23°C)",
+        "56°F (13°C)",
+        "Mild seaside days, cool evenings on the water."
+       ],
+       [
+        "Shimanami islands (moped)",
+        "Oct 20–21",
+        "73°F (23°C)",
+        "58°F (15°C)",
+        "Pleasant, but it feels colder on a scooter over the bridges. Wind layer."
+       ],
+       [
+        "Hiroshima",
+        "Oct 22",
+        "75°F (24°C)",
+        "59°F (15°C)",
+        "Just the airport. Warm."
+       ]
+      ]
+     },
+     "after": "October averages from the Japan Meteorological Agency (1991–2020 normals; Hakone uses nearby Odawara, Onomichi uses Fukuyama). The first week of October runs a few degrees warmer than these averages and the last week a few degrees cooler, and recent years have been running warm. Check the 10-day forecast the week before.",
+     "visual": {
+      "svg": "<svg viewBox=\"0 0 480 386\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"October average low and high temperature at each stop, in route order\" font-family=\"system-ui,-apple-system,'Segoe UI',Roboto,'Hiragino Sans','Noto Sans JP',sans-serif\"><line x1=\"196.0\" y1=\"38\" x2=\"196.0\" y2=\"340\" stroke=\"#d8cfb9\" stroke-width=\"1\" stroke-dasharray=\"2 3\"/><text x=\"196.0\" y=\"32\" font-size=\"11\" font-weight=\"700\" fill=\"#5a6b74\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">40°F<\/text><line x1=\"258.0\" y1=\"38\" x2=\"258.0\" y2=\"340\" stroke=\"#d8cfb9\" stroke-width=\"1\" stroke-dasharray=\"2 3\"/><text x=\"258.0\" y=\"32\" font-size=\"11\" font-weight=\"700\" fill=\"#5a6b74\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">50°F<\/text><line x1=\"320.0\" y1=\"38\" x2=\"320.0\" y2=\"340\" stroke=\"#d8cfb9\" stroke-width=\"1\" stroke-dasharray=\"2 3\"/><text x=\"320.0\" y=\"32\" font-size=\"11\" font-weight=\"700\" fill=\"#5a6b74\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">60°F<\/text><line x1=\"382.0\" y1=\"38\" x2=\"382.0\" y2=\"340\" stroke=\"#d8cfb9\" stroke-width=\"1\" stroke-dasharray=\"2 3\"/><text x=\"382.0\" y=\"32\" font-size=\"11\" font-weight=\"700\" fill=\"#5a6b74\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">70°F<\/text><line x1=\"444.0\" y1=\"38\" x2=\"444.0\" y2=\"340\" stroke=\"#d8cfb9\" stroke-width=\"1\" stroke-dasharray=\"2 3\"/><text x=\"444.0\" y=\"32\" font-size=\"11\" font-weight=\"700\" fill=\"#5a6b74\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">80°F<\/text><rect x=\"196.0\" y=\"38\" width=\"62.0\" height=\"302\" rx=\"0\" fill=\"#dfe8f0\" stroke=\"none\" stroke-width=\"1\" opacity=\"0.55\"/><text x=\"227.0\" y=\"370\" font-size=\"10.5\" font-weight=\"700\" fill=\"#24476b\" text-anchor=\"middle\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">jacket zone<\/text><text x=\"8\" y=\"59\" font-size=\"12.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">Tokyo / Yokohama<\/text><text x=\"8\" y=\"71\" font-size=\"10\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">Oct 9–12, 22–24<\/text><defs><linearGradient id=\"wg0\" x1=\"0\" x2=\"1\"><stop offset=\"0\" stop-color=\"#5f88b0\"/><stop offset=\"1\" stop-color=\"#bd4b28\"/><\/linearGradient><\/defs><rect x=\"311.568\" y=\"51\" width=\"80.35199999999998\" height=\"14\" rx=\"7\" fill=\"url(#wg0)\" stroke=\"none\" stroke-width=\"1\"/><text x=\"306.568\" y=\"62\" font-size=\"11.5\" font-weight=\"700\" fill=\"#24476b\" text-anchor=\"end\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">59°<\/text><text x=\"396.91999999999996\" y=\"62\" font-size=\"11.5\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"start\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">72°<\/text><text x=\"8\" y=\"89\" font-size=\"12.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">Hakone<\/text><text x=\"8\" y=\"101\" font-size=\"10\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">Oct 12<\/text><defs><linearGradient id=\"wg1\" x1=\"0\" x2=\"1\"><stop offset=\"0\" stop-color=\"#5f88b0\"/><stop offset=\"1\" stop-color=\"#bd4b28\"/><\/linearGradient><\/defs><rect x=\"303.756\" y=\"81\" width=\"90.39599999999996\" height=\"14\" rx=\"7\" fill=\"url(#wg1)\" stroke=\"none\" stroke-width=\"1\"/><text x=\"298.756\" y=\"92\" font-size=\"11.5\" font-weight=\"700\" fill=\"#24476b\" text-anchor=\"end\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">57°<\/text><text x=\"399.15199999999993\" y=\"92\" font-size=\"11.5\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"start\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">72°<\/text><text x=\"8\" y=\"119\" font-size=\"12.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">Matsumoto<\/text><text x=\"8\" y=\"131\" font-size=\"10\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">Oct 13<\/text><defs><linearGradient id=\"wg2\" x1=\"0\" x2=\"1\"><stop offset=\"0\" stop-color=\"#24476b\"/><stop offset=\"1\" stop-color=\"#bd4b28\"/><\/linearGradient><\/defs><rect x=\"240.14400000000003\" y=\"111\" width=\"121.64399999999998\" height=\"14\" rx=\"7\" fill=\"url(#wg2)\" stroke=\"none\" stroke-width=\"1\"/><text x=\"235.14400000000003\" y=\"122\" font-size=\"11.5\" font-weight=\"700\" fill=\"#24476b\" text-anchor=\"end\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">47°<\/text><text x=\"366.788\" y=\"122\" font-size=\"11.5\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"start\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">67°<\/text><text x=\"8\" y=\"149\" font-size=\"12.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">Takayama<\/text><text x=\"8\" y=\"161\" font-size=\"10\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">Oct 13–15<\/text><defs><linearGradient id=\"wg3\" x1=\"0\" x2=\"1\"><stop offset=\"0\" stop-color=\"#24476b\"/><stop offset=\"1\" stop-color=\"#bd4b28\"/><\/linearGradient><\/defs><rect x=\"249.072\" y=\"141\" width=\"119.41199999999992\" height=\"14\" rx=\"7\" fill=\"url(#wg3)\" stroke=\"none\" stroke-width=\"1\"/><text x=\"244.072\" y=\"152\" font-size=\"11.5\" font-weight=\"700\" fill=\"#24476b\" text-anchor=\"end\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">49°<\/text><text x=\"373.4839999999999\" y=\"152\" font-size=\"11.5\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"start\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">68°<\/text><text x=\"8\" y=\"179\" font-size=\"12.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">Shirakawa-go<\/text><text x=\"8\" y=\"191\" font-size=\"10\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">Oct 14<\/text><defs><linearGradient id=\"wg4\" x1=\"0\" x2=\"1\"><stop offset=\"0\" stop-color=\"#24476b\"/><stop offset=\"1\" stop-color=\"#bd4b28\"/><\/linearGradient><\/defs><rect x=\"244.60800000000003\" y=\"171\" width=\"116.064\" height=\"14\" rx=\"7\" fill=\"url(#wg4)\" stroke=\"none\" stroke-width=\"1\"/><text x=\"239.60800000000003\" y=\"182\" font-size=\"11.5\" font-weight=\"700\" fill=\"#24476b\" text-anchor=\"end\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">48°<\/text><text x=\"365.672\" y=\"182\" font-size=\"11.5\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"start\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">67°<\/text><text x=\"8\" y=\"209\" font-size=\"12.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">Osaka / Kyoto<\/text><text x=\"8\" y=\"221\" font-size=\"10\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">Oct 15–18<\/text><defs><linearGradient id=\"wg5\" x1=\"0\" x2=\"1\"><stop offset=\"0\" stop-color=\"#5f88b0\"/><stop offset=\"1\" stop-color=\"#bd4b28\"/><\/linearGradient><\/defs><rect x=\"324.96\" y=\"201\" width=\"85.93200000000002\" height=\"14\" rx=\"7\" fill=\"url(#wg5)\" stroke=\"none\" stroke-width=\"1\"/><text x=\"319.96\" y=\"212\" font-size=\"11.5\" font-weight=\"700\" fill=\"#24476b\" text-anchor=\"end\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">61°<\/text><text x=\"415.892\" y=\"212\" font-size=\"11.5\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"start\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">75°<\/text><text x=\"8\" y=\"239\" font-size=\"12.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">Kurashiki<\/text><text x=\"8\" y=\"251\" font-size=\"10\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">Oct 18<\/text><defs><linearGradient id=\"wg6\" x1=\"0\" x2=\"1\"><stop offset=\"0\" stop-color=\"#5f88b0\"/><stop offset=\"1\" stop-color=\"#bd4b28\"/><\/linearGradient><\/defs><rect x=\"295.944\" y=\"231\" width=\"111.59999999999997\" height=\"14\" rx=\"7\" fill=\"url(#wg6)\" stroke=\"none\" stroke-width=\"1\"/><text x=\"290.944\" y=\"242\" font-size=\"11.5\" font-weight=\"700\" fill=\"#24476b\" text-anchor=\"end\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">56°<\/text><text x=\"412.544\" y=\"242\" font-size=\"11.5\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"start\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">74°<\/text><text x=\"8\" y=\"269\" font-size=\"12.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">Onomichi<\/text><text x=\"8\" y=\"281\" font-size=\"10\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">Oct 18–22<\/text><defs><linearGradient id=\"wg7\" x1=\"0\" x2=\"1\"><stop offset=\"0\" stop-color=\"#5f88b0\"/><stop offset=\"1\" stop-color=\"#bd4b28\"/><\/linearGradient><\/defs><rect x=\"294.828\" y=\"261\" width=\"111.60000000000002\" height=\"14\" rx=\"7\" fill=\"url(#wg7)\" stroke=\"none\" stroke-width=\"1\"/><text x=\"289.828\" y=\"272\" font-size=\"11.5\" font-weight=\"700\" fill=\"#24476b\" text-anchor=\"end\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">56°<\/text><text x=\"411.428\" y=\"272\" font-size=\"11.5\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"start\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">74°<\/text><text x=\"8\" y=\"299\" font-size=\"12.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">Shimanami (moped)<\/text><text x=\"8\" y=\"311\" font-size=\"10\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">Oct 20–21<\/text><defs><linearGradient id=\"wg8\" x1=\"0\" x2=\"1\"><stop offset=\"0\" stop-color=\"#5f88b0\"/><stop offset=\"1\" stop-color=\"#bd4b28\"/><\/linearGradient><\/defs><rect x=\"309.336\" y=\"291\" width=\"91.51200000000006\" height=\"14\" rx=\"7\" fill=\"url(#wg8)\" stroke=\"none\" stroke-width=\"1\"/><text x=\"304.336\" y=\"302\" font-size=\"11.5\" font-weight=\"700\" fill=\"#24476b\" text-anchor=\"end\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">58°<\/text><text x=\"405.84800000000007\" y=\"302\" font-size=\"11.5\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"start\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">73°<\/text><text x=\"8\" y=\"329\" font-size=\"12.5\" font-weight=\"700\" fill=\"#16232e\" text-anchor=\"start\">Hiroshima<\/text><text x=\"8\" y=\"341\" font-size=\"10\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">Oct 22<\/text><defs><linearGradient id=\"wg9\" x1=\"0\" x2=\"1\"><stop offset=\"0\" stop-color=\"#5f88b0\"/><stop offset=\"1\" stop-color=\"#bd4b28\"/><\/linearGradient><\/defs><rect x=\"312.684\" y=\"321\" width=\"98.20799999999997\" height=\"14\" rx=\"7\" fill=\"url(#wg9)\" stroke=\"none\" stroke-width=\"1\"/><text x=\"307.684\" y=\"332\" font-size=\"11.5\" font-weight=\"700\" fill=\"#24476b\" text-anchor=\"end\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">59°<\/text><text x=\"415.892\" y=\"332\" font-size=\"11.5\" font-weight=\"700\" fill=\"#bd4b28\" text-anchor=\"start\" font-family=\"'JetBrains Mono',ui-monospace,Menlo,monospace\">75°<\/text><text x=\"8\" y=\"370\" font-size=\"10.5\" font-weight=\"400\" fill=\"#5a6b74\" text-anchor=\"start\">Bar = average low → high, °F<\/text><\/svg>",
+      "caption": "October averages, 1991–2020 (Japan Meteorological Agency). Mountain stops dip into the 40s °F at night."
+     }
+    },
+    {
+     "heading": "How to dress",
+     "bullets": [
+      "Layers: T-shirt + long-sleeve or flannel + a light fleece or hoodie + a thin rain/wind jacket covers every stop.",
+      "The cold stretch is Oct 12–15 (Hakone, Matsumoto, Takayama, Shirakawa-go), which is exactly when you only have the small bag. Pack the fleece and jacket in the small bag, not the shipped suitcase.",
+      "Rain: October is one of Tokyo's wettest months (about 9 inches on average), while the Seto Inland Sea side is much drier (about 3.5 to 4 inches). Bring a compact umbrella or buy a ¥500 one at any konbini.",
+      "Typhoon season is winding down by mid-October but not over. If one is forecast, ferries, ropeways and the Shimanami bridges for scooters can shut down; we'd swap days around.",
+      "Moped day (Oct 20–21): the bridges are high and windy, so wear long pants, closed shoes, a wind layer and sunglasses. Helmets come with the rental.",
+      "Dinners: one nicer outfit is enough (the omakase and the Kobe beef dinner). Nowhere on the trip has a strict dress code."
+     ]
+    },
+    {
+     "heading": "Packing checklist",
+     "checklist": [
+      {
+       "group": "Documents & money",
+       "items": [
+        "Passport (valid for the whole trip)",
+        "Visit Japan Web filled in, QR codes saved on your phone (immigration + customs)",
+        "US driver's license + International Driving Permit (drivers and moped riders)",
+        "2 credit cards (Visa/Mastercard, no foreign transaction fee)",
+        "Debit card for ATMs + about ¥20,000–30,000 cash",
+        "Travel insurance info and a photo of your passport saved on your phone"
+       ]
+      },
+      {
+       "group": "Phone & tech",
+       "items": [
+        "Phone + charger + cable",
+        "eSIM bought and installed before you fly",
+        "Suica added to Apple Wallet (iPhone)",
+        "Power bank (carry-on only, never in the shipped or checked bag)",
+        "Earbuds/headphones for the flight",
+        "Camera + charger + memory cards (optional)",
+        "No plug adapter needed: Japan uses the same two-flat-pin plugs as the US"
+       ]
+      },
+      {
+       "group": "Clothes (pack for 6–7 days; do laundry halfway)",
+       "items": [
+        "6–7 T-shirts / shirts",
+        "2–3 long-sleeve shirts or flannels",
+        "Light fleece or hoodie (in the SMALL bag)",
+        "Thin rain/wind jacket (in the SMALL bag)",
+        "2–3 pants/jeans (+ shorts if you run warm)",
+        "One nicer outfit for the fancy dinners",
+        "7 days of underwear",
+        "7 pairs of socks, no holes (shoes come off at the ryokan, temples, the castle and homes)",
+        "Something to sleep in",
+        "Light gloves + beanie (optional, for Shirakawa-go mornings and the moped day)"
+       ]
+      },
+      {
+       "group": "Shoes",
+       "items": [
+        "Broken-in walking shoes (expect 15,000+ steps on city days)",
+        "Second pair that slips on and off easily",
+        "Flip-flops or slides for the house and the onsen (optional)"
+       ]
+      },
+      {
+       "group": "Health & toiletries",
+       "items": [
+        "Prescription meds in original bottles + a copy of the prescription",
+        "Check your meds are allowed in Japan (some ADHD and cold/sinus meds are banned)",
+        "Pain relievers, Pepto/Imodium, motion-sickness pills (ferries and mountain roads)",
+        "Toothbrush, deodorant, razor and your usual toiletries (hotels give basics, the Airbnbs may not)",
+        "Sunscreen and lip balm",
+        "Small hand towel (many restrooms have no paper towels or dryers)"
+       ]
+      },
+      {
+       "group": "Day bag",
+       "items": [
+        "Small backpack or sling for day trips (also your bag for the 4 nights Oct 11–15)",
+        "Compact umbrella",
+        "Coin purse (coins pile up fast)",
+        "Reusable water bottle",
+        "Small plastic bag for your trash (public trash cans are rare)",
+        "Tissues / pocket wet wipes"
+       ]
+      },
+      {
+       "group": "Trip-specific",
+       "items": [
+        "Sunglasses (moped day and driving)",
+        "Phone mount and car charger cable (drivers)",
+        "Packing cubes: makes the small-bag swap easy",
+        "Foldable duffel for souvenirs and gear (Japan Post can ship extra home)",
+        "Swimsuit not needed: onsen baths are nude. Tattoos? Ask the ryokan about a private bath."
+       ]
+      }
+     ]
+    },
+    {
+     "heading": "Don't pack",
+     "bullets": [
+      "In the shipped suitcase: spray cans, lighters, fuel, power banks or anything flammable (see the Luggage guide).",
+      "In your carry-on: knives, scissors over 6 cm, liquids over 100 ml.",
+      "Big cash: cards work almost everywhere and ATMs are easy, so bring a starter amount only.",
+      "A heavy winter coat. Layers do the job and fit in the small bag."
+     ]
+    },
+    {
+     "heading": "Laundry on the road",
+     "bullets": [
+      "Many Airbnbs have a washer; check each listing. Coin laundries (コインランドリー) are everywhere, with washer-dryer combos about ¥1,000 a load.",
+      "Best laundry nights: Osaka (Oct 15–18, 3 nights in one place) and Onomichi (Oct 18–22).",
+      "Konbini sell travel-size detergent, socks and underwear if you run short."
+     ]
+    }
+   ]
   }
  ]
 }</script>
@@ -4831,14 +5060,14 @@ svg.leaflet-image-layer.leaflet-interactive path {
       }
       el.replaceWith(span);
     });
-    document.querySelectorAll('#app .wrap input[type=checkbox]').forEach(el=>{
+    document.querySelectorAll('#app .wrap input[type=checkbox]:not(.pk-chk)').forEach(el=>{
       const m = document.createElement('span');
       m.className = 'ro-check' + (el.checked ? '' : ' off');
       m.textContent = el.checked ? '✓' : '·';
       m.setAttribute('aria-label', el.checked ? 'yes' : 'no');
       el.replaceWith(m);
     });
-    document.querySelectorAll('#app .wrap button:not(.tab-btn):not([data-goto]):not([data-guide]):not([data-export]):not([data-squad])').forEach(el=>{
+    document.querySelectorAll('#app .wrap button:not(.tab-btn):not([data-goto]):not([data-guide]):not([data-export]):not([data-squad]):not([data-pk-reset])').forEach(el=>{
       el.setAttribute('disabled',''); el.setAttribute('tabindex','-1');
     });
     if(leafletMap) stopMarkers.forEach(m=>{ if(m.dragging) m.dragging.disable(); });
@@ -6385,6 +6614,42 @@ ${readOnly ? '' : `<div class="fld full"><div class="lbl">Notes</div><textarea r
   function guideText(s){
     return esc(String(s||'')).replace(/(https?:\/\/[^\s<]+)/g, u => `<a href="${u}" target="_blank" rel="noopener">${u}</a>`);
   }
+  /* Packing checklist: ticks live only on this phone/browser. */
+  const PACK_KEY = 'jp27-pack';
+  let PACK_MEM = {};
+  function packLoad(){ try{ return JSON.parse(localStorage.getItem(PACK_KEY) || '{}') || {}; }catch(e){ return PACK_MEM; } }
+  function packSave(o){ PACK_MEM = o; try{ localStorage.setItem(PACK_KEY, JSON.stringify(o)); }catch(e){} }
+  function packCounts(holder){
+    const done = packLoad();
+    holder.querySelectorAll('[data-pk-count]').forEach(el=>{
+      const pre = el.getAttribute('data-pk-count') + '-';
+      const boxes = [...holder.querySelectorAll('.pk-chk')].filter(b=> b.getAttribute('data-pk').startsWith(pre));
+      const n = boxes.filter(b=> b.checked).length;
+      el.textContent = `${n}/${boxes.length}`;
+      el.classList.toggle('all', n === boxes.length && n > 0);
+    });
+    holder.querySelectorAll('[data-pk-total]').forEach(el=>{
+      const pre = el.getAttribute('data-pk-total') + '-';
+      const boxes = [...holder.querySelectorAll('.pk-chk')].filter(b=> b.getAttribute('data-pk').startsWith(pre));
+      const n = boxes.filter(b=> b.checked).length;
+      el.textContent = n === boxes.length ? `All ${n} packed. Nice.` : `${n} of ${boxes.length} packed · saved on this device only`;
+    });
+  }
+  function packBind(holder){
+    holder.querySelectorAll('.pk-chk').forEach(b=> b.addEventListener('change', ()=>{
+      const o = packLoad(); const k = b.getAttribute('data-pk');
+      if(b.checked) o[k] = 1; else delete o[k];
+      packSave(o); packCounts(holder);
+    }));
+    holder.querySelectorAll('[data-pk-reset]').forEach(btn=> btn.addEventListener('click', ()=>{
+      const pre = btn.getAttribute('data-pk-reset') + '-';
+      const o = packLoad(); Object.keys(o).forEach(k=>{ if(k.startsWith(pre)) delete o[k]; });
+      packSave(o);
+      holder.querySelectorAll('.pk-chk').forEach(b=>{ if(b.getAttribute('data-pk').startsWith(pre)) b.checked = false; });
+      packCounts(holder);
+    }));
+    packCounts(holder);
+  }
   let currentGuide = null;
   function renderGuides(){
     const holder = document.getElementById('guides-holder');
@@ -6402,6 +6667,15 @@ ${readOnly ? '' : `<div class="fld full"><div class="lbl">Notes</div><textarea r
       if(s.text) body += `<p>${guideText(s.text)}</p>`;
       if(s.bullets) body += '<ul>' + s.bullets.map(b=>`<li>${guideText(b)}</li>`).join('') + '</ul>';
       if(s.steps) body += '<ol>' + s.steps.map(b=>`<li>${guideText(b)}</li>`).join('') + '</ol>';
+      if(s.checklist){
+        const done = packLoad();
+        body += '<div class="pk-wrap">' + s.checklist.map((grp, gi)=>{
+          const keys = grp.items.map((_, ii)=> `${g.id}-${i}-${gi}-${ii}`);
+          const n = keys.filter(k=> done[k]).length;
+          return `<div class="pk-group"><div class="pk-head">${esc(grp.group)} <span class="pk-count" data-pk-count="${g.id}-${i}-${gi}">${n}/${keys.length}</span></div>` +
+            grp.items.map((it, ii)=> `<label class="pk-item"><input type="checkbox" class="pk-chk" data-pk="${keys[ii]}" ${done[keys[ii]] ? 'checked' : ''}><span>${guideText(it)}</span></label>`).join('') + `</div>`;
+        }).join('') + `</div><div class="pk-foot"><span class="pk-total" data-pk-total="${g.id}-${i}"></span><button type="button" class="pk-reset" data-pk-reset="${g.id}-${i}">Clear my ticks</button></div>`;
+      }
       if(s.table){
         const head = s.table.head||[];
         body += '<div class="guide-table-wrap"><table class="guide-table"><thead><tr>' + head.map(h=>`<th>${esc(h)}</th>`).join('') + '</tr></thead><tbody>' +
@@ -6421,6 +6695,7 @@ ${readOnly ? '' : `<div class="fld full"><div class="lbl">Notes</div><textarea r
       renderGuides();
       if(b.hasAttribute('data-scroll')) holder.scrollIntoView({behavior:'smooth', block:'start'});
     }));
+    packBind(holder);
     holder.querySelectorAll('[data-jump]').forEach(a=> a.addEventListener('click', e=>{
       e.preventDefault();
       const t = document.getElementById(a.getAttribute('data-jump'));
@@ -6627,14 +6902,14 @@ ${readOnly ? '' : `<div class="fld full"><div class="lbl">Notes</div><textarea r
     if(guides.length){
       s = pptx.addSlide({masterName: 'BASE'});
       header(s, 'How-to guides', 'Read these before the trip');
-      const gw = 12.1 / Math.min(guides.length, 4);
-      guides.slice(0, 4).forEach((g, k)=>{
+      const shown = guides.slice(0, 5), gw = 12.1 / shown.length;
+      shown.forEach((g, k)=>{
         const x = 0.6 + k * gw;
         s.addShape(pptx.ShapeType.roundRect, {x, y: 1.65, w: gw - 0.2, h: 4.9, fill: {color: C.card}, line: {color: C.line}, rectRadius: 0.06});
-        s.addShape(pptx.ShapeType.rect, {x, y: 1.65, w: gw - 0.2, h: 0.12, fill: {color: [C.red, C.indigo, C.moss, C.gold][k % 4]}, line: {type: 'none'}});
+        s.addShape(pptx.ShapeType.rect, {x, y: 1.65, w: gw - 0.2, h: 0.12, fill: {color: [C.red, C.indigo, C.moss, C.gold, C.grey][k % 5]}, line: {type: 'none'}});
         s.addText(`GUIDE ${k + 1}`, {x: x + 0.2, y: 1.95, w: gw - 0.6, h: 0.3, fontFace: MONO, fontSize: 10, bold: true, color: C.grey, margin: 0});
         s.addText(deckText(g.short || g.title), {x: x + 0.2, y: 2.25, w: gw - 0.6, h: 0.75, fontFace: SERIF, fontSize: 18, bold: true, color: C.ink, margin: 0, valign: 'top'});
-        s.addText(deckClip(g.intro, 300), {x: x + 0.2, y: 3.05, w: gw - 0.6, h: 3.3, fontFace: SANS, fontSize: 11, color: C.ink, margin: 0, valign: 'top'});
+        s.addText(deckClip(g.intro, shown.length > 4 ? 230 : 300), {x: x + 0.2, y: 3.05, w: gw - 0.6, h: 3.3, fontFace: SANS, fontSize: shown.length > 4 ? 10 : 11, color: C.ink, margin: 0, valign: 'top'});
       });
       s.addText('The full step-by-step guides, with diagrams and phrase tables, are in the How-to tab of the trip app.', {x: 0.6, y: 6.65, w: 12.1, h: 0.35, fontFace: SANS, fontSize: 11, italic: true, color: C.grey, margin: 0});
     }
