@@ -834,13 +834,29 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .plans-head{ display:flex; flex-wrap:wrap; justify-content:space-between; align-items:baseline; gap:4px 10px; margin-bottom:6px; }
   .plans-head .t{ font-family:'JetBrains Mono',monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; color:#5a6b74; font-weight:700; }
   .plans-head .tally{ font-family:'JetBrains Mono',monospace; font-size:10.5px; color:#5a6b74; }
-  .plan-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:10px; }
+  .plan-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:10px; }
   .plan-card{ background:#fff; border:1px solid var(--line); border-radius:3px; padding:10px 12px; display:flex; flex-direction:column; gap:6px; }
   .plan-card.mine{ border-color:var(--moss); box-shadow:inset 4px 0 0 var(--moss); }
   .plan-host{ font-family:'JetBrains Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:var(--indigo); }
   .plan-title{ font-weight:700; font-size:14.5px; line-height:1.3; }
   .links-ro a{ color:var(--vermillion); font-weight:600; text-decoration:none; }
-  .plan-desc{ font-size:13px; line-height:1.45; color:#3d4a52; white-space:pre-line; }
+  .plan-desc{ font-size:13px; line-height:1.45; color:#3d4a52; display:flex; flex-direction:column; gap:7px; }
+  .pd-steps{ list-style:none; margin:0; padding:0; }
+  .pd-steps li{ display:grid; grid-template-columns:78px 1fr; gap:10px; padding:8px 0; border-top:1px solid #efe7d6; }
+  .pd-steps li:first-child{ border-top:none; padding-top:2px; }
+  .pd-time{ font-family:'JetBrains Mono',monospace; font-size:11.5px; font-weight:700; color:var(--vermillion); line-height:1.35; padding-top:1px; }
+  .pd-lead{ font-weight:700; color:var(--ink); font-size:13.5px; line-height:1.4; }
+  .pd-more{ font-size:12.5px; color:#5a6b74; line-height:1.5; margin-top:3px; }
+  .pd-steps li.pd-hard{ background:#fbeee6; box-shadow:inset 3px 0 0 var(--vermillion); padding-left:8px; padding-right:6px; }
+  .pd-steps li.pd-hard .pd-lead{ color:var(--vermillion); }
+  .pd-head{ font-family:'JetBrains Mono',monospace; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--indigo); margin-top:2px; }
+  .pd-note{ font-size:12.5px; line-height:1.5; color:#3d4a52; background:var(--paper-card); border-radius:3px; padding:7px 9px; }
+  .pd-note b{ color:var(--ink); }
+  .pd-note.warn{ background:#fbeee6; box-shadow:inset 3px 0 0 var(--vermillion); }
+  .pd-note.after, .pd-head.after{ margin-top:2px; }
+  .pd-bullets{ margin:0; padding-left:18px; font-size:12.5px; line-height:1.5; }
+  .pd-bullets li{ margin:2px 0; }
+  @media (max-width:520px){ .pd-steps li{ grid-template-columns:64px 1fr; gap:8px; } .pd-time{ font-size:11px; } }
   .plan-map{ font-size:12px; color:var(--vermillion); font-weight:600; text-decoration:none; }
   .plan-going{ font-size:12.5px; line-height:1.4; }
   .plan-going b{ font-family:'JetBrains Mono',monospace; font-size:11px; }
@@ -2951,6 +2967,15 @@ svg.leaflet-image-layer.leaflet-interactive path {
   }
  },
  "changelog": [
+  {
+   "version": "2.38",
+   "date": "Nov 17, 2026",
+   "title": "Easier-to-read day plans",
+   "changes": [
+    "Plan cards on the Itinerary tab now read like a timeline: times in their own column, a bold headline for each stop, and the extra details in smaller text underneath.",
+    "'Heads up' notes, reservation lists and hard stops stand out instead of blending into the schedule."
+   ]
+  },
   {
    "version": "2.37",
    "date": "Nov 17, 2026",
@@ -6161,6 +6186,47 @@ ${readOnly ? '' : `<div class="fld full"><div class="lbl">Notes</div><textarea r
     else if(!SU.me){ t = 'Pick your name to join plans.'; }
     el.textContent = t; el.classList.toggle('err', err);
   }
+
+  /* Plan text → readable timeline: "~6:45 PM: Ramen. Details…" lines become time | headline + details rows. */
+  const PD_TIME = /^((?:~\s?)?\d{1,2}(?::\d{2})?\s?(?:AM|PM)?(?:\s?(?:to|–|-)\s?~?\s?\d{1,2}(?::\d{2})?\s?(?:AM|PM))?|Morning|Afternoon|Evening|Night before|Night|Late night|(?:Optional )?early start)(\s?\(optional\)|\s+HARD STOP)?:\s+(.+)$/i;
+  function pdSplit(t){
+    const m = t.match(/^(.{10,}?[.!?])\s+(?=[A-Z0-9(¥~"'“])(.*)$/);
+    return m ? [m[1], m[2]] : [t, ''];
+  }
+  function planDescHTML(desc){
+    const lines = String(desc || '').split('\n').map(s=> s.trim()).filter(Boolean);
+    let html = '', steps = [], bullets = [], seenStep = false;
+    const flushSteps = ()=>{ if(steps.length){ html += `<ol class="pd-steps">${steps.join('')}</ol>`; steps = []; } };
+    const flushBullets = ()=>{ if(bullets.length){ html += `<ul class="pd-bullets">${bullets.join('')}</ul>`; bullets = []; } };
+    lines.forEach(ln=>{
+      const m = ln.match(PD_TIME);
+      if(m){
+        flushBullets(); seenStep = true;
+        const hard = /hard stop/i.test(m[2] || '');
+        let time = (m[1] + (m[2] && !hard ? ' (optional)' : '')).replace(/^~\s?/, '~').replace(/\s+/g, ' ');
+        time = time.charAt(0).toUpperCase() + time.slice(1);
+        let [lead, rest] = pdSplit(m[3]);
+        lead = lead.charAt(0).toUpperCase() + lead.slice(1);
+        if(hard) lead = 'Hard stop: ' + lead;
+        steps.push(`<li${hard ? ' class="pd-hard"' : ''}><span class="pd-time">${esc(time)}</span><div class="pd-body"><div class="pd-lead">${esc(lead)}</div>${rest ? `<div class="pd-more">${esc(rest)}</div>` : ''}</div></li>`);
+        return;
+      }
+      flushSteps();
+      if(/^[•\-–]\s+/.test(ln)){ bullets.push(`<li>${esc(ln.replace(/^[•\-–]\s+/, ''))}</li>`); return; }
+      flushBullets();
+      const after = seenStep ? ' after' : '';
+      if(/:$/.test(ln) && ln.length < 100){ html += `<div class="pd-head${after}">${esc(ln.slice(0, -1))}</div>`; return; }
+      const lm = ln.match(/^([^:]{2,34}):\s+(.+)$/);
+      if(lm){
+        const warn = /heads up|warning|important/i.test(lm[1]);
+        html += `<div class="pd-note${warn ? ' warn' : ''}${after}"><b>${esc(lm[1])}:</b> ${esc(lm[2])}</div>`;
+        return;
+      }
+      html += `<div class="pd-note${after}">${esc(ln)}</div>`;
+    });
+    flushSteps(); flushBullets();
+    return html;
+  }
   function renderPlans(){
     renderSignupStatus();
     const names = rosterNames();
@@ -6174,7 +6240,7 @@ ${readOnly ? '' : `<div class="fld full"><div class="lbl">Notes</div><textarea r
           <div class="plan-grid">${plans.map(p=>`<div class="plan-card mine">
             <div class="plan-host">Everyone</div>
             <div class="plan-title">${esc(p.title)}</div>
-            ${p.desc ? `<div class="plan-desc">${esc(p.desc)}</div>` : ''}
+            ${p.desc ? `<div class="plan-desc">${planDescHTML(p.desc)}</div>` : ''}
             ${p.mapQuery ? `<a class="plan-map" href="${esc(gmapsSearch(p.mapQuery))}" target="_blank" rel="noopener">📍 Map ↗</a>` : ''}
             <div class="plan-going"><b>All ${names.length}</b> · mandatory for the whole group</div>
           </div>`).join('')}</div>`;
@@ -6197,7 +6263,7 @@ ${readOnly ? '' : `<div class="fld full"><div class="lbl">Notes</div><textarea r
           return `<div class="plan-card${mine?' mine':''}">
             <div class="plan-host">${esc(p.host)}'s plan</div>
             <div class="plan-title">${esc(p.title)}</div>
-            ${p.desc ? `<div class="plan-desc">${esc(p.desc)}</div>` : ''}
+            ${p.desc ? `<div class="plan-desc">${planDescHTML(p.desc)}</div>` : ''}
             ${p.mapQuery ? `<a class="plan-map" href="${esc(gmapsSearch(p.mapQuery))}" target="_blank" rel="noopener">📍 Map ↗</a>` : ''}
             ${live ? `<div class="plan-going">${g.length ? `<b>${g.length} going:</b> ${esc(g.join(', '))}` : '<span class="nobody">Nobody yet</span>'}</div>` : ''}
             <button class="plan-btn${mine?' leave':''}" data-day="${i}" data-plan="${esc(mine ? '' : p.id)}" ${(!live || SU.saving) ? 'disabled' : ''}>${mine ? '✓ You\'re in · Leave' : 'Join'}</button>
