@@ -893,6 +893,18 @@ svg.leaflet-image-layer.leaflet-interactive path {
   body.readonly .ro-check{ display:inline-block; font-weight:900; color:var(--moss); font-size:16px; line-height:20px; min-width:20px; text-align:center; }
   body.readonly .ro-check.off{ color:var(--line); font-weight:400; }
   .squad-toolbar{ display:flex; gap:10px; margin-top:12px; flex-wrap:wrap; }
+  .squad-me{ border-top:none; padding-top:0; margin:0 0 14px; }
+  .squad-row.me{ background:#fbeee6; }
+  .squad-row.me .squad-name{ color:var(--vermillion); }
+  .me-tag{ font-family:'JetBrains Mono',monospace; font-size:9.5px; text-transform:uppercase; letter-spacing:.08em; background:var(--vermillion); color:#fff; border-radius:3px; padding:2px 5px; font-weight:700; }
+  .col-lock{ display:block; font-size:8.5px; opacity:.7; letter-spacing:.06em; margin-top:2px; }
+  .sq-tick{ width:30px; height:30px; border:2px solid var(--vermillion); border-radius:6px; background:#fff; color:#fff; font-size:17px; font-weight:700; line-height:1; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; padding:0; }
+  .sq-tick.on{ background:var(--vermillion); }
+  .sq-tick:hover{ box-shadow:0 0 0 3px rgba(189,75,40,.18); }
+  .sq-tick:disabled{ opacity:.55; cursor:wait; }
+  .squad-row.tally{ background:var(--paper-dim); font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; }
+  .squad-row.tally div{ text-align:center; padding:8px 10px; }
+  .squad-row.tally div:first-child{ text-align:left; padding-left:14px; }
   .chk{ width:20px; height:20px; accent-color:var(--vermillion); cursor:pointer; }
   .squad-add{ display:flex; gap:8px; margin-top:12px; }
   .squad-add input{ flex:1; padding:10px 12px; border:1px solid var(--line); border-radius:var(--radius); font:inherit; background:var(--paper-card); }
@@ -1335,15 +1347,28 @@ svg.leaflet-image-layer.leaflet-interactive path {
  "squadColumns": [
   {
    "id": "driver",
-   "label": "Main driver?"
+   "label": "Main driver",
+   "editable": false
   },
   {
    "id": "backup",
-   "label": "Backup driver?"
+   "label": "Backup driver",
+   "editable": true
   },
   {
    "id": "moped",
-   "label": "Moped ride?"
+   "label": "Moped ride (Oct 20)",
+   "editable": true
+  },
+  {
+   "id": "idp",
+   "label": "IDP in hand",
+   "editable": true
+  },
+  {
+   "id": "flight",
+   "label": "Flight booked",
+   "editable": true
   }
  ],
  "rsvp": [
@@ -1352,7 +1377,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "attrs": {
     "driver": false,
     "backup": false,
-    "moped": false
+    "moped": false,
+    "idp": false,
+    "flight": false
    }
   },
   {
@@ -1360,7 +1387,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "attrs": {
     "driver": false,
     "backup": false,
-    "moped": false
+    "moped": false,
+    "idp": false,
+    "flight": false
    }
   },
   {
@@ -1368,7 +1397,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "attrs": {
     "driver": true,
     "backup": false,
-    "moped": false
+    "moped": false,
+    "idp": false,
+    "flight": false
    }
   },
   {
@@ -1376,7 +1407,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "attrs": {
     "driver": false,
     "backup": false,
-    "moped": false
+    "moped": false,
+    "idp": false,
+    "flight": false
    }
   },
   {
@@ -1384,7 +1417,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "attrs": {
     "driver": false,
     "backup": false,
-    "moped": false
+    "moped": false,
+    "idp": false,
+    "flight": false
    }
   },
   {
@@ -1392,7 +1427,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "attrs": {
     "driver": false,
     "backup": false,
-    "moped": false
+    "moped": false,
+    "idp": false,
+    "flight": false
    }
   },
   {
@@ -1400,7 +1437,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "attrs": {
     "driver": false,
     "backup": false,
-    "moped": false
+    "moped": true,
+    "idp": false,
+    "flight": false
    }
   },
   {
@@ -1408,7 +1447,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "attrs": {
     "driver": false,
     "backup": false,
-    "moped": false
+    "moped": false,
+    "idp": false,
+    "flight": false
    }
   },
   {
@@ -1416,7 +1457,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "attrs": {
     "driver": false,
     "backup": false,
-    "moped": false
+    "moped": false,
+    "idp": false,
+    "flight": false
    }
   },
   {
@@ -1424,7 +1467,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "attrs": {
     "driver": true,
     "backup": false,
-    "moped": false
+    "moped": false,
+    "idp": false,
+    "flight": false
    }
   },
   {
@@ -1432,7 +1477,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "attrs": {
     "driver": false,
     "backup": false,
-    "moped": false
+    "moped": false,
+    "idp": false,
+    "flight": false
    }
   },
   {
@@ -1440,7 +1487,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "attrs": {
     "driver": false,
     "backup": false,
-    "moped": false
+    "moped": false,
+    "idp": false,
+    "flight": false
    }
   }
  ],
@@ -2693,7 +2742,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "mapQuery": "Hiroshima Airport, Mihara, Hiroshima, Japan"
   }
  ],
- "squadNote": "Main drivers: Son and Don. We still need 2 backup drivers. Tell Son if you're up for it (you'll need an International Driving Permit). Also tell Son if you're doing the Oct 20 moped ride to Omishima. You'll need an IDP too, and a regular car one is fine. Anyone skipping it stays in Onomichi with the vans.",
+ "squadNote": "Main drivers: Son and Don. We still need 2 backup drivers. If you're up for it, tick Backup driver next to your name (you'll need an International Driving Permit). Tick Moped ride if you're doing the Oct 20 ride to Omishima. You'll need an IDP too, and a regular car one is fine. Anyone skipping it stays in Onomichi with the vans.",
  "datesTentative": true,
  "budgetNote": "Not in the total (personal costs): travel insurance (~$100–200), an eSIM for data (~$20–30), and the AAA International Driving Permit (~$20 + photos) for drivers and moped riders.\nThe Omishima moped night ($512) is only for the moped riders, so they split it instead of all 12. The rental cars are picked up early on Oct 11 and parked at the Tokyo Airbnb that night, so ask the host about parking for 2 minivans. The Tokyo Oct 22 to 24 stay still uses the original listing's $1,532 until the Shin-Okubo house is priced.\nStill not included: drinking, karaoke, souvenirs, clubbing. Budget separately for those.",
  "disclaimer": "Everything here is a plan in progress. Costs, dates and places to stay are estimates and options, not final numbers or bookings. Nothing is booked yet, and final prices will be confirmed as things are booked.",
@@ -2902,6 +2951,15 @@ svg.leaflet-image-layer.leaflet-interactive path {
   }
  },
  "changelog": [
+  {
+   "version": "2.36",
+   "date": "Nov 17, 2026",
+   "title": "Tick your own boxes on the Squad tab",
+   "changes": [
+    "On the Squad tab, pick your name and tick your own boxes for Backup driver, Moped ride (Oct 20), IDP in hand and Flight booked. Ticks save straight to the Squad tab of the trip sheet and show for everyone. Main driver stays Son's call.",
+    "Two new columns: IDP in hand and Flight booked."
+   ]
+  },
   {
    "version": "2.35",
    "date": "Nov 17, 2026",
@@ -4211,8 +4269,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <!-- ===================== SQUAD ===================== -->
     <section class="panel" id="panel-squad">
       <h2 class="panel-title">Who's Coming <span class="jp">参加者</span></h2>
-      <div class="panel-sub">Who's on the roster and who's driving. Tell Son if anything here is wrong.</div>
+      <div class="panel-sub">Who's on the roster and who's driving. Pick your name, then tick your own boxes (backup driver, moped ride, IDP, flight). They save straight to the trip sheet. Main driver is Son's call.</div>
       <div class="squad-note" id="squad-note" style="display:none;"></div>
+      <div class="signup-me squad-me live-ctl"><label for="squad-me">I am</label><select id="squad-me"></select><span class="signup-status" id="squad-status"></span></div>
       <div class="squad-grid" id="squad-grid"></div>
       <div class="squad-toolbar editor-only">
         <div class="squad-add">
@@ -4745,7 +4804,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
       m.setAttribute('aria-label', el.checked ? 'yes' : 'no');
       el.replaceWith(m);
     });
-    document.querySelectorAll('#app .wrap button:not(.tab-btn):not([data-goto]):not([data-guide]):not([data-export])').forEach(el=>{
+    document.querySelectorAll('#app .wrap button:not(.tab-btn):not([data-goto]):not([data-guide]):not([data-export]):not([data-squad])').forEach(el=>{
       el.setAttribute('disabled',''); el.setAttribute('tabindex','-1');
     });
     if(leafletMap) stopMarkers.forEach(m=>{ if(m.dragging) m.dragging.disable(); });
@@ -4935,6 +4994,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   }
 
   function renderSquad(){
+    if(readOnly){ renderSquadViewer(); return; }
     const note = document.getElementById('squad-note');
     note.textContent = state.squadNote || '';
     note.style.display = state.squadNote ? '' : 'none';
@@ -5974,6 +6034,104 @@ ${readOnly ? '' : `<div class="fld full"><div class="lbl">Notes</div><textarea r
   function suEndpoint(){ return (state.signups && state.signups.endpoint) || ''; }
   function dayKey(i){ return 'd' + String(i+1).padStart(2,'0'); }
   function rosterNames(){ return (state.rsvp||[]).map(r=>r.name).filter(Boolean).sort((a,b)=>a.localeCompare(b)); }
+
+  /* Squad tab for viewers: pick your name, tick your own boxes; saved to the Squad tab of the trip sheet. */
+  const SQ = { saving:'', msg:'' };
+  function squadLive(){ return !!suEndpoint() && SU.loaded && !SU.error; }
+  function setMe(name){
+    SU.me = name || ''; SU.msg = ''; SQ.msg = '';
+    try{ SU.me ? localStorage.setItem('jp27-me', SU.me) : localStorage.removeItem('jp27-me'); }catch(err){}
+    const a = document.getElementById('me-select'); if(a){ a.value = SU.me; a.classList.remove('need'); }
+    const b = document.getElementById('squad-me'); if(b){ b.value = SU.me; b.classList.remove('need'); }
+    renderPlans(); renderSquad();
+  }
+  function renderSquadStatus(){
+    const el = document.getElementById('squad-status'); if(!el) return;
+    let t = '', err = false;
+    if(!suEndpoint()) t = 'Sign-ups open soon.';
+    else if(SQ.saving) t = 'Saving…';
+    else if(SQ.msg){ t = SQ.msg; err = /couldn|set by/i.test(SQ.msg); }
+    else if(SU.error){ t = "Couldn't reach the trip sheet. Refresh to try again (ticking boxes only works on the group link)."; err = true; }
+    else if(!SU.loaded) t = 'Loading…';
+    else if(!SU.me) t = 'Pick your name to tick your own boxes.';
+    else t = 'Tap a box in your row to tick or untick it. It saves to the trip sheet right away.';
+    el.textContent = t; el.classList.toggle('err', err);
+  }
+  function renderSquadViewer(){
+    const note = document.getElementById('squad-note');
+    note.textContent = state.squadNote || '';
+    note.style.display = state.squadNote ? '' : 'none';
+    const sel = document.getElementById('squad-me');
+    const names = rosterNames();
+    if(sel){
+      if(SU.me && !names.includes(SU.me)) SU.me = '';
+      sel.innerHTML = `<option value="">Pick your name…</option>` + names.map(n=>`<option${n===SU.me?' selected':''}>${esc(n)}</option>`).join('');
+    }
+    const grid = document.getElementById('squad-grid');
+    const cols = state.squadColumns || [];
+    const live = squadLive();
+    const tpl = `minmax(84px, 1.4fr) repeat(${cols.length}, minmax(58px, 1fr))`;
+    let h = `<div class="squad-row head" style="grid-template-columns:${tpl};"><div>Name</div>` +
+      cols.map(c=>`<div class="col-head">${esc(c.label)}${c.editable === false ? '<span class="col-lock" title="Set by Son">Son sets</span>' : ''}</div>`).join('') + `</div>`;
+    state.rsvp.forEach(p=>{
+      const mine = !!SU.me && p.name === SU.me;
+      h += `<div class="squad-row${mine ? ' me' : ''}" style="grid-template-columns:${tpl};"><div class="squad-name"><span class="ro">${esc(p.name)}</span>${mine ? '<span class="me-tag">you</span>' : ''}</div>`;
+      cols.forEach(c=>{
+        const on = !!(p.attrs && p.attrs[c.id]);
+        if(live && mine && c.editable !== false){
+          h += `<div class="squad-cell"><button type="button" class="sq-tick${on ? ' on' : ''}" data-squad="${esc(c.id)}" aria-pressed="${on}" aria-label="${esc(c.label)}" ${SQ.saving ? 'disabled' : ''}>${on ? '✓' : ''}</button></div>`;
+        }else{
+          h += `<div class="squad-cell"><span class="ro-check${on ? '' : ' off'}" aria-label="${on ? 'yes' : 'no'}">${on ? '✓' : '·'}</span></div>`;
+        }
+      });
+      h += `</div>`;
+    });
+    h += `<div class="squad-row tally" style="grid-template-columns:${tpl};"><div>Total</div>` +
+      cols.map(c=>`<div>${state.rsvp.filter(p=> p.attrs && p.attrs[c.id]).length}</div>`).join('') + `</div>`;
+    grid.innerHTML = h;
+    grid.querySelectorAll('[data-squad]').forEach(b=> b.addEventListener('click', ()=> toggleSquad(b.getAttribute('data-squad'))));
+    renderSquadStatus();
+  }
+  async function toggleSquad(col){
+    const p = state.rsvp.find(x=> x.name === SU.me);
+    if(!p || SQ.saving) return;
+    p.attrs = p.attrs || {};
+    const prev = !!p.attrs[col];
+    p.attrs[col] = !prev;
+    SQ.saving = col; SQ.msg = ''; renderSquad(); updateHeaderStats();
+    try{
+      const r = await fetch(suEndpoint(), { method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify({ kind:'squad', name: SU.me, col, value: !prev }) });
+      const j = await r.json();
+      if(!j || !j.ok) throw new Error((j && j.error) || 'failed');
+      SQ.saving = '';
+      takeSheet(j);
+      const c = (state.squadColumns || []).find(x=> x.id === col);
+      SQ.msg = `Saved: ${c ? c.label.replace(/\?$/,'') : col} ${!prev ? 'ticked' : 'unticked'}.`;
+    }catch(e){
+      p.attrs[col] = prev;
+      SQ.msg = /set by son/i.test(e.message) ? 'That box is set by Son.' : "Couldn't save. Check your connection and try again.";
+    }
+    SQ.saving = ''; renderSquad(); updateHeaderStats();
+  }
+  /* Sheet → page: x marks from the Squad tab. Returns true if anything changed. */
+  function applySquad(sq){
+    if(!sq || !Array.isArray(sq.people)) return false;
+    let changed = false;
+    const editable = Array.isArray(sq.editable) ? sq.editable : null;
+    (state.squadColumns || []).forEach(c=>{
+      if(editable && (sq.columns || []).includes(c.id)){ const e = editable.includes(c.id); if(c.editable !== e){ c.editable = e; changed = true; } }
+    });
+    sq.people.forEach(row=>{
+      let p = state.rsvp.find(x=> x.name === row.name);
+      if(!p){ p = { name: row.name, attrs: {} }; state.rsvp.push(p); changed = true; }
+      p.attrs = p.attrs || {};
+      Object.keys(row.marks || {}).forEach(k=>{
+        const v = !!row.marks[k];
+        if(!!p.attrs[k] !== v){ p.attrs[k] = v; changed = true; }
+      });
+    });
+    return changed;
+  }
   function renderSignupBox(){
     const info = (state.signups && state.signups.info) || [];
     document.getElementById('signup-box').style.display = state.itinerary.some(d=>(d.plans||[]).length) ? '' : 'none';
@@ -6095,6 +6253,7 @@ ${readOnly ? '' : `<div class="fld full"><div class="lbl">Notes</div><textarea r
   }
   function takeSheet(j){
     SU.data = j.signups || {};
+    if(applySquad(j.squad)){ renderSquad(); updateHeaderStats(); renderPaymentMatrix(); }
     if(applySheet(j)) rerenderFromSheet();
     sheetLiveNote(j);
   }
@@ -6106,7 +6265,7 @@ ${readOnly ? '' : `<div class="fld full"><div class="lbl">Notes</div><textarea r
       if(!j || !j.ok) throw new Error('bad');
       takeSheet(j); SU.loaded = true; SU.error = '';
     }catch(e){ SU.error = 'net'; }
-    renderPlans();
+    renderPlans(); renderSquad();
   }
   async function choosePlan(i, planId){
     const sel = document.getElementById('me-select');
@@ -6132,11 +6291,8 @@ ${readOnly ? '' : `<div class="fld full"><div class="lbl">Notes</div><textarea r
     }
     SU.saving = false; renderPlans();
   }
-  document.getElementById('me-select').addEventListener('change', e=>{
-    SU.me = e.target.value; e.target.classList.remove('need'); SU.msg = '';
-    try{ SU.me ? localStorage.setItem('jp27-me', SU.me) : localStorage.removeItem('jp27-me'); }catch(err){}
-    renderPlans();
-  });
+  document.getElementById('me-select').addEventListener('change', e=> setMe(e.target.value));
+  document.getElementById('squad-me').addEventListener('change', e=> setMe(e.target.value));
   document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState === 'visible' && SU.loaded) loadSignups(); });
   setInterval(()=>{ if(document.visibilityState === 'visible' && SU.loaded && !SU.saving) loadSignups(); }, 60000);
 
